@@ -1,0 +1,17 @@
+Usuario
+Funcionalidad 
+UsuarioFuncionalidad
+TipoUsuario
+Comercio
+Menu
+Venta
+Pedido
+Entrega
+Ofertas
+Producto
+Precio
+
+
+Levantar el xml desde =
+
+https://www.draw.io/
