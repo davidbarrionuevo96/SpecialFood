@@ -2,43 +2,48 @@ Create Database BD;
 Use BD;
 
 Create Table Parametro (
-IdParametro tinyint,
+IdParametro tinyint PRIMARY KEY,
 Descripcion Varchar (100),
 Valor tinyint);
 
 Create Table Funcionalidad(
-IdFuncionalidad tinyint,
+IdFuncionalidad tinyint PRIMARY KEY,
 Descripcion Varchar (100));
 
 Create Table Perfil(
-IdPerfil tinyint,
+IdPerfil tinyint PRIMARY KEY,
 Descripcion Varchar (100));
 
-
+Create Table PerfilFuncionalidad(
+IdPerfilFuncionalidad tinyint PRIMARY KEY,
+IdPerfil tinyint,
+IdFuncionalidad tinyint,
+FOREIGN KEY (IdPerfil) references Perfil (IdPerfil),
+FOREIGN KEY (IdFuncionalidad) references Funcionalidad (IdFuncionalidad));
 
 Create Table Localidad(
-IdLocalidad tinyint,
+IdLocalidad tinyint PRIMARY KEY,
 Descripcion Varchar (100),
 CodigoPostal tinyint);
 
 Create Table Barrio(
-IdBarrio tinyint,
+IdBarrio tinyint PRIMARY KEY,
 Descripcion Varchar (100),
 IdLocalidad tinyint,
 FOREIGN KEY (IdLocalidad) references Localidad (IdLocalidad));
 
 Create Table Calle(
-IdCalle tinyint,
+IdCalle tinyint PRIMARY KEY,
 Descripcion Varchar (100),
 IdBarrio tinyint,
-FOREIGN KEY (ID_Barrio) references Barrio (ID_Barrio));
+FOREIGN KEY (IdBarrio) references Barrio (IdBarrio));
 
 Create Table EstadoAprobacionUsuario(
-IdEstadoAprobacionUsuario tinyint,
+IdEstadoAprobacionUsuario tinyint PRIMARY KEY,
 Descripcion Varchar (100));
 
 Create Table Usuario(
-IdUsuario tinyint,
+IdUsuario tinyint PRIMARY KEY,
 Nombre Varchar (50),
 Apellido Varchar (50),
 Numero tinyint,
@@ -52,40 +57,36 @@ FOREIGN KEY (IdCalle) references Calle (IdCalle),
 FOREIGN KEY (IdEstadoAprobacionUsuario) references EstadoAprobacionUsuario (IdEstadoAprobacionUsuario));
 
 Create Table UsuarioPerfil (
-IdUsuarioPerfil tinyint,
+IdUsuarioPerfil tinyint PRIMARY KEY,
 IdPerfil tinyint,
 IdUsuario tinyint,
 FOREIGN KEY (IdPerfil) references Perfil (IdPerfil),
 FOREIGN KEY (IdUsuario) references Usuario (IdUsuario));
 
 Create Table HistorialActivacionDelivery(
-IdHistorialActivacionDelivery tinyint,
+IdHistorialActivacionDelivery tinyint PRIMARY KEY,
 FechaLogeoEnLinea datetime,
 FechaLogeoUltimaVez datetime,
 IdDelivery tinyint,
 FOREIGN KEY (IdDelivery) references Usuario (IdUsuario));
 
-Create Table EstadoAprobacionUsuario(
-IdEstadoAprobacionUsuario tinyint,
-Descripcion Varchar (100));
-
 Create Table MenuNegocio(
-IdMenuNegocio tinyint,
+IdMenuNegocio tinyint PRIMARY KEY,
 Descripcion Varchar(100),
 IdComercio tinyint,
 FOREIGN KEY (IdComercio) references Usuario (IdUsuario));
 
 Create Table MenuNegocioItem(
-IdMenuNegocioItem tinyint,
+IdMenuNegocioItem tinyint PRIMARY KEY,
 Descripcion Varchar (200),
 Precio decimal(7,2),
 PrecioOferta decimal(7,2),
 Foto mediumblob,
 IdMenu tinyint,
-FOREIGN KEY (IdMenu) references MenuNegocio (IdMenu));
+FOREIGN KEY (IdMenu) references MenuNegocio (IdMenuNegocio));
 
 Create Table Categoria(
-IdCategoria tinyint,
+IdCategoria tinyint PRIMARY KEY,
 Descripcion Varchar (100));
 
 Create Table CategoriaComercio(
@@ -96,18 +97,18 @@ FOREIGN KEY (IdCategoria) references Categoria (IdCategoria),
 FOREIGN KEY (IdComercio) references Usuario (IdUsuario));
 
 Create Table Oferta (
-IdOferta tinyint,
+IdOferta tinyint PRIMARY KEY,
 FechaInicio date,
 FechaFinal date,
 IdMenuNegocioItem tinyint,
 FOREIGN KEY (IdMenuNegocioItem) references MenuNegocioItem (IdMenuNegocioItem));
 
 Create Table EstadoEntrega(
-IdEstadoEntrega tinyint,
+IdEstadoEntrega tinyint PRIMARY KEY,
 Descripcion Varchar (100));
 
 Create Table Pedido(
-IdPedido tinyint,
+IdPedido tinyint PRIMARY KEY,
 FechaPedido datetime,
 CostoEntrega decimal(7,2),
 TiempoEstimadoEntrega time,
@@ -118,7 +119,7 @@ FOREIGN KEY (IdCliente) references Usuario (IdUsuario)
 );
 
 Create Table PedidoItem(
-IdPedidoItem tinyint,
+IdPedidoItem tinyint PRIMARY KEY,
 Precio decimal(7,2),
 IdPedido tinyint,
 IdMenuNegocioItem tinyint,
@@ -127,7 +128,7 @@ FOREIGN KEY (IdMenuNegocioItem) references MenuNegocioItem (IdMenuNegocioItem)
 );
 
 Create Table Entrega(
-IdEntrega tinyint,
+IdEntrega tinyint PRIMARY KEY,
 FechaTomaPedido datetime,
 FechaEntrega datetime,
 IdRepartidor tinyint,
