@@ -81,7 +81,7 @@ IdMenuNegocioItem tinyint PRIMARY KEY,
 Descripcion Varchar (200),
 Precio decimal(7,2),
 PrecioOferta decimal(7,2),
-Foto mediumblob,
+Foto Varchar (200),
 IdMenu tinyint,
 FOREIGN KEY (IdMenu) references MenuNegocio (IdMenuNegocio));
 
