@@ -1,0 +1,22 @@
+.form-inline{
+	margin-top: 3%;
+}
+
+.form-inline input{
+	margin-right: 2%;
+}
+
+.form-inline button{
+	width: 10%;
+	height: auto;
+	background-color: red;
+}
+
+.glyphicon-search{
+	width: 10%;
+	height: auto;
+}
+
+
+
+
