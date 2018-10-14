@@ -18,5 +18,19 @@
 }
 
 
+.iniciar_sesion{
+    width: 100%;
+    margin-top: 2%;
+}
 
+.espacio{
+	margin: 20% 0%;
+}
+
+.letra-blanca{
+	color: white;
+	font-size: 23px;
+	line-height: 20px;
+	
+}
 
