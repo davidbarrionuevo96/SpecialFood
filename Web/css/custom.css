@@ -19,12 +19,14 @@
 
 
 .iniciar_sesion{
-    width: 100%;
+	width: 100%;
+    position: absolute;
     margin-top: 2%;
+    margin-left: 5%;
 }
 
 .espacio{
-	margin: 20% 0%;
+	margin: 18% 0%;
 }
 
 .letra-blanca{

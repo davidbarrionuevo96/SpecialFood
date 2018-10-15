@@ -33,13 +33,22 @@
 			<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 	</head>
     <body>	
+            <div class="container iniciar_sesion">
+                <div class="row">			
+                    <nav id="nav-menu-container">
+                        <ul class="nav-menu">
+                            <li><a href="index.html">Volver</a></li>
+                        </ul>
+                    </nav>				      		  
+                </div>
+            </div>
         <header id="header" class="absolute">
             <div class="header-top">
                 <div class="container">
                     <div class="row justify-content-center">
-                            <div id="logo">
-                            <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
-                            </div>
+                        <div id="logo">
+                           <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+                        </div>
                     </div>			  					
                 </div>
             </div>
@@ -57,6 +66,15 @@
                             </div>
                             <div class="panel-body">
                                 <form role="form">
+                                    <div class="row"> 
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="radio" name="tipo-usuario" value="consumidor" class="form-control input-sm">Consumidor
+                                                <input type="radio" name="tipo-usuario" value="repartidor" class="form-control input-sm">Repartidor
+                                                <input type="radio" name="tipo-usuario" value="dueño" class="form-control input-sm">Dueño
+                                            </div>
+                                        </div>       
+                                    </div>
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
