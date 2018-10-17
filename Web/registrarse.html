@@ -68,10 +68,10 @@
                                 <form role="form">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-											<select class="form-control">
-												<option>Cliente</option>
-												<option>Comercio</option>
-												<option>Repartidor</option>
+											<select class="form-control" id="campos-usuario">
+												<option value="cliente">Cliente</option>
+												<option value="comercio">Comercio</option>
+												<option value="repartidor">Repartidor</option>
 											</select>
                                         </div>       
                                     </div>
@@ -79,25 +79,12 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
+                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Usuario">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Contraseña">
+                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido*">
                                             </div>
                                         </div>
                                     </div>
@@ -105,12 +92,12 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
+                                                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Contraseña*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="CUIL/CUIT">
+                                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contraseña*">
                                             </div>
                                         </div>
                                     </div>
@@ -118,12 +105,26 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Calle">
+                                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Numero">
+                                                <input type="text" name="cuil" id="cuil" class="form-control input-sm" placeholder="CUIL">
+                                                <input type="text" name="cuit" id="cuit" class="form-control input-sm" placeholder="CUIT*">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="Calle*">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="numeracion" id="numeracion" class="form-control input-sm" placeholder="Numero*">
                                             </div>
                                         </div>
                                     </div>
@@ -141,4 +142,7 @@
             </div>
         </section>
     </body>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/validar-formulario.js"></script>
 </html>
