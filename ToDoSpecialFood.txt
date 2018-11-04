@@ -1,0 +1,5 @@
+
+Login y planteo del esquema de menus de navegacion.
+ABM de Menues/Items de venta.
+Planteo del Carrito de Compras.
+Proceso de Delivery.
