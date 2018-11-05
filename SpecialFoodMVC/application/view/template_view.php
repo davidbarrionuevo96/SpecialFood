@@ -1,0 +1,1 @@
+<?php include 'application/view/'.$content_view; ?>
