@@ -37,7 +37,7 @@
 					<div class="container">
 				  		<div class="row justify-content-center">
 						      <div id="logo">
-						        <a href="Controller_Main/index"><img src="img/logo.png" alt="" title="" /></a>
+						        <a href="/main"><img src="img/logo.png" alt="" title="" /></a>
 						      </div>
 				  		</div>			  					
 					</div>
@@ -52,8 +52,8 @@
 					        <li><a href="contact.html">Contacto</a></li>
 					        
 					        	<li class="derecha"></li>
-					        <li><button class="primary-btn1"><a href="iniciarsesion">Iniciar sesión</a></li></button>
-							<li><button class="primary-btn1"><a href="registrarse.html">Registrarse</a></li></button>
+					        <li><a href="/main/iniciarsesion">Iniciar sesión</a></li>
+							<li><button class="primary-btn1"><a href="registrarse.html">Registrarse</a></button></li>
 								
 							
 				        </ul>

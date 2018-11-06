@@ -92,7 +92,7 @@ class Router
 
         $getParams = array();
         if (isset($_SERVER["REQUEST_URI"])) {
-
+            
             // Separo la URL de los parametros tipo GET
             $requestPath = explode("?", $this->request);
 

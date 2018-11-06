@@ -7,5 +7,5 @@ class Controller_Main extends Controller{
 
 	function iniciarsesion(){
         $this->view->generate('iniciar_sesion.php', 'template_view.php');
-    }    
+    }
 }
