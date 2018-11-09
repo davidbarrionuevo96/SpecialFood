@@ -19,7 +19,7 @@ class Model_Comercio extends Model{
 		//echo(json_encode($_POST));
 		
 		//die();
-       $sql1 = "select * from Comercio where Nombre='$nombre'";
+        $sql1 = "select * from Comercio where Nombre='$nombre'";
        
         $result = mysqli_query($conexion, $sql1);
         $row = mysqli_fetch_assoc($result);

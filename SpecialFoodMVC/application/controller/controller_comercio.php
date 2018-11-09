@@ -11,20 +11,19 @@ class Controller_Comercio extends Controller{
 
     function guardar(){
    
-            $nombre = $_POST['Comercio_nombre'];
-            $nombre = ucfirst($nombre);
+        $nombre = $_POST['Comercio_nombre'];
+        $nombre = ucfirst($nombre);
 
-            $cuit = $_POST['Comercio_CUIT'];
+        $cuit = $_POST['Comercio_CUIT'];
 
 
-            if (empty($nombre) || empty($cuit)) {
+        if (empty($nombre) || empty($cuit)) {
 
-                echo "<p class='labelform editado'>Complete todos los datos para guardar</p>";
+            echo "<p class='labelform editado'>Complete todos los datos para guardar</p>";
 
-            } else {
+        } else {
 
-               $this->model->guardar($nombre , $cuit);
-            }
-        //}
-    }
+           $this->model->guardar($nombre , $cuit);
+        }
+}
 }
