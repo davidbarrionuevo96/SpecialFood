@@ -65,9 +65,9 @@
                                     <br/>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form">
+                                    <form role="form" action="/login/iniciar_sesion" method="post">
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Usuario">
+                                            <input type="text" name="username" id="username" class="form-control input-sm" placeholder="Usuario">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Contraseña">
