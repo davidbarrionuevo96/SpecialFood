@@ -7,7 +7,7 @@ Create Table Parametro (
 IdParametro integer PRIMARY KEY AUTO_INCREMENT,
 Descripcion varchar (100),
 Valor varchar(100),
-BajaLogica bit default(0),
+BajaLogica bit default(false),
 FechaModificacion bit default(getdate()),
 IdUsuarioModificacion integer not null
 );

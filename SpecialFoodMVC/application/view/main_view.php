@@ -53,9 +53,7 @@
 					        
 					        	<li class="derecha"></li>
 					        <li><a href="/main/iniciarsesion">Iniciar sesión</a></li>
-							<li><button class="primary-btn1"><a href="registrarse.html">Registrarse</a></button></li>
-								
-							
+							<li><a href="/application/view/registrarse.php">Registrarse</a></li>
 				        </ul>
 				      </nav>				      		  
 					</div>

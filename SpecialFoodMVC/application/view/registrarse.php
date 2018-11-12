@@ -65,13 +65,13 @@
                                 <br/>
                             </div>
                             <div class="panel-body">
-                                <form role="form">
+                                <form role="form" action="/registro/nuevoregistro" method="POST">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-											<select class="form-control" id="campos-usuario">
-												<option value="cliente">Cliente</option>
-												<option value="comercio">Comercio</option>
-												<option value="repartidor">Repartidor</option>
+											<select class="form-control" id="perfil" name="perfil">
+												<option value="1">Cliente</option>
+												<option value="2">Comercio</option>
+												<option value="3">Repartidor</option>
 											</select>
                                         </div>       
                                     </div>
@@ -79,12 +79,12 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre*">
+                                                <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Nombre*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido*">
+                                                <input type="text" name="apellido" id="apellido" class="form-control input-sm" placeholder="Apellido*">
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email*">
+                                                <input type="email" name="username" id="username" class="form-control input-sm" placeholder="Email*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -119,12 +119,12 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="Calle*">
+                                                <input type="text" name="calle" id="calle" class="form-control input-sm" placeholder="Calle*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="numeracion" id="numeracion" class="form-control input-sm" placeholder="Numero*">
+                                                <input type="text" name="numero" id="numero" class="form-control input-sm" placeholder="Numero*">
                                             </div>
                                         </div>
                                     </div>
@@ -217,5 +217,8 @@
 </footer>
     <script
   src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="js/validar-formulario.js"></script>
+    <script src="js/validar-formulario.js">
+    
+    
+    </script>
 </html>

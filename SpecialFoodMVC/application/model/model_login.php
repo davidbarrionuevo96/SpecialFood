@@ -4,14 +4,16 @@ class Model_Login extends Model{
 
 	public function validar_usuario($username,$password){
 
+
 		include ('core/helpers/conexion.php');
 
 		$sql = "SELECT * FROM Usuario WHERE Username = '$username' AND Password = '$password'";
 
 		$results = mysqli_query($conexion, $sql);
-   		
-		if($results){
-			$row = mysqli_fetch_assoc($results);
+
+		$row = mysqli_fetch_assoc($results);
+
+		if(($row['Username'] == $username) && ($row['Password'] == $password)){
 			return true;
 		}else{
 			return false;
