@@ -125,8 +125,8 @@ FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdComercio) references Comercio (IdComercio));
 
-Create Table MenuNegocioItem(
-IdMenuNegocioItem integer PRIMARY KEY AUTO_INCREMENT,
+Create Table MenuComercioItem(
+IdMenuComercioItem integer PRIMARY KEY AUTO_INCREMENT,
 Descripcion varchar (200),
 Precio decimal(7,2),
 Foto varchar (200),
@@ -141,11 +141,11 @@ IdOferta integer PRIMARY KEY AUTO_INCREMENT,
 PrecioOferta decimal(7,2),
 FechaDesde datetime,
 FechaHasta datetime,
-IdMenuNegocioItem integer,
+IdMenuComercioItem integer,
 BajaLogica bit not null default 0,
 FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
-FOREIGN KEY (IdMenuNegocioItem) references MenuNegocioItem (IdMenuNegocioItem)); 
+FOREIGN KEY (IdMenuComercioItem) references MenuComercioItem (IdMenuComercioItem)); 
 
 Create Table Categoria(
 IdCategoria integer PRIMARY KEY AUTO_INCREMENT ,
@@ -172,7 +172,7 @@ IdCalle integer,
 BajaLogica bit not null default 0,
 FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
-FOREIGN KEY (IdComercio) references Comercio (idComercio),
+FOREIGN KEY (IdComercio) references Comercio (IdComercio),
 FOREIGN KEY (IdCalle) references Calle (IdCalle));
 
 Create Table EstadoEntrega(
@@ -202,9 +202,22 @@ IdPedidoItem integer PRIMARY KEY AUTO_INCREMENT,
 Cantidad integer,
 PrecioUnitario decimal(7,2),
 IdPedido integer,
-IdMenuNegocioItem integer,
+IdMenuComercioItem integer,
 BajaLogica bit not null default 0,
 FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdPedido) references Pedido (IdPedido),
-FOREIGN KEY (IdMenuNegocioItem) references MenuNegocioItem (IdMenuNegocioItem));
+FOREIGN KEY (IdMenuComercioItem) references MenuComercioItem (IdMenuComercioItem));
+
+Create Table PenalidadDelivery(
+IdPenalidadDelivery integer PRIMARY KEY AUTO_INCREMENT,
+IdDelivery integer null,
+IdPedido integer null,
+MontoPenalidad decimal(7,2) not null,
+TiempoExcedido varchar(5) not null,
+BajaLogica bit not null default 0,
+FechaModificacion datetime not null,
+IdUsuarioModificacion integer not null,
+FOREIGN KEY (IdDelivery) references Usuario (IdUsuario),
+FOREIGN KEY (IdPedido) references Pedido (IdPedido));
+

@@ -36,4 +36,9 @@ values ('Delivery', 0, now(), 1);
 insert into Usuario (Nombre, Apellido, idcalle, numero, dni, email, username, password, cuil, idperfil, idestadoaprobacionusuario, bajalogica, fechamodificacion, idusuariomodificacion)
 values ('Diego', 'González', 1, 1053, '32361717', 'diego.gonzalez301@gmail.com', 'diego107', 'diego123', '20323617172', 1, 2, 0, now(), 1);
 
+INSERT INTO Comercio (Nombre, CUIT, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+VALUES ('Comercio 1', '12123123122', 0, now(), 1);
+
+INSERT INTO MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+VALUES('Menu 1', 1, 0, now(), 1);
 
