@@ -46,15 +46,15 @@
 					<div class="row align-items-center justify-content-center d-flex">			
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-					        <li><a href="index.html">Inicio</a></li>
+					        <li><a href="/">Inicio</a></li>
 					        <li><a href="about.html">Nosotros</a></li>
 					        <li><a href="menu.html">Menú</a></li>
 					        <li><a href="contact.html">Contacto</a></li>
 					        
 					        	<li class="derecha"></li>
 					        <li><a href="/main/iniciarsesion">Iniciar sesión</a></li>
-							<li><a href="/application/view/registrarse.php">Registrarse</a></li>
-				        </ul>
+							<li><a href="/application/view/registrarse.php">Registrarse</a></li>					
+						</ul>
 				      </nav>				      		  
 					</div>
 				</div>
