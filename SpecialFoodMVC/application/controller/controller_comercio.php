@@ -5,8 +5,12 @@ class Controller_Comercio extends Controller{
         $this->view->generate('main_view.php', 'template_view.php');
     }
 
-	function nuevo(){
-        $this->view->generate('comercionuevo.php', 'template_view.php');
+	function comerciomanager(){
+        $this->view->generate('comerciomanager.php', 'template_view.php');
+    }
+
+    function comerciolist(){
+        $this->view->generate('comerciolist.php', 'template_view.php');
     }
 
     function guardar(){
