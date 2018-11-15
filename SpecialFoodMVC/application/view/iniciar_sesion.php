@@ -20,17 +20,16 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/jquery-ui.css">				
-			<link rel="stylesheet" href="css/nice-select.css">							
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">				
-			<link rel="stylesheet" href="css/main.css">
-			<link rel="stylesheet" href="css/custom.css">
-			<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+			<link rel="stylesheet" href="/css/linearicons.css">
+			<link rel="stylesheet" href="/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/css/bootstrap.css">
+			<link rel="stylesheet" href="/css/magnific-popup.css">
+			<link rel="stylesheet" href="/css/jquery-ui.css">				
+			<link rel="stylesheet" href="/css/nice-select.css">							
+			<link rel="stylesheet" href="/css/animate.min.css">
+			<link rel="stylesheet" href="/css/owl.carousel.css">				
+			<link rel="stylesheet" href="/css/main.css">
+			<link rel="stylesheet" href="/css/custom.css">
 	</head>
     <body>	
         <header id="header" class="absolute">
@@ -38,7 +37,7 @@
 				<div class="row">			
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li><a href="index.html" style="cursor: pointer">Volver</a></li>
+                            <li><a href="/">Volver</a></li>
 						</ul>
 					</nav>				      		  
 				</div>
@@ -47,7 +46,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div id="logo">
-                            <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+                            <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
                         </div>
                     </div>			  					
                 </div>
@@ -65,9 +64,9 @@
                                     <br/>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form">
+                                    <form role="form" action="/login/iniciar_sesion" method="post">
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Usuario">
+                                            <input type="text" name="username" id="username" class="form-control input-sm" placeholder="Usuario">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Contraseña">

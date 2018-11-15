@@ -20,19 +20,19 @@ class Controller_registro extends Controller{
 
             $numero=$_POST['numero'];
 
-            $username=$_POST['username'];
+            $email=$_POST['email'];
             $password=$_POST['password'];
 
             if(isset($_POST['cuil'])){
                 $cuil=$_POST['cuil'];
             }  
             else{
-                $cuit=$_POST['cuit'];
+                $cuil=$_POST['cuit'];
             }
 
             $perfil=$_POST['perfil'];
 
-            $validacion = true;
+            //$validacion = true;
 /*
             if(!empty($cuil)){
                 if(empty($nombre) ||empty($apellido) ||empty($calle) ||empty($password) ||empty($cuil)){
@@ -49,19 +49,19 @@ class Controller_registro extends Controller{
                 $validacion = true;
             }*/
 
-            if($validacion == true){
+            //if($validacion == true){
                 
-                $usuarioCorrecto = $this->model->validar_usuario($username);
+                $usuarioCorrecto = $this->model->validar_usuario($email);
 
                 if($usuarioCorrecto == true)            
                 {
                     echo "aca";
-                    $this->model->guardar_usuario($nombre, $apellido, $calle, $numero, $username, $password, $cuil, $perfil);
+                    $this->model->guardar_usuario($nombre, $apellido, $password, $email, $cuil, $calle, $numero,$perfil);
                     
                 }else{
                     echo "el usuario ingresado ya existe.";
                 }
-            }
+            //}
             
         }
     }
