@@ -7,16 +7,16 @@ class Controller_Login extends Controller{
     }
 
     function iniciar_sesion(){ 
-        if(isset($_POST["username"]) && isset($_POST["password"]))
+        if(isset($_POST["email"]) && isset($_POST["password"]))
         {
-            $username = $_POST['username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $usuarioCorrecto = $this->model->validar_usuario($username ,$password);
+            $usuarioCorrecto = $this->model->validar_usuario($email ,$password);
 
             if($usuarioCorrecto == true)            
             {
-                 $this->model->iniciar_sesion($username , $password);
+                 $this->model->iniciar_sesion($email , $password);
 
                 $this->view->generate('main_view.php', 'template_view.php');
             }else{

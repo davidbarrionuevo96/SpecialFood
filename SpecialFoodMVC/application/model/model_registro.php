@@ -18,7 +18,7 @@ class Model_Registro extends Model{
 		}
 	}
 
-    public function guardar_usuario($nombre, $apellido, $password, $email, $cuil, $calle, $numero,$perfil){
+    public function guardar_usuario($nombre, $apellido, $password, $email, $cuil, $cuit, $calle, $numero, $perfil){
 
         include ('core/helpers/conexion.php');
 
@@ -32,10 +32,14 @@ class Model_Registro extends Model{
                         `Password`,
                         `Email`,
                         `Cuil`,
+                        `Cuit`,
                         `IdCalle`,
                         `Numero`,
                         `IdPerfil`,
-                        `IdEstadoAprobacionUsuario`)
+                        `IdEstadoAprobacionUsuario`,
+                        `bajalogica`,
+                        `fechamodificacion`,
+                        `idusuariomodificacion`)
                     VALUES
                     (
                         '$nombre',
@@ -43,12 +47,16 @@ class Model_Registro extends Model{
                         '$password',
                         '$email',
                         '$cuil',
+                        '$cuit',
                         1,
                         '$numero',
                         '$perfil',
+                        1,
+                        0,
+                        now(),
                         1);";
 
-        echo $sqlInsert;
+        //echo $sqlInsert;
 
         $result=mysqli_query($conexion,$sqlInsert);
 
@@ -56,7 +64,7 @@ class Model_Registro extends Model{
             echo "<p class='labelform editado'>Guardado Correctamente</p>";
         }       
         else{
-            echo "<p class='labelform editado'>El UserName Ingresado ya Existe</p>";
+            echo "<p class='labelform editado'>El Usuario Ingresado ya Existe</p>";
         }
 	}
 }

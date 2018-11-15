@@ -2,7 +2,7 @@
 
 $host_db = "localhost:3306";
 $user_db = "root";
-$pass_db = "fiesta2011";
+$pass_db = "";
 $db_name = "SpecialFoodDB";
 
 $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
