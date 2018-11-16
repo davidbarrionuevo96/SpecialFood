@@ -65,13 +65,13 @@
                                 <br/>
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="/registro/nuevoregistro" method="POST" onsubmit="return validar()">
+                                <form role="form" action="/registro/nuevoregistro" method="POST" onsubmit="return validar()" name="form" id="form">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <select class="form-control" id="perfil" name="perfil">
                                                 <option value="1">Cliente</option>
-                                                <option value="2">Comercio</option>
-                                                <option value="3">Repartidor</option>
+                                                <option value="2">Repartidor</option>                                                
+                                                <option value="3">Comercio</option>
                                             </select>
                                         </div>       
                                     </div>
@@ -134,6 +134,8 @@
                                     </div>
                                     -->                                            
                                     <input type="submit" value="Registrarse" class="btn btn-info btn-block">
+
+                                    <div id="mensaje"></div>
                                 </form>
                             </div>
                         </div>
@@ -147,6 +149,6 @@
             include ('footer.php');
         ?>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="/js/validar-formula.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/js/validar-formulario.js" type=""></script>
 </html>
