@@ -46,30 +46,57 @@
 					<div class="row align-items-center justify-content-center d-flex">			
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-					        <li><a href="/">Inicio</a></li>
-					        <li><a href="about.html">Nosotros</a></li>
-					        <li><a href="menu.html">Menú</a></li>
-					        <li><a href="contact.html">Contacto</a></li>
+					        
 
 							<?php
 							 if (isset($_SESSION['idPerfil'])){
 								if ($_SESSION['idPerfil'] == 1){
-									echo "<li><a href='/main/iniciarsesion'>Aprobar Usuarios</a></li>
-										  <li><a href='/login/cerrarSesion'>Imprimir Listados</a></li>";	
+									?>
+									<li><a href="/">Inicio</a></li>
+									<li><a href=''>Aprobar Usuarios</a></li>
+									<li><a href=''>Imprimir Listados</a></li>
+
+									<?php
+								}else if($_SESSION['idPerfil'] == 2){
+									?>
+									<li><a href="/">Inicio</a></li>
+									<li><a href=''>Mis Menúes</a></li>
+									<li><a href=''>Mis Ventas</a></li>
+
+									<?php
+								}else if($_SESSION['idPerfil'] == 3){
+									?>
+									<li><a href="/">Inicio</a></li>
+									<li><a href=''>Pedidos</a></li>
+									<li><a href=''>Mis repartos</a></li>
+
+									<?php
 								}
-							 }
+							 }else{
+							 	?>
+							 	<li><a href="/">Inicio</a></li>
+						        <li><a href="about.html">Nosotros</a></li>
+						        <li><a href="menu.html">Menú</a></li>
+						        <li><a href="contact.html">Contacto</a></li>
+						         <?php
+							}
 							?>	
 					        
-							<li class="derecha"></li>
+							<li class="derecha">
 							<?php
 							 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-								echo "<li><a href='/main/iniciarsesion'>Mi Perfil</a></li>
-								<li><a href='/login/cerrarSesion'>Cerrar Sesion</a></li>";		
-							 }else{
-								echo "<li><a href='/main/iniciarsesion'>Iniciar sesión</a></li>
-								<li><a href='/application/view/registrarse.php'>Registrarse</a></li>";
+							 	?>
+							 	<li><a href='/main/iniciarsesion'>Mi Perfil</a></li>
+						        <li><a href='/login/cerrarSesion'>Cerrar Sesion</a></li>
+						         <?php
+							 }else{								
+								?>
+							 	<li><a href='/main/iniciarsesion'>Iniciar Sesión</a></li>
+						        <li><a href='/application/view/registrarse.php'>Registrarse</a></li>
+						        <?php
 							 }
-							?>				        						
+							?>
+							</li>				        						
 						</ul>
 				      </nav>				      		  
 					</div>

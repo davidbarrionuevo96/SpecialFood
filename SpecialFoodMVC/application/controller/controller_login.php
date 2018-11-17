@@ -13,7 +13,7 @@ class Controller_Login extends Controller{
     function cerrarSesion(){
         session_destroy();
         //$this->view->generate('main_view.php', 'template_view.php');
-        header("Location: http://localhost/main/index");
+        header("Location: http://localhost/");
     }
 
     function iniciar_sesion(){ 
@@ -26,14 +26,16 @@ class Controller_Login extends Controller{
 
             if( $row != null){
                 $_SESSION['loggedin'] = true;
+                $_SESSION['idUsuario'] = $row['IdUsuario'];
+                $_SESSION['nombre'] = $row['Nombre'];
                 $_SESSION['idPerfil'] = $row['IdPerfil'];
-                $_SESSION['name'] = $row['Nombre'];
                 $_SESSION['start'] = time();
                 $_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;						
                 
-                header("Location: http://localhost/main/index");
+                header("Location: http://localhost/");
             }
             else { 
+                $_SESSION['loggedin'] = false;
                 header("Location: http://localhost/login/login");		
             }	 
         }else{

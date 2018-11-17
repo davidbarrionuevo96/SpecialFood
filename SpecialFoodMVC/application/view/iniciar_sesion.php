@@ -1,12 +1,3 @@
-<?php
-	// if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
-    // {
-	// 	$usuarioCorrecto = true;
-	// }else{
-	// 	$usuarioCorrecto = false;
-	// }
-?>
-
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 	<head>
@@ -92,11 +83,12 @@
 
 									<?php
 
-									// if($usuarioCorrecto == false){
-									// 	echo "<div class='alert alert-danger' role='alert'>Email or Password are incorrects!
-                					// 		  <p><a href='login.html'><strong>Please try again!</strong></a></p></div>";			
-									// }
+									if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == false){
 
+										session_destroy();
+										echo "<div class='alert alert-danger' role='alert'>Email o Password incorrectos!";
+									}
+									
 									?>
                                 </div>
                             </div>
