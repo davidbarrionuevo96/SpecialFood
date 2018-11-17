@@ -105,7 +105,8 @@ if(isset($SESSION['carrito'])){
             <link rel="stylesheet" href="/css/owl.carousel.css">                
             <link rel="stylesheet" href="/css/main.css">
             <link rel="stylesheet" href="/css/custom.css">
-
+</head>
+<body>
             <header id="header">
               <div class="header-top">
                 <div class="container">
