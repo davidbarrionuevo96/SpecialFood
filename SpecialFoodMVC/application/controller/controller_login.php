@@ -26,13 +26,27 @@ class Controller_Login extends Controller{
 
             if( $row != null){
                 $_SESSION['loggedin'] = true;
-                $_SESSION['idUsuario'] = $row['IdUsuario'];
+                $_SESSION['IdUsuario'] = $row['IdUsuario'];
                 $_SESSION['nombre'] = $row['Nombre'];
-                $_SESSION['idPerfil'] = $row['IdPerfil'];
+                $_SESSION['IdPerfil'] = $row['IdPerfil'];
+                $_SESSION['IdEstadoAprobacionUsuario'] = $row['IdEstadoAprobacionUsuario'];
                 $_SESSION['start'] = time();
-                $_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;						
+                $_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;
                 
-                header("Location: http://localhost/");
+                if($row['IdPerfil'] == 2 || $row['IdPerfil'] == 3){
+
+                    if($row['IdEstadoAprobacionUsuario'] == 1 ){
+                        $_SESSION['estadoAprobacion1'] = false;
+                        header("Location: http://localhost/login/login");
+                    }else if ($row['IdEstadoAprobacionUsuario'] == 3 ){
+                        $_SESSION['estadoAprobacion3'] = false;
+                        header("Location: http://localhost/login/login");
+                    } else{
+                        header("Location: http://localhost/");  
+                    }
+                }else{
+                    header("Location: http://localhost/");
+                }
             }
             else { 
                 $_SESSION['loggedin'] = false;

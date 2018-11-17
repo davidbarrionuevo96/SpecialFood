@@ -88,6 +88,15 @@
 										session_destroy();
 										echo "<div class='alert alert-danger' role='alert'>Email o Password incorrectos!";
 									}
+									if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true ){
+										if (isset($_SESSION['estadoAprobacion1']) && $_SESSION['estadoAprobacion1'] == false){
+											session_destroy();
+											echo "<div class='alert alert-danger' role='alert'>Su usuario está pendiente de verificación";
+										}else if (isset($_SESSION['estadoAprobacion3']) && $_SESSION['estadoAprobacion3'] == false){
+											session_destroy();
+											echo "<div class='alert alert-danger' role='alert'>Su usuario fue rechazado";
+										}
+									}
 									
 									?>
                                 </div>
