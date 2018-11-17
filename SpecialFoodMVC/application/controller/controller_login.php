@@ -6,22 +6,38 @@ class Controller_Login extends Controller{
         $this->view->generate('main_view.php', 'template_view.php');
     }
 
+    function login(){
+            $this->view->generate('iniciar_sesion.php', 'template_view.php');
+    }
+
+    function cerrarSesion(){
+        session_destroy();
+        //$this->view->generate('main_view.php', 'template_view.php');
+        header("Location: http://localhost/main/index");
+    }
+
     function iniciar_sesion(){ 
-        if(isset($_POST["email"]) && isset($_POST["password"]))
-        {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+        	// data sent from form login.html 
+        $email = $_POST['email']; 
+        $password = $_POST['password'];
 
-            $usuarioCorrecto = $this->model->validar_usuario($email ,$password);
+        if($email != "" && $password != ""){         
+            $row = $this->model->ValidarUsuario($email,  $password);
 
-            if($usuarioCorrecto == true)            
-            {
-                 $this->model->iniciar_sesion($email , $password);
-
-                $this->view->generate('main_view.php', 'template_view.php');
-            }else{
-                echo "Usuario o Contraseña incorrectos.";
+            if( $row != null){
+                $_SESSION['loggedin'] = true;
+                $_SESSION['idPerfil'] = $row['IdPerfil'];
+                $_SESSION['name'] = $row['Nombre'];
+                $_SESSION['start'] = time();
+                $_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;						
+                
+                header("Location: http://localhost/main/index");
             }
+            else { 
+                header("Location: http://localhost/login/login");		
+            }	 
+        }else{
+            header("Location: http://localhost/login/login");
         }
     }
 }

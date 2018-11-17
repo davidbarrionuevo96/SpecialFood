@@ -2,32 +2,22 @@
 
 class Model_Login extends Model{
 
-	public function validar_usuario($email,$password){
-
+	public function ValidarUsuario($email,$password){
 
 		include ('core/helpers/conexion.php');
 
-		$sql = "SELECT * FROM Usuario WHERE email = '$email' AND Password = '$password'";
+		$result = mysqli_query($conexion, "SELECT Email, Password, Nombre, IdPerfil FROM Usuario WHERE Email = '$email'");
+	
+		$row = mysqli_fetch_assoc($result);
 
-		$results = mysqli_query($conexion, $sql);
-
-		$row = mysqli_fetch_assoc($results);
-
-		if(($row['Email'] == $email) && ($row['Password'] == $password)){
-			echo "Bienvenido! " . $row['Nombre'];
-			return true;			
+			// Variable $hash hold the password hash on database
+		$hash = $row['Password'];
+	
+		//if (password_verify($_POST['password'], $hash)) {	
+		if( $row['Password'] == $password){
+			return $row;			
 		}else{
-			return false;
+			return null;
 		}
-	}
-
-	public function iniciar_sesion($email,$password){
-
-			$_SESSION['loggedin'] = true;
-			$_SESSION['email'] = $email;
-			$_SESSION['start'] = time();
-			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-
-			//echo "Bienvenido! " . $email;
 	}
 }

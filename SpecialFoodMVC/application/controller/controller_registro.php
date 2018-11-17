@@ -6,6 +6,10 @@ class Controller_registro extends Controller{
         $this->view->generate('main_view.php', 'template_view.php');
     }
 
+    function cargarPantalla(){
+        $this->view->generate('registrarse.php', 'template_view.php');
+    }
+
     function nuevoregistro(){
        
 

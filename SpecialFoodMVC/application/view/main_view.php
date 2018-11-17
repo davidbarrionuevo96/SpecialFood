@@ -20,16 +20,16 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/jquery-ui.css">				
-			<link rel="stylesheet" href="css/nice-select.css">							
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">				
-			<link rel="stylesheet" href="css/main.css">
-			<link rel="stylesheet" href="css/custom.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/jquery-ui.css">				
+			<link rel="stylesheet" href="../css/nice-select.css">							
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">				
+			<link rel="stylesheet" href="../css/main.css">
+			<link rel="stylesheet" href="../css/custom.css">
 		</head>
 		<body>	
 			<header id="header">
@@ -37,7 +37,7 @@
 					<div class="container">
 				  		<div class="row justify-content-center">
 						      <div id="logo">
-						        <a href="/main"><img src="img/logo.png" alt="" title="" /></a>
+						        <a href="/main"><img src="/img/logo.png" alt="" title="" /></a>
 						      </div>
 				  		</div>			  					
 					</div>
@@ -50,10 +50,26 @@
 					        <li><a href="about.html">Nosotros</a></li>
 					        <li><a href="menu.html">Menú</a></li>
 					        <li><a href="contact.html">Contacto</a></li>
+
+							<?php
+							 if (isset($_SESSION['idPerfil'])){
+								if ($_SESSION['idPerfil'] == 1){
+									echo "<li><a href='/main/iniciarsesion'>Aprobar Usuarios</a></li>
+										  <li><a href='/login/cerrarSesion'>Imprimir Listados</a></li>";	
+								}
+							 }
+							?>	
 					        
-					        	<li class="derecha"></li>
-					        <li><a href="/main/iniciarsesion">Iniciar sesión</a></li>
-							<li><a href="/application/view/registrarse.php">Registrarse</a></li>					
+							<li class="derecha"></li>
+							<?php
+							 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+								echo "<li><a href='/main/iniciarsesion'>Mi Perfil</a></li>
+								<li><a href='/login/cerrarSesion'>Cerrar Sesion</a></li>";		
+							 }else{
+								echo "<li><a href='/main/iniciarsesion'>Iniciar sesión</a></li>
+								<li><a href='/application/view/registrarse.php'>Registrarse</a></li>";
+							 }
+							?>				        						
 						</ul>
 				      </nav>				      		  
 					</div>
