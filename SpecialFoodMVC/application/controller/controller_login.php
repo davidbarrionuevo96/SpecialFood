@@ -7,7 +7,7 @@ class Controller_Login extends Controller{
     }
 
     function login(){
-            $this->view->generate('iniciar_sesion.php', 'template_view.php');
+        $this->view->generate('iniciar_sesion.php', 'template_view.php');
     }
 
     function cerrarSesion(){
