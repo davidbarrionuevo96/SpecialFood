@@ -30,9 +30,29 @@ if ($page > $total_pages)
 
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-$SQL = "SELECT fechapedido,costoentrega,tiempoestimadoentrega,fechamodificacion,idusuariomodificacion,idcomercio,idcliente FROM Pedido WHERE BajaLogica = 0 ORDER BY $sidx $sord LIMIT $start , $limit";
-
-
+$SQL = "";
+$SQL = $SQL . "SELECT ";
+$SQL = $SQL . "     p.FechaPedido FechaPedido ";
+$SQL = $SQL . "     ,p.CostoEntrega ";
+$SQL = $SQL . "     ,p.TiempoEstimadoEntrega ";
+$SQL = $SQL . "     ,c.Nombre Comercio ";
+$SQL = $SQL . "     ,p.IdPuntoDeVenta PuntoDeVenta ";
+$SQL = $SQL . "     ,ca.Descripcion CallePuntoDeVenta ";
+$SQL = $SQL . "     ,pv.Numero NumeroPuntoDeVenta ";
+$SQL = $SQL . "     ,CONCAT(cli.Nombre, ' ', cli.Apellido) NombreCliente ";
+$SQL = $SQL . "     ,cau.Descripcion CalleCliente ";
+$SQL = $SQL . "     ,cli.Numero NumeroCliente ";
+$SQL = $SQL . "FROM ";
+$SQL = $SQL . "     Pedido p ";
+$SQL = $SQL . "     LEFT JOIN Comercio c ON c.IdComercio = p.IdComercio AND c.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN PuntoDeVenta pv ON pv.IdPuntoDeVenta = p.IdPuntoDeVenta AND pv.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Calle ca ON ca.IdCalle = pv.IdCalle AND ca.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Usuario cli ON cli.IdUsuario = p.IdCliente AND cli.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Calle cau ON cau.IdCalle = cli.IdCalle AND cau.BajaLogica = 0 ";
+$SQL = $SQL . "WHERE ";
+$SQL = $SQL . "     p.BajaLogica = 0 ";
+$SQL = $SQL . "ORDER BY ";
+$SQL = $SQL . "     $sidx $sord LIMIT $start , $limit";
 
 $result = mysqli_query($conexion, $SQL ) or die("Couldn t execute query.".mysql_error());
 
@@ -48,16 +68,16 @@ $i=0;
 
 while($row=mysqli_fetch_assoc($result))
 {
-    $response->rows[$i]['fechapedido']=$row['fechapedido'];
-    $response->rows[$i]['costoentrega']=$row['costoentrega'];
-    $response->rows[$i]['tiempoestimadoentrega']=$row['tiempoestimadoentrega'];
-    $response->rows[$i]['fechamodificacion']=$row['fechamodificacion'];
-    $response->rows[$i]['idusuariomodificacion']=$row['idusuariomodificacion'];
-    $response->rows[$i]['idcomercio']=$row['idcomercio'];
-    $response->rows[$i]['idcliente']=$row['idcliente'];
-    //$response->rows[$i]['cell']=array($row['idcomercio'],$row['nombre'],$row['cuit']);
-
-    //$response->rows[$i]="{ 'idcomercio': '".$row['idcomercio']."', 'nombre' : '".$row['nombre']."', 'cuit': '".$row['cuit']."'}";
+    $response->rows[$i]['FechaPedido']=$row['FechaPedido'];
+    $response->rows[$i]['CostoEntrega']=$row['CostoEntrega'];
+    $response->rows[$i]['TiempoEstimadoEntrega']=$row['TiempoEstimadoEntrega'];
+    $response->rows[$i]['Comercio']=$row['Comercio'];
+    $response->rows[$i]['PuntoDeVenta']=$row['PuntoDeVenta'];
+    $response->rows[$i]['CallePuntoDeVenta']=$row['CallePuntoDeVenta'];
+    $response->rows[$i]['NumeroPuntoDeVenta']=$row['NumeroPuntoDeVenta'];
+    $response->rows[$i]['NombreCliente']=$row['NombreCliente'];
+    $response->rows[$i]['CalleCliente']=$row['CalleCliente'];
+    $response->rows[$i]['NumeroCliente']=$row['NumeroCliente'];
 
     $i++;
 }

@@ -95,19 +95,22 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['fechapedido','costoentrega','tiempoestimadoentrega','fechamodificacion','idusuariomodificacion','idcomercio','idcliente'],
+                    colNames:['Fecha','Costo Entrega','Tiempo Entrega','Comercio','Nro. Pto. Venta','Calle','Numero', 'Cliente', 'Calle Cliente', 'Número'],
 
                     colModel:[
 
-                        { name:'fechapedido', index:'fechapedido', width: 100, sortable: false},
-                        { name:'costoentrega', index:'costoentrega', sortable: false },
-                        { name:'tiempoestimadoentrega', index:'tiempoestimadoentrega', sortable: false },
-                        { name:'fechamodificacion', index:'fechamodificacion', sortable: false },
-                        { name:'idcomercio', index:'idcomercio', sortable: false },
-                        { name:'idcliente', index:'idcliente', sortable: false },
-                        { name:'idusuariomodificacion', index:'idusuariomodificacion', align:"right", sortable: false }
+                        { name:'FechaPedido', index:'FechaPedido', width: 100, sortable: false, width: 70 },
+                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 90 },
+                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
+                        { name:'Comercio', index:'Comercio', sortable: false, width: 90 },
+                        { name:'PuntoDeVenta', index:'PuntoDeVenta', sortable: false, width: 90 },
+                        { name:'CallePuntoDeVenta', index:'CallePuntoDeVenta', sortable: false, width: 90 },
+                        { name:'NumeroPuntoDeVenta', index:'NumeroPuntoDeVenta', sortable: false, width: 90 },
+                        { name:'NombreCliente', index:'NombreCliente', sortable: false, width: 90 },
+                        { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 90 },
+                        { name:'NumeroCliente', index:'NumeroCliente', sortable: false, width: 90 }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPedido', sortname: 'id',
-                    viewrecords: true, sortorder: "desc", caption:"pedido",
+                    viewrecords: true, sortorder: "desc", caption:"Pedidos",
                     rows: []
                 });
 
