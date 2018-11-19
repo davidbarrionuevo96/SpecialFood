@@ -53,6 +53,48 @@
      </div>
  </header><!-- #header -->			
 
+<script>
+
+    function PostForm() {
+        if (IsValid()) {
+            $("#lblErrorP").text("");
+
+            document.forms["frmComercio"].submit();
+        }
+    }
+
+    function IsValid() {
+        HideDivMessageP();
+
+        var field;
+
+        field = $("#Comercio_nombre").val();
+        if (field.length == 0) {
+            $("#lblErrorP").text("Debe ingresar el nombre del comercio.");
+            ShowDivMessageP();
+            return false;
+        }
+
+        field = $("#Comercio_CUIT").val();
+        if (field.length == 0) {
+            $("#lblErrorP").text("Debe ingresar el CUIT del comercio.");
+            ShowDivMessageP();
+            return false;
+        }
+
+        return true;
+    }
+
+    function ShowDivMessageP() {
+        scroll(0, 0);
+        $("#divMessagesP").show("slow", function () { });
+    }
+
+    function HideDivMessageP() {
+        $("#divMessagesP").hide();
+    }
+
+</script>
  <!-- start banner Area -->
  <section class="banner-area">		
     <div class="container">
@@ -62,8 +104,15 @@
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Datos del Comercio</h2>
                     </div>
+                    <div id="divMessagesP" style="display: none;">
+                        <p align="left">
+                            <div class="alert alert-danger" style="text-align: left;">
+                                <label id="lblErrorP" style="font-size: 12px; color: firebrick; font-weight: bold; margin-left: 5px;"></label>
+                            </div>
+                        </p>
+                    </div>
                     <div class="panel-body">
-                        <form action="/comercio/guardar" method="post">
+                        <form action="/comercio/guardar" method="post" id="frmComercio" name="frmComercio">
                           <br/>
                           <input type="text" style="display: none;" name="Comercio_id" id="Comercio_id" value="<?php echo $data['IdComercio']; ?>" />
                           <div class="row">
@@ -86,7 +135,7 @@
                           <br/>
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="submit" value="Guardar" class=" btn btn-info btn-block">
+                              <input type="button" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
                             </div>
                           </div>
                         </form>
