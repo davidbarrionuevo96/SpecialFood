@@ -1,32 +1,40 @@
 <?php
 
-class Controller_Comercio extends Controller{
+class Controller_puntodeventa extends Controller{
     function index(){
         $this->view->generate('main_view.php', 'template_view.php');
     }
 
-	function nuevo(){
-        $this->view->generate('puntodeventanuevo.php', 'template_view.php');
+    function puntodeventamanager(){
+        $this->view->generate('puntodeventamanager.php', 'template_view.php');
     }
-    function guardar(){
-   
-        $numero = $_POST['pdv_numero'];
-        $idcomercio = $_POST['pdv_idcomercio'];
-        $idcalle = $_POST['pdv_idcalle'];
-        $idusuario = $_POST['pdv_idusuario'];
 
-        if (empty($numero) ||empty($idcomercio) || empty($idcalle) || empty($idusuario)) {
+    function puntodeventalist(){
+
+        $this->view->generate('puntodeventalist.php', 'template_view.php');
+
+    }
+
+    function guardar(){
+
+        $numero = $_POST['puntodeventa_numero'];
+        $idcalle = $_POST['puntodeventa_idcalle'];
+        $idusuariomodificacion=$_POST['puntodeventa_idusuariomodificacion'];
+        $idcomercio = $_POST['puntodeventa_idcomercio'];
+
+
+        if (empty($numero) || empty($idcomercio) || empty($idcalle) || empty($idusuariomodificacion)) {
 
             echo "<p class='labelform editado'>Complete todos los datos para guardar</p>";
 
         } else {
 
-           $this->model->guardar($numero , $fechamodificacion,$idusuario);
+            $this->model->guardar($numero , $idcomercio,$idusuariomodificacion,$idcalle);
         }
     }
     function eliminar(){
-        $numero=$_POST['pdv_numero'];
-           $this->model->eliminar($numero);
-        
+        $idpuntodeventa=$_GET['idpuntodeventa'];
+        $this->model->eliminar($idpuntodeventa);
+
     }
 }

@@ -1,22 +1,12 @@
 <?php
 
 class Model_PuntoDeVenta extends Model{
-    public function guardar($numero,$idcomercio,$idcalle,$idusuariomodificacion){
+    public function guardar($numero , $idcomercio,$idusuariomodificacion,$idcalle){
 
-		$host_db = "localhost:3306";
-		$user_db = "root";
-		$pass_db = "";
-		$db_name = "SpecialFoodDB";
-		$tbl_name = "usuario";
-
-		$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-		if ($conexion->connect_error) {
-		die("La conexion falló: " . $conexion->connect_error);
-		}
+        require('core/helpers/conexion.php');
 
         $sql1 = "select * from PuntoDeVenta where Numero='$numero'";
-       
+
         $result = mysqli_query($conexion, $sql1);
         $row = mysqli_fetch_assoc($result);
 
@@ -37,33 +27,22 @@ class Model_PuntoDeVenta extends Model{
 					'$idcalle',
 					0,
 					now(),
-					$idusuario);";
+					'$idusuariomodificacion');";
 
             $result = mysqli_query($conexion, $sql);
 
-			return 1;
+            return 1;
         }
         else{
-        	return 0;
+            return 0;
         }
     }
     public function eliminar($numero){
+        require('core/helpers/conexion.php');
 
-		$host_db = "localhost:3306";
-		$user_db = "root";
-		$pass_db = "";
-		$db_name = "SpecialFoodDB";
-		$tbl_name = "usuario";
+        $sql="UPDATE puntodeventa set BajaLogica=1 where Numero='$numero' ";
 
-		$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-		if ($conexion->connect_error) {
-		die("La conexion falló: " . $conexion->connect_error);
-		}
-
-        $sql2 = "update PuntoDeVenta set BajaLogica='1' where Numero='$numero'";
-       
-        $result = mysqli_query($conexion, $sql2);
+        $result = mysqli_query($conexion, $sql);
 
     }
 }
