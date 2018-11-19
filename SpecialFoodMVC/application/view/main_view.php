@@ -49,22 +49,22 @@
 					        
 
 							<?php
-							 if (isset($_SESSION['idPerfil'])){
-								if ($_SESSION['idPerfil'] == 1){
+							 if (isset($_SESSION['IdPerfil'])){
+								if ($_SESSION['IdPerfil'] == 1){
 									?>
 									<li><a href="/">Inicio</a></li>
-									<li><a href=''>Aprobar Usuarios</a></li>
+									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
 									<li><a href=''>Imprimir Listados</a></li>
 
 									<?php
-								}else if($_SESSION['idPerfil'] == 2){
+								}else if($_SESSION['IdPerfil'] == 2){
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href=''>Mis Menúes</a></li>
 									<li><a href=''>Mis Ventas</a></li>
 
 									<?php
-								}else if($_SESSION['idPerfil'] == 3){
+								}else if($_SESSION['IdPerfil'] == 3){
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href=''>Pedidos</a></li>
