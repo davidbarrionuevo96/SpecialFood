@@ -10,11 +10,7 @@ class Model_Login extends Model{
 	
 		$row = mysqli_fetch_assoc($result);
 
-			// Variable $hash hold the password hash on database
-		$hash = $row['Password'];
-	
-		//if (password_verify($_POST['password'], $hash)) {	
-		if( $row['Password'] == $password){
+		if( $row['Password'] == sha1($password)){
 			return $row;			
 		}else{
 			return null;

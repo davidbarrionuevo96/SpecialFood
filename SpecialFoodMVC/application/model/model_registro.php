@@ -22,8 +22,7 @@ class Model_Registro extends Model{
 
         include ('core/helpers/conexion.php');
 
-        //$sqlInsert="INSERT INTO Usuario (Nombre, Apellido, Password, Email, Cuil, Calle, Numero,  IdPerfil, IdEstadoAprobacionUsuario) 
-        //VALUES('".$nombre."','".$apellido."',".$password.", ".$email.",".$cuil.",'".$calle."',".$numero.",".$perfil.",1);";
+        $encryptedPassword = sha1($password);
 
         $sqlInsert = "INSERT INTO `Usuario`
                     (
@@ -44,7 +43,7 @@ class Model_Registro extends Model{
                     (
                         '$nombre',
                         '$apellido',
-                        '$password',
+                        '$encryptedPassword',
                         '$email',
                         '$cuil',
                         '$cuit',
@@ -55,8 +54,6 @@ class Model_Registro extends Model{
                         0,
                         now(),
                         1);";
-
-        //echo $sqlInsert;
 
         $result=mysqli_query($conexion,$sqlInsert);
 
