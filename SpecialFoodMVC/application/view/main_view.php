@@ -55,7 +55,7 @@
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
 									<li><a href=''>Imprimir Listados</a></li>
-
+									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){
 									?>
