@@ -94,11 +94,12 @@
                   //url: 'application/view/comerciogrid.php?page=1&rows=20&sidx=1&sord=asc',
                   //datatype: "json", 
                   datatype: "local", 
-                  colNames:['Id Comercio','Nombre', 'CUIT'], 
+                  colNames:['Id Comercio','Nombre', 'CUIT', ''], 
                   colModel:[ 
-                    { name:'idcomercio', index:'idcomercio', width: 400, sortable: false }, 
-                    { name:'nombre', index:'nombre', sortable: false }, 
-                    { name:'cuit', index:'cuit', align:"right", sortable: false }
+                    { name:'idcomercio', index:'idcomercio', width: 200, align:"center", sortable: false }, 
+                    { name:'nombre', index:'nombre', width: 350, sortable: false }, 
+                    { name:'cuit', index:'cuit', align:"center", sortable: false },
+                    { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerComercios', sortname: 'id', 
                   viewrecords: true, sortorder: "desc", caption:"Comercios",
                   rows: []
@@ -107,13 +108,45 @@
                 jQuery("#listComercios").jqGrid('navGrid','#pagerComercios', { edit: false, add: false, del: false });  
 
                 $.get("../../application/view/comerciogrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
-                  $("#listComercios")[0].addJSONData(JSON.parse(data));
+                    $("#listComercios")[0].addJSONData(JSON.parse(data));
+
+                    var ids = jQuery("#listComercios").jqGrid('getDataIDs');
+                      for (var i = 0; i < ids.length; i++) {
+                          var rowId = ids[i];
+
+                          var idComercio = jQuery("#listComercios").jqGrid('getRowData')[i].idcomercio;
+
+                          var checkOut = "<table><tr>";
+
+                          checkOut = checkOut + "<td title='Editar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
+                          checkOut = checkOut +"<span class='ui-icon ui-icon-pencil' onclick=\"Edit(" + idComercio + ");\"></span></td>";
+
+                          checkOut = checkOut +
+                              "<td title='Eliminar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                              "<span class='ui-icon ui-icon-closethick' onclick=\"Delete(" + idComercio + ");\"></span></td>";
+
+                          checkOut = checkOut + "</tr></table>";
+
+                          jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
+                    }
                 });
               }); 
           }
           catch(err){
             alert(err);
           }
+
+          function Edit(id) {
+              window.location.assign("/Comercio/comerciomanager?id=" + id);
+          };
+
+          function Delete(id) {
+              var txt;
+              var r = confirm("¿Seguro que desea eliminar?");
+              if (r == true) {
+                  window.location.assign("/Comercio/eliminar?id=" + id);
+              }
+          };
      </script>
  </head>
  <body>	
@@ -150,7 +183,8 @@
                     </div>
                     <div class="panel-body">
                         <form action="/comercio/guardar" method="post">
-                          <br/>
+                          <input class="newbutton" type="button" style="float: right" onclick="window.location.assign('/Comercio/comerciomanager?id=0')" value="Nuevo" />
+                          <br /><br />
                           <div class="row">
                              <div class="col-md-12">
                                 <table id="listComercios"></table>

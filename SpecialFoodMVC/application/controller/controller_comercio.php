@@ -6,7 +6,18 @@ class Controller_Comercio extends Controller{
     }
 
 	function comerciomanager(){
-        $this->view->generate('comerciomanager.php', 'template_view.php');
+        $idComercio = $_GET['id'];
+
+        if ($idComercio == 0)
+        {
+            $this->view->generate('comerciomanager.php', 'template_view.php');
+        }
+        else
+        {
+            $data = $this->model->getComercioById($idComercio);
+
+            $this->view->generate('comerciomanager.php', 'template_view.php', $data);
+        }
     }
 
     function comerciolist(){
@@ -14,12 +25,12 @@ class Controller_Comercio extends Controller{
     }
 
     function guardar(){
-   
+        $idComercio = $_POST['Comercio_id'];
+
         $nombre = $_POST['Comercio_nombre'];
         $nombre = ucfirst($nombre);
 
         $cuit = $_POST['Comercio_CUIT'];
-
 
         if (empty($nombre) || empty($cuit)) {
 
@@ -27,7 +38,17 @@ class Controller_Comercio extends Controller{
 
         } else {
 
-           $this->model->guardar($nombre , $cuit);
+           $this->model->guardar($nombre, $cuit, $idComercio);
+
+           $this->view->generate('comerciolist.php', 'template_view.php');
         }
-}
+    }
+
+    function eliminar(){
+        $idDelete = $_GET['id'];
+
+        $this->model->delete($idDelete);
+
+        $this->view->generate('comerciolist.php', 'template_view.php');
+    }
 }

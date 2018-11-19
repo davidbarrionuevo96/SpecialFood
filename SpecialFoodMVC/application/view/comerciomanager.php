@@ -61,34 +61,39 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Datos del Comercio</h2>
-                        
                     </div>
                     <div class="panel-body">
                         <form action="/comercio/guardar" method="post">
                           <br/>
+                          <input type="text" style="display: none;" name="Comercio_id" id="Comercio_id" value="<?php echo $data['IdComercio']; ?>" />
                           <div class="row">
                               <div class="col-md-6">
                                   <div class="form-group">
-                                  <input type="text" name="Comercio_nombre" id="Comercio_nombre" class="form-control input-sm" placeholder="Nombre*">
+                                  <input type="text" name="Comercio_nombre" id="Comercio_nombre" value="<?php echo $data['Nombre']; ?>" class="form-control input-sm" placeholder="Nombre*">
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <input type="text" name="Comercio_CUIT" id="Comercio_CUIT" class="form-control input-sm" placeholder="CUIT*">
+                                      <input type="text" name="Comercio_CUIT" id="Comercio_CUIT" value="<?php echo $data['CUIT']; ?>" class="form-control input-sm" placeholder="CUIT*">
                                   </div>
                               </div>                            
                           </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <input type="button" value="Volver" onclick="window.location.assign('/Comercio/ComercioList');" class="btn btn-info btn-block">
+                            </div>
+                          </div>
+                          <br/>
                           <div class="row">
                             <div class="col-md-12">
                               <input type="submit" value="Guardar" class=" btn btn-info btn-block">
                             </div>
                           </div>
                         </form>
-                      </div>
-
                     </div>
-                  </div>
-                </div>
+            </div>
+          </div>
+        </div>
 </div>
 </section>
 <footer class="footer-area">
