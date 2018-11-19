@@ -8,6 +8,7 @@ $page = $_GET['page']; // get the requested page
 $limit = $_GET['rows']; // get how many rows we want to have into the grid
 $sidx = $_GET['sidx']; // get index row - i.e. user click to sort
 $sord = $_GET['sord']; // get the direction
+$idPerfil = $_GET['idPerfil']; // id_perfil_user
 
 if(!$sidx) $sidx =1;
 
@@ -51,6 +52,13 @@ $SQL = $SQL . "     LEFT JOIN Usuario cli ON cli.IdUsuario = p.IdCliente AND cli
 $SQL = $SQL . "     LEFT JOIN Calle cau ON cau.IdCalle = cli.IdCalle AND cau.BajaLogica = 0 ";
 $SQL = $SQL . "WHERE ";
 $SQL = $SQL . "     p.BajaLogica = 0 ";
+
+if ($idPerfil == 1)
+    $SQL = $SQL . " AND p.IdPedido = 2 ";    
+
+if ($idPerfil == 2)
+    $SQL = $SQL . " AND p.IdPedido = 3 ";    
+
 $SQL = $SQL . "ORDER BY ";
 $SQL = $SQL . "     $sidx $sord LIMIT $start , $limit";
 

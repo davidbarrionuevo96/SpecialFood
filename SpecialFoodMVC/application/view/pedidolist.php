@@ -116,7 +116,11 @@
 
                 jQuery("#listPedido").jqGrid('navGrid','#pagerPedido', { edit: false, add: false, del: false });
 
-                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
+                <?php $session_IdPerfil=(isset($_SESSION['IdPerfil']))?$_SESSION['IdPerfil']:''; ?>
+
+                var idPerfil='<?php echo $session_IdPerfil;?>';
+
+                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfil, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
                 });
             });

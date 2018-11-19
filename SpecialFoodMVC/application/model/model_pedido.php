@@ -6,28 +6,28 @@ class Model_Pedido extends Model{
         require('core/helpers/conexion.php');
 
             $sql = "INSERT INTO `specialfooddb`.`pedido`
-(
-`FechaPedido`,
-`CostoEntrega`,
-`TiempoEstimadoEntrega`,
-`IdComercio`,
-`IdCliente`,
-`IdPuntoDeVenta`,
-`BajaLogica`,
-`FechaModificacion`,
-`IdUsuarioModificacion`)
-VALUES
-(
-now(),
-$costoentrega,
-$tiempoestimadoentrega,
-$idcomercio,
-$idcliente,
-$idpuntodeventa,
-0,
-now(),
-$idusuariomodificacion);"
-;
+                    (
+                    `FechaPedido`,
+                    `CostoEntrega`,
+                    `TiempoEstimadoEntrega`,
+                    `IdComercio`,
+                    `IdCliente`,
+                    `IdPuntoDeVenta`,
+                    `BajaLogica`,
+                    `FechaModificacion`,
+                    `IdUsuarioModificacion`)
+                    VALUES
+                    (
+                    now(),
+                    $costoentrega,
+                    $tiempoestimadoentrega,
+                    $idcomercio,
+                    $idcliente,
+                    $idpuntodeventa,
+                    0,
+                    now(),
+                    $idusuariomodificacion);"
+                    ;
 
             $result = mysqli_query($conexion, $sql);
 
