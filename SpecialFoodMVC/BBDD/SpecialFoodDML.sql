@@ -42,7 +42,7 @@ VALUES("admin","admin",1,1111111,"admin@admin.com","7c4a8d09ca3762af61e59520943d
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Cliente","cliente",1,1111111,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,2,2,0,now(),1);
+VALUES("Cliente","cliente",1,1111111,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,4,2,0,now(),1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
