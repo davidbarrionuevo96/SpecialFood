@@ -1,0 +1,86 @@
+$( document ).ready(function() {
+    $( "#perfil" ).change(function() {
+        if ($( "#perfil option:selected" ).val() == 1){ 
+            $("#cuil").show(); 
+            $("#cuit").hide();
+            $("#cuil").attr("placeholder","CUIL");
+        }
+
+        if ($( "#perfil option:selected" ).val() == 2){
+            $("#cuil").show(); 
+            $("#cuil").attr("placeholder","CUIL*");
+            $("#cuit").hide();            
+        }
+
+        if ($( "#perfil option:selected" ).val() == 3){
+            $("#cuit").show();
+            $("#cuil").hide(); 
+        }
+    });
+    
+    $("#form").submit(function(){
+        return validarmanager();    
+    });   
+
+    function validarmanager (){
+        alert(gola);
+        var regexemail = /^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$/;
+        var regexnumero = /^[0-9]+$/;
+        var regexcuilcuit = /^[0-9]{2}-[0-9]{8}-[0-9]$/;
+        var error=0;
+        var mensajeError="";
+        $(".error").removeClass("error")
+        
+        if($("#nombre").val().length < 4 || $("#nombre").val().length > 20){
+            mensajeError += "El campo nombre es obligatorio (Entre 4 y 20 caracteres)<br/>";
+            error++;
+            $("#nombre").addClass("error");
+        }
+        if($("#apellido").val().length < 1 || $("#apellido").val().length > 20){
+            mensajeError += "El campo apellido es obligatorio (Entre 1 y 20 caracteres)<br/>";
+            error++;
+            $("#apellido").addClass("error");
+        }
+        
+        if($("#password").val() != $("#password_confirmation").val() || $("#password").val().length < 4){
+            mensajeError += "Las contraseñas no son iguales o tienen menos de 4 caracteres<br/>";
+            error++;
+            $("#password").addClass("error");
+        }
+
+        if($("#calle").val().length < 3 || $("#calle").val().length > 20){
+            mensajeError += "El campo calle es obligatorio (Entre 3 y 20 caracteres)<br/>";
+            error++;
+            $("#calle").addClass("error");
+        }
+        
+        if(!$("#numero").val().match(regexnumero)){
+            error++;
+            mensajeError+="Solo se aceptan numeros<br/>";
+            $("#numero").addClass("error");
+        };
+
+        if ($( "#perfil option:selected" ).val() == 2) {
+            if(!$("#cuil").val().match(regexcuilcuit)){
+                error++;
+                mensajeError+="El CUIL ingresado no es válido<br/>";
+                $("#cuil").addClass("error");
+            };
+        }
+
+        if ($( "#perfil option:selected" ).val() == 3) {
+            if(!$("#cuit").val().match(regexcuilcuit)){
+                error++;
+                mensajeError+="El CUIT ingresado no es válido<br/>";
+                $("#cuit").addClass("error");
+            };
+        }
+        
+        if(error>0){
+            $("#mensaje").html(mensajeError);
+            return false;
+        } else{
+            return true;  
+        }
+    };
+});

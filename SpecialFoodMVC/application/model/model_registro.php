@@ -22,7 +22,8 @@ class Model_Registro extends Model{
 
         include ('core/helpers/conexion.php');
 
-        $encryptedPassword = sha1($password);
+        //$sqlInsert="INSERT INTO Usuario (Nombre, Apellido, Password, Email, Cuil, Calle, Numero,  IdPerfil, IdEstadoAprobacionUsuario) 
+        //VALUES('".$nombre."','".$apellido."',".$password.", ".$email.",".$cuil.",'".$calle."',".$numero.",".$perfil.",1);";
 
         $sqlInsert = "INSERT INTO `Usuario`
                     (
@@ -43,7 +44,7 @@ class Model_Registro extends Model{
                     (
                         '$nombre',
                         '$apellido',
-                        '$encryptedPassword',
+                        '$password',
                         '$email',
                         '$cuil',
                         '$cuit',
@@ -55,13 +56,78 @@ class Model_Registro extends Model{
                         now(),
                         1);";
 
+        //echo $sqlInsert;
+
         $result=mysqli_query($conexion,$sqlInsert);
 
         if(isset($result)){
-            echo "<p class='labelform editado'>Guardado Correctamente</p>";
+            
+        ?>
+            <script>
+                alert("Guardado Correctamente")
+            </script>
+        <?PHP
         }       
         else{
-            echo "<p class='labelform editado'>El Usuario Ingresado ya Existe</p>";
+            echo "<p class='labelform editado'>El Email Ingresado ya Existe</p>";
         }
-	}
+    }
+    
+    public function getUsuarioById($idUsuario){
+		require('core/helpers/conexion.php');
+
+        $sql = "SELECT 
+					IdUsuario
+        			,Nombre
+                    ,Apellido
+                    ,Password
+                    ,Email
+                    ,CUIL
+        			,CUIT
+                    ,IdCalle
+                    ,Numero
+        		FROM 
+					`Usuario`
+				WHERE 
+					BajaLogica = 0
+					AND IdUsuario = $idUsuario;";
+
+        $result = mysqli_query($conexion, $sql);
+
+        $rows = mysqli_fetch_assoc($result);
+
+        if(isset($rows))
+        {
+            $data["IdUsuario"] = $rows['IdUsuario'];
+            $data["Nombre"] = $rows['Nombre'];
+            $data["Apellido"] = $rows['Apellido'];
+            $data["Password"] = $rows['Password'];
+            $data["Email"] = $rows['Email'];
+            $data["CUIL"] = $rows['CUIL'];
+            $data["CUIT"] = $rows['CUIT'];
+            $data["IdCalle"] = $rows['IdCalle'];
+            $data["Numero"] = $rows['Numero'];
+
+            return $data;
+        }
+    }
+
+    public function modificar_usuario($idUsuario, $nombre, $apellido, $password, $calle, $numero){
+
+        require('core/helpers/conexion.php');
+
+        $sql = "UPDATE `Usuario`
+                SET 
+                    Nombre = '$nombre'
+                    ,Apellido = '$apellido'
+                    ,Password = '$password'
+                    ,IdCalle = '$calle'
+                    ,Numero = '$numero'
+                    ,FechaModificacion = now()
+					,IdUsuarioModificacion = 1
+                WHERE IdUsuario = $idUsuario;";
+        
+        $result = mysqli_query($conexion,$sql);
+        
+    }
 }

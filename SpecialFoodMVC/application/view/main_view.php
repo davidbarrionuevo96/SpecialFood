@@ -42,6 +42,9 @@
 				  		</div>			  					
 					</div>
 				</div>
+
+				
+
 				<div class="container main-menu">
 					<div class="row align-items-center justify-content-center d-flex">			
 				      <nav id="nav-menu-container">
@@ -69,7 +72,7 @@
 									<li><a href="/">Inicio</a></li>
 									<li><a href=''>Pedidos</a></li>
 									<li><a href=''>Mis repartos</a></li>
-
+									
 									<?php
 								}else if($_SESSION['IdPerfil'] == 4){
 									?>
@@ -78,6 +81,7 @@
 							        <li><a href="menu.html">Menú</a></li>
 							        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
 							        <li><a href="contact.html">Contacto</a></li>
+
 									<?php
 								}
 							 }else{
@@ -85,17 +89,17 @@
 							 	<li><a href="/">Inicio</a></li>
 						        <li><a href="about.html">Nosotros</a></li>
 						        <li><a href="menu.html">Menú</a></li>
-						        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+								<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
 						        <li><a href="contact.html">Contacto</a></li>
 						         <?php
 							}
-							?>		
+							?>	
 					        
 							<li class="derecha">
 							<?php
 							 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 							 	?>
-							 	<li><a href='/main/iniciarsesion'>Mi Perfil</a></li>
+							 	<li><a href="#" onclick="IrAMiPerfil(); return false;">Mi Perfil</a></li>
 						        <li><a href='/login/cerrarSesion'>Cerrar Sesion</a></li>
 						         <?php
 							 }else{								
@@ -105,15 +109,21 @@
 						        <?php
 							 }
 							?>
-							</li>					        						
+							</li>				        						
 						</ul>
 				      </nav>				      		  
 					</div>
 				</div>
 			</header><!-- #header -->
 			
-			
-			
+			<script>
+				function IrAMiPerfil() {
+					<?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
+					var IdUsuario='<?php echo $session_IdUsuario;?>';
+
+					window.location.assign("/registro/cargarPantalla2?id=" + IdUsuario);
+				};
+			</script>
 			<!-- start banner Area -->
 			<section class="banner-area">		
 				<div class="container">
