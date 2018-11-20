@@ -22,9 +22,8 @@ class Model_Registro extends Model{
 
         include ('core/helpers/conexion.php');
 
-        //$sqlInsert="INSERT INTO Usuario (Nombre, Apellido, Password, Email, Cuil, Calle, Numero,  IdPerfil, IdEstadoAprobacionUsuario) 
-        //VALUES('".$nombre."','".$apellido."',".$password.", ".$email.",".$cuil.",'".$calle."',".$numero.",".$perfil.",1);";
-
+        $encryptedPassword = sha1($password);
+ 
         $sqlInsert = "INSERT INTO `Usuario`
                     (
                         `Nombre`,
@@ -44,7 +43,7 @@ class Model_Registro extends Model{
                     (
                         '$nombre',
                         '$apellido',
-                        '$password',
+                        '$encryptedPassword',
                         '$email',
                         '$cuil',
                         '$cuit',
@@ -56,17 +55,11 @@ class Model_Registro extends Model{
                         now(),
                         1);";
 
-        //echo $sqlInsert;
-
+       
         $result=mysqli_query($conexion,$sqlInsert);
 
         if(isset($result)){
             
-        ?>
-            <script>
-                alert("Guardado Correctamente")
-            </script>
-        <?PHP
         }       
         else{
             echo "<p class='labelform editado'>El Email Ingresado ya Existe</p>";
