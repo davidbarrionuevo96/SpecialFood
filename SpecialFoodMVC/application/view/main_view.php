@@ -71,16 +71,25 @@
 									<li><a href=''>Mis repartos</a></li>
 
 									<?php
+								}else if($_SESSION['IdPerfil'] == 4){
+									?>
+									<li><a href="/">Inicio</a></li>
+							        <li><a href="about.html">Nosotros</a></li>
+							        <li><a href="menu.html">Menú</a></li>
+							        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+							        <li><a href="contact.html">Contacto</a></li>
+									<?php
 								}
 							 }else{
 							 	?>
 							 	<li><a href="/">Inicio</a></li>
 						        <li><a href="about.html">Nosotros</a></li>
 						        <li><a href="menu.html">Menú</a></li>
+						        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
 						        <li><a href="contact.html">Contacto</a></li>
 						         <?php
 							}
-							?>	
+							?>		
 					        
 							<li class="derecha">
 							<?php
@@ -96,7 +105,7 @@
 						        <?php
 							 }
 							?>
-							</li>				        						
+							</li>					        						
 						</ul>
 				      </nav>				      		  
 					</div>
