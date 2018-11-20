@@ -87,12 +87,13 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
                                   <div class="custom-file">
-                                    <input type="file" name="imagen" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <input type="file" name="imagen"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                     <label class="custom-file-label" for="inputGroupFile01">Agregar imagen</label>
                                   </div>
                                 </div>                              
                             </div>                        
                         </div>
+                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
                         <input type="submit" name="guardar" class=" btn btn-info btn-block">
                     </form>
                 </div>

@@ -2,14 +2,14 @@
 <?php
 
 class Model_menuitems extends Model{
-    public function guardar($producto, $precio, $imagen){
+    public function guardar($producto, $precio, $imagen,$idMenu){
 
         require('core/helpers/conexion.php');
 
-        try {
+
 
                 $sql = "select mni.Descripcion d
-                from MenuNegocioItem mni 
+                from MenuComercioItem mni 
                 where mni.Descripcion='$producto'";
 
                 $result=mysqli_query($conexion,$sql);
@@ -18,10 +18,10 @@ class Model_menuitems extends Model{
                 if(!($asd['d'] == $producto))
                 {
 
-                  $c=1;
-                  
+
+
                   $sql2 = "";
-                  $sql2 = $sql2 . "INSERT INTO MenuNegocioItem ";
+                  $sql2 = $sql2 . "INSERT INTO MenuComercioItem ";
                   $sql2 = $sql2 . "( ";
                   $sql2 = $sql2 . "   Descripcion, ";
                   $sql2 = $sql2 . "   Precio, ";
@@ -36,12 +36,13 @@ class Model_menuitems extends Model{
                   $sql2 = $sql2 . "   '$producto', ";
                   $sql2 = $sql2 . "   '$precio', ";
                   $sql2 = $sql2 . "   '$imagen', ";
-                  $sql2 = $sql2 . "   '$c', ";
+                  $sql2 = $sql2 . "   '$idMenu', ";
                   $sql2 = $sql2 . "    0, ";
                   $sql2 = $sql2 ."    NOW(), ";
                   $sql2 = $sql2 . "    1 ";
                   $sql2 = $sql2 . ");";
-                  
+
+
                   $result2=mysqli_query($conexion,$sql2);
 
                   return true;
@@ -50,9 +51,97 @@ class Model_menuitems extends Model{
                 {
                    return false;
                 }
-        } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-        }
+
     }
 
+    public function getListParaEliminar($id){
+
+
+        require('core/helpers/conexion.php');
+
+        $sql = "update MenuComercioItem
+                SET BajaLogica = 1
+                where IdMenuComercioItem = '$id';";
+        $result = mysqli_query($conexion,$sql);
+
+
+        $sql2 = "select * 
+                from MenuComercio mc
+                WHERE mc.BajaLogica=0
+                ";
+
+        $result2 = mysqli_query($conexion,$sql2);
+
+        $MenuComercio = array();
+
+        while($rows2=mysqli_fetch_assoc($result2))
+        {
+            $MenuComercio[] = $rows2;
+        }
+
+        return $MenuComercio;
+    }
+
+    public function getListParaModificar($id){
+
+        require('core/helpers/conexion.php');
+
+
+        $sql = "select mc.Descripcion Descripcion, mc.Precio Precio 
+                from MenuComercioItem mc
+                WHERE mc.IdMenuComercioItem='$id'";
+
+        $result = mysqli_query($conexion,$sql);
+
+        $MenuComercio = array();
+
+        while($rows2=mysqli_fetch_assoc($result))
+        {
+            $MenuComercio[] = $rows2;
+        }
+        return $MenuComercio;
+    }
+
+    public function actualizar($Descripcion,$Precio,$Imagen, $id){
+
+        require('core/helpers/conexion.php');
+
+
+        $sql1 = "update MenuComercioItem
+                SET Descripcion = '$Descripcion'
+                where IdMenuComercioItem = '$id';";
+
+        $result1 = mysqli_query($conexion,$sql1);
+
+        $sql2 = "update MenuComercioItem
+                SET Precio = '$Precio'
+                where IdMenuComercioItem = '$id';";
+
+        $result2 = mysqli_query($conexion,$sql2);
+
+        $sql3 = "update MenuComercioItem
+                SET Foto = '$Imagen'
+                where IdMenuComercioItem = '$id';";
+        $result3 = mysqli_query($conexion,$sql3);
+
+        $sql4 = "select * 
+                from MenuComercio mc
+                WHERE mc.BajaLogica=0
+                ";
+
+        $result4 = mysqli_query($conexion,$sql4);
+
+        $MenuComercio = array();
+
+        while($rows4=mysqli_fetch_assoc($result4))
+        {
+            $MenuComercio[] = $rows4;
+        }
+        return $MenuComercio;
+    }
 }
+
+
+
+
+       
