@@ -98,9 +98,10 @@
                     //Numero,IdComercio,IdCalle,BajaLogica,FechaModificacion,IdUsuarioModificacion
                     colModel:[
                         { name:'IdPuntoDeVenta', index:'IdPuntoDeVenta', sortable: false },
-                        { name:'Numero', index:'Numero', sortable: false },
-                        { name:'Nombre', index:'Nombre', sortable: false },
-                        { name:'Descripcion', index:'Descripcion', sortable: false },
+                        { name:'NumeroPunto', index:'NumeroPunto', sortable: false },
+                        { name:'NombreCalle', index:'NombreCalle', sortable: false },
+                        { name:'NumeroCalle', index:'NumeroCalle', sortable: false },
+                        { name:'Comercio', index:'Comercio', sortable: false },
                         { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPuntoDeVenta', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"puntodeventa",

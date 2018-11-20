@@ -93,14 +93,14 @@
 
                     datatype: "local",
                     //nombre,DNI,email,username,password,CUIL
-                    colNames:['nombre','DNI','email','username','CUIL'],
+                    colNames:['Nombre','Apellido','email','CUIT','CUIL'],
 
                     colModel:[
-                        { name:'nombre', index:'nombre', width: 100, sortable: false},
-                        { name:'DNI', index:'DNI', sortable: false },
-                        { name:'email', index:'email', sortable: false },
-                        { name:'username', index:'username', sortable: false },
-                        { name:'CUIL', index:'CUIL', align:"right", sortable: false }
+                        { name:'nombre', index:'nombre', width: 80, sortable: false},
+                        { name:'apellido', index:'apellido', sortable: false },
+                        { name:'email', index:'email', width: 200 , sortable: false },
+                        { name:'CUIT', index:'CUIT', align:"center" , width: 80 , sortable: false },
+                        { name:'CUIL', index:'CUIL', align:"center", width: 80 , sortable: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerUsuario', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"usuario",
                     rows: []

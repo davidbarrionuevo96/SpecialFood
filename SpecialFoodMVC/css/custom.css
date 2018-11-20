@@ -57,6 +57,24 @@
     cursor: pointer;
     position: relative;
 }
+
+.primary-btn5{
+  background: #f42f2c;
+    
+    border: none;                    
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+   
+    text-transform: uppercase;
+
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    
+   
+}
+
 .primary-btn10{
     background: #f42f2c;
     width: 150px;
@@ -178,6 +196,103 @@ text-align: center;
     cursor: pointer;
     position: relative;
 }
+.cajag{
+    width: 100%;
+     height: 42em;
+     background: white;
+     margin-top: 41em;
+
+}
+
+.caja10{
+    width: 100%;
+    height: 42em;
+    background: white;
+    margin: 0 auto; 
+    float: right;
+    margin-top: 3em;
+
+}
+
+.cajaimagen{
+
+    width: 12em;
+    height: 12em;
+    background: white;
+     float:left;
+     border: solid 1px #BEBEBE;
+
+}
+
+.imagencomida{
+    width: 100%;
+    height: 90%;
+    padding-top:1.25em;
+}
+
+.banner-area1{
+
+            background: url(../img/hero-bg.jpg) center center/cover;
+            height: 75em;
+}
+
+
+.cajaparaboton{
+     margin: 0 auto;
+    width: 12em;
+    height: 12em;
+    margin-left: 8.3%;
+    margin-bottom: 9em;
+     float:left;
+     text-align: center;
+
+}
+.cajaparaboton2{
+
+   margin-top: 12em;
+   width: 12em;
+   height: 6em;
+   border: solid 1px #BEBEBE;
+   
+   
+}
+
+
+
+@media (max-width: 1199px ){
+    
+.cajag{
+    margin-top: 30em;
+    height: 30em;
+}
+.caja10{
+    height: 63em;
+}
+.banner-area1{
+    height: 93em;
+}
+
+@media (max-width: 800px ){
+    
+.cajag{
+    margin-top: 83em;
+    height:85em;
+}
+.caja10{
+    height: 85em;
+
+}
+.cajaimagen{
+     margin-left: 15%;
+}
+
+.cajaparaboton2{
+
+    margin-left: 15%;
+}
+.banner-area1{
+    height: 111em;
+}
 
 .newbutton
 {
@@ -217,6 +332,29 @@ text-align: center;
   line-height: 40px;
   width: 100%;
 }
+
+@media (max-width: 421px ){
+    
+	.cajag{
+	    margin-top: 165em;
+	    height:168em;
+	}
+	.caja10{
+	    height: 168em;
+	}
+	.banner-area1{
+	    height:195em;
+	}
+	.cajaimagen{
+	     margin-left: 50%;
+	}
+
+	.cajaparaboton2{
+
+	    margin-left: 50%;
+	}
+}
+
 .newbutton a:hover
 {
   color: #01040D !important;

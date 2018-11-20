@@ -96,7 +96,24 @@ VALUES
 
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(1,1,1,0,now(),1);
+VALUES(1234,1,1,0,now(),1);
+
+INSERT INTO `specialfooddb`.`puntodeventa`
+(`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES(458,1,1,0,now(),1);
+
+INSERT INTO `specialfooddb`.`puntodeventa`
+(`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES(325,1,1,0,now(),1);
+
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 50, 35, 1, 1, 1, 1, 0, now(), 1);
+
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 60, 45, 1, 2, 1, 1, 0, now(), 1);
+
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 65, 30, 1, 1, 1, 1, 0, now(), 1);
 
 
 

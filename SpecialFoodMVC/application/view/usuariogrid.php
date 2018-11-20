@@ -29,8 +29,8 @@ if ($page > $total_pages)
     $page=$total_pages;
 
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
-//colNames:['nombre','apellido','DNI','email', 'username','password','CUIL'],
-$SQL = "SELECT nombre,DNI,email,username,password,CUIL FROM Usuario WHERE BajaLogica = 0 ORDER BY $sidx $sord LIMIT $start , $limit";
+
+$SQL = "SELECT nombre,apellido,email,CUIL,CUIT FROM Usuario WHERE BajaLogica = 0 ORDER BY $sidx $sord LIMIT $start , $limit";
 
 
 
@@ -49,10 +49,9 @@ $i=0;
 while($row=mysqli_fetch_assoc($result))
 {
     $response->rows[$i]['nombre']=$row['nombre'];
-    $response->rows[$i]['DNI']=$row['DNI'];
+    $response->rows[$i]['apellido']=$row['apellido'];
     $response->rows[$i]['email']=$row['email'];
-    $response->rows[$i]['username']=$row['username'];
-    $response->rows[$i]['password']=$row['password'];
+    $response->rows[$i]['CUIT']=$row['CUIT'];
     $response->rows[$i]['CUIL']=$row['CUIL'];
 
 

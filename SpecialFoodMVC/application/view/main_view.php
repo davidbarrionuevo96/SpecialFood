@@ -54,7 +54,7 @@
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
-									<li><a href=''>Imprimir Listados</a></li>
+									<li><a href='/usuario/usuariolist'>Imprimir Listados</a></li>
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){
@@ -66,8 +66,8 @@
 								}else if($_SESSION['IdPerfil'] == 3){
 									?>
 									<li><a href="/">Inicio</a></li>
-									<li><a href=''>Pedidos</a></li>
-									<li><a href=''>Mis repartos</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/puntodeventa/puntodeventalist'>Mis repartos</a></li>
 
 							<?php
 								}
