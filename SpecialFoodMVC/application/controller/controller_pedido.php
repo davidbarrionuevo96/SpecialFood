@@ -16,4 +16,9 @@ class Controller_pedido extends Controller{
         $this->model->tomar($idpedido);
         $this->view->generate('pedidolist.php', 'template_view.php');
     }
+    function entregado(){
+        $idpedido=$_GET['id'];
+        $this->model->hecho($idpedido);
+        $this->view->generate('pedidolist.php', 'template_view.php');
+    }
 }

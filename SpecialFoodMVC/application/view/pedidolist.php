@@ -140,6 +140,9 @@
                         checkOut = checkOut + "<td title='Tomar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
                         checkOut = checkOut +"<span class='ui-icon ui-icon-pin-s' onclick=\"Tomar(" + IdPedido + ");\"></span></td>";
 
+                        checkOut = checkOut +
+                            "<td title='Entregado' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                            "<span class='ui-icon ui-icon-check' onclick=\"Entregado(" + IdPedido + ");\"></span></td>";
 
                         checkOut = checkOut + "</tr></table>";
 
@@ -156,7 +159,9 @@
         function Tomar(id) {
             window.location.assign("/pedido/tomar?id=" + id);
         };
-
+        function Entregado(id) {
+            window.location.assign("/pedido/entregado?id=" + id);
+        };
     </script>
 </head>
 <body>
