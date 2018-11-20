@@ -1,49 +1,49 @@
 .form-inline{
-    margin-top: 3%;
+	margin-top: 3%;
 }
 
 .form-inline input{
-    margin-right: 2%;
+	margin-right: 2%;
 }
 
 .form-inline button{
-    width: 10%;
-    height: auto;
-    background-color: red;
+	width: 10%;
+	height: auto;
+	background-color: red;
 }
 
 .glyphicon-search{
-    width: 10%;
-    height: auto;
+	width: 10%;
+	height: auto;
 }
 
 
 .iniciar_sesion{
-    width: 100%;
+	width: 100%;
     position: absolute;
     margin-top: 0.6%;
   
 }
 
 .espacio{
-    margin:120px 0px;
+	margin:120px 0px;
 }
 
 .letra-blanca{
-    color: white;
+	color: white;
 }
 
 .absolute{
-    position: absolute !important;
+	position: absolute !important;
 }
 
 
 .primary-btn1{
-    background: #f42f2c;
+	background: #f42f2c;
 
     padding-left: 0px;
     padding-right: 0px;
-    border: solid 1px brown;                    
+    border: solid 1px brown;					
     color: #fff;
     display: inline-block;
     font-size: 14px;
@@ -57,24 +57,7 @@
     cursor: pointer;
     position: relative;
 }
-.primary-btn10{
-    background: #f42f2c;
-    width: 150px;
 
-    border: solid 1px brown;                    
-    color: #fff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    position: relative;
-    text-transform: uppercase;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    position: relative;
-}
 #cuit{
     display: none;
 }
@@ -129,56 +112,6 @@ text-align: center;
 
 #mensaje{
     color: red !important;
-}
-.letra-blanca2{
-    color: white;
-    font-size: 40px;
-}
-.letra-blanca11{
-    color: white;
-    font-size: 25px;
-}
-
-.imagenitem{
-    width: 7em;
-    height: 5em;
-    border: solid 3px white;
-
-}
-
-.letra-blanca9{
-    background: #f42f2c;
-    width: 200px;
-    height: 300px;
-    color: white;
-    font-size: 25px;
-    text-align: center;
-    float: left;
-    margin-left: 5%;
-    border: solid 3px white;
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 15px 15px 15px;    
-}
-
-.primary-btn55{
-    background: white;
-    padding-left: 1px;
-    padding-right: 1px;
-    width: 180px;
-    border: solid 3px ;                    
-    color: #f42f3f;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: 500;
-    position: relative;
-    text-transform: uppercase;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    position: relative;
 }
 
 .newbutton
