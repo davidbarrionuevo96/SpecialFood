@@ -18,5 +18,6 @@ INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES("repartidor2","repartidor",1,1111111,"repartidorNoAprobad@admin.com","repartidor",2011115,null,2,1,0,now() ,1);
 
-
-select * from Usuario;
+INSERT INTO `specialfooddb`.`usuario`
+(`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES("usuario","usuario",1,1111111,"usuario@usuario.com","usuario",2011115,null,4,1,0,now(),1);

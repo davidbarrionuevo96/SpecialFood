@@ -189,12 +189,14 @@ TiempoEstimadoEntrega integer,
 IdComercio integer,
 IdCliente integer,
 IdPuntoDeVenta integer,
+IdEstadoEntrega integer,
 BajaLogica bit not null default 0,
 FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdComercio) references Comercio (IdComercio),
 FOREIGN KEY (IdCliente) references Usuario (IdUsuario),
-FOREIGN KEY (IdPuntoDeVenta) references PuntoDeVenta (IdPuntoDeVenta));
+FOREIGN KEY (IdPuntoDeVenta) references PuntoDeVenta (IdPuntoDeVenta),
+FOREIGN KEY (IdEstadoEntrega) references EstadoEntrega (IdEstadoEntrega));
 
 Create Table PedidoItem(
 IdPedidoItem integer PRIMARY KEY AUTO_INCREMENT,
@@ -219,4 +221,5 @@ FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdDelivery) references Usuario (IdUsuario),
 FOREIGN KEY (IdPedido) references Pedido (IdPedido));
+
 

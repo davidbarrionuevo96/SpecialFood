@@ -14,7 +14,7 @@
   <!-- meta character set -->
   <meta charset="UTF-8">
   <!-- Site Title -->
-  <title>SpecialFood - Registro</title>
+  <title>SpecialFood - Productos</title>
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
             <!--
@@ -70,14 +70,24 @@
 
                 <?php
 
-                foreach ($data as $element){
-                        echo"<div class='cajaparaboton'>". 
+                if($data != NULL){
+                  foreach ($data as $element){
+
+                        echo
+                              "<form action='/product/irACarrito' method='GET'>".
+                              "<div class='cajaparaboton'>". 
                               "<div class='cajaimagen'>"."<img class='imagencomida' src=".$element['Foto'].">"."</div>".
                                  "<div class='cajaparaboton2'>".$element['Descripcion']."<br>".$element['Precio']."<br>".
-                              "<a href='/product/verDetalle?id=".$element['IdMenuNegocioItem']."'>"."<button class='primary-btn5'>"."Agregar al carrito"."</button>"."</a>".
+                                 "<input type='number' id='cantidad' name='Cantidad' min='1' max='100' value='1'>"."<br>".
+                                 "<input type='text' name='IdProducto' visibility: hidden value=".$element['IdMenuComercioItem'].">"."<br>".
+                              "<input type='submit' value='Agregar al carrito' class='btn btn-info btn-block'>".
                               "</div>".
-                              "</div>";
+                              "</div>".
+                              
+                              "</form>" ;
                     }
+                }
+
                 ?> 
                  
             </div>
