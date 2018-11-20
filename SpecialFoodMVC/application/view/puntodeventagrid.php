@@ -29,8 +29,22 @@ if ($page > $total_pages)
     $page=$total_pages;
 
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
-//Numero,IdComercio,IdCalle,BajaLogica,FechaModificacion,IdUsuarioModificacion
-    $SQL = "SELECT idpuntodeventa, numero, idcomercio,idcalle,fechamodificacion,idusuariomodificacion FROM PuntoDeVenta WHERE BajaLogica = 0 ORDER BY $sidx $sord LIMIT $start , $limit";
+
+$SQL = "";
+$SQL = $SQL . "SELECT ";
+$SQL = $SQL . "      p.IdPuntoDeVenta ";
+$SQL = $SQL . "      ,p.Numero ";
+$SQL = $SQL . "     ,c.Nombre  ";
+$SQL = $SQL . "     ,ca.Descripcion ";
+$SQL = $SQL . "FROM ";
+$SQL = $SQL . "     PuntoDeVenta p ";
+$SQL = $SQL . "     LEFT JOIN Comercio c ON c.IdComercio = p.IdComercio AND c.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Calle ca ON ca.IdCalle = p.IdCalle AND ca.BajaLogica = 0 ";
+$SQL = $SQL . "WHERE ";
+$SQL = $SQL . "     p.BajaLogica = 0 ";
+$SQL = $SQL . "ORDER BY ";
+$SQL = $SQL . "     $sidx $sord LIMIT $start , $limit";
+
 
 
 
@@ -47,11 +61,10 @@ $response->records = $count;
 $i=0;
 
 while($row=mysqli_fetch_assoc($result))
-{   $response->rows[$i]['idcalle']=$row['idcalle'];
-    $response->rows[$i]['fechamodificacion']=$row['fechamodificacion'];
-    $response->rows[$i]['idpuntodeventa']=$row['idpuntodeventa'];
-    $response->rows[$i]['numero']=$row['numero'];
-    $response->rows[$i]['idcomercio']=$row['idcomercio'];
+{   $response->rows[$i]['IdPuntoDeVenta']=$row['IdPuntoDeVenta'];
+    $response->rows[$i]['Numero']=$row['Numero'];
+    $response->rows[$i]['Nombre']=$row['Nombre'];
+    $response->rows[$i]['Descripcion']=$row['Descripcion'];
     //$response->rows[$i]['cell']=array($row['idcomercio'],$row['nombre'],$row['cuit']);
 
     //$response->rows[$i]="{ 'idcomercio': '".$row['idcomercio']."', 'nombre' : '".$row['nombre']."', 'cuit': '".$row['cuit']."'}";

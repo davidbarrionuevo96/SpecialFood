@@ -1,3 +1,6 @@
+<?php
+require('core/helpers/conexion.php');
+?>
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 <head>
@@ -53,6 +56,54 @@
     </div>
 </header><!-- #header -->
 
+<script>
+
+    function PostForm() {
+        if (IsValid()) {
+            $("#lblErrorP").text("");
+
+            document.forms["frmPuntoDeVenta"].submit();
+        }
+    }
+
+    function IsValid() {
+        HideDivMessageP();
+
+        var field;
+//$numero , $idcomercio,$idPuntoDeVenta,$idcalle
+        field = $("#puntodeventa_numero").val();
+        if (field.length == 0) {
+            $("#lblErrorP").text("Debe ingresar el numero del punto de venta.");
+            ShowDivMessageP();
+            return false;
+        }
+
+        field = $("#puntodeventa_idcomercio").val();
+        if (field.length == 0) {
+            $("#lblErrorP").text("Debe ingresar el id del comercio.");
+            ShowDivMessageP();
+            return false;
+        }
+        field = $("#puntodeventa_idcalle").val();
+        if (field.length == 0) {
+            $("#lblErrorP").text("Debe ingresar el id de la calle.");
+            ShowDivMessageP();
+            return false;
+        }
+
+        return true;
+    }
+
+    function ShowDivMessageP() {
+        scroll(0, 0);
+        $("#divMessagesP").show("slow", function () { });
+    }
+
+    function HideDivMessageP() {
+        $("#divMessagesP").hide();
+    }
+
+</script>
 <!-- start banner Area -->
 <section class="banner-area">
     <div class="container">
@@ -61,31 +112,65 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Datos del Punto de Venta</h2>
-
+                    </div>
+                    <div id="divMessagesP" style="display: none;">
+                        <p align="left">
+                        <div class="alert alert-danger" style="text-align: left;">
+                            <label id="lblErrorP" style="font-size: 12px; color: firebrick; font-weight: bold; margin-left: 5px;"></label>
+                        </div>
+                        </p>
                     </div>
                     <div class="panel-body">
-                        <form action="/puntodeventa/guardar" method="post">
+                        <form action="/puntodeventa/guardar" method="post" id="frmPuntoDeVenta" name="frmPuntoDeVenta">
                             <br/>
+                            <input type="text" style="display: none;" name="puntodeventa_id" id="puntodeventa_id" value="<?php echo $data['IdPuntoDeVenta']; ?>" />
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="puntodeventa_numero" id="puntodeventa_numero" class="form-control input-sm" placeholder="Numero*">
+                                        <input type="text" name="puntodeventa_numero" id="puntodeventa_numero" value="<?php echo $data['Numero']; ?>" class="form-control input-sm" placeholder="Numero*">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="puntodeventa_idcomercio" id="puntodeventa_idcomercio" class="form-control input-sm" placeholder="IdComercio*">
+
+                                        <select class="form-control" name="puntodeventa_idcomercio" id="puntodeventa_idcomercio">
+                                            <?php $datoscomercio=$conexion->query("select * from Comercio");
+                                            while($com = mysqli_fetch_array($datoscomercio)) {?>
+
+                                                <option value="<?php echo $com['IdComercio']; ?>"><?php echo $com['Nombre']; ?></option>
+
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <select class="form-control" name="puntodeventa_idcalle" id="puntodeventa_idcalle">
+                                            <?php $datoscalle=$conexion->query("select * from Calle");
+                                            while($calles = mysqli_fetch_array($datoscalle)) {?>
+
+                                            <option value="<?php echo $calles['IdCalle']; ?>"><?php echo $calles['Descripcion']; ?></option>
+
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="submit" value="Guardar" class=" btn btn-info btn-block">
+                                    <input type="button" value="Volver" onclick="window.location.assign('/PuntoDeVenta/PuntoDeVentaList');" class="btn btn-info btn-block">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="button" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
                                 </div>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -97,7 +182,7 @@
     ?>
 </footer>
 <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="/js/validar-formulario.js"></script>
 </body>
 </html>

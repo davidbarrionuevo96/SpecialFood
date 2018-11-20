@@ -94,15 +94,14 @@
                     //url: 'application/view/comerciogrid.php?page=1&rows=20&sidx=1&sord=asc',
                     //datatype: "json",
                     datatype: "local",
-                    colNames:['idpuntodeventa','numero','idcalle','fechamodificacion', 'idcomercio','idusuariomodificacion'],
+                    colNames:['IdPuntoDeVenta','Numero De PuntoDeVenta','Nombre del Comercio','Calle',''],
                     //Numero,IdComercio,IdCalle,BajaLogica,FechaModificacion,IdUsuarioModificacion
                     colModel:[
-                        { name:'idpuntodeventa', index:'idpuntodeventa', sortable: false },
-                        { name:'numero', index:'numero', sortable: false },
-                        { name:'idcalle', index:'idcalle', sortable: false },
-                        { name:'fechamodificacion', index:'fechamodificacion', sortable: false },
-                        { name:'idusuariomodificacion', index:'idusuariomodificacion', sortable: false },
-                        { name:'idcomercio', index:'idcomercio', align:"right", sortable: false }
+                        { name:'IdPuntoDeVenta', index:'IdPuntoDeVenta', sortable: false },
+                        { name:'Numero', index:'Numero', sortable: false },
+                        { name:'Nombre', index:'Nombre', sortable: false },
+                        { name:'Descripcion', index:'Descripcion', sortable: false },
+                        { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPuntoDeVenta', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"puntodeventa",
                     rows: []
@@ -112,12 +111,44 @@
 
                 $.get("../../application/view/puntodeventagrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
                     $("#listPuntoDeVenta")[0].addJSONData(JSON.parse(data));
+
+                    var ids = jQuery("#listPuntoDeVenta").jqGrid('getDataIDs');
+                    for (var i = 0; i < ids.length; i++) {
+                        var rowId = ids[i];
+
+                        var idpuntodeventa = jQuery("#listPuntoDeVenta").jqGrid('getRowData')[i].IdPuntoDeVenta;
+
+                        var checkOut = "<table><tr>";
+
+                        checkOut = checkOut + "<td title='Editar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
+                        checkOut = checkOut +"<span class='ui-icon ui-icon-pencil' onclick=\"Edit(" + idpuntodeventa + ");\"></span></td>";
+
+                        checkOut = checkOut +
+                            "<td title='Eliminar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                            "<span class='ui-icon ui-icon-closethick' onclick=\"Delete(" + idpuntodeventa + ");\"></span></td>";
+
+                        checkOut = checkOut + "</tr></table>";
+
+                        jQuery("#listPuntoDeVenta").jqGrid('setRowData', rowId, { action: checkOut });
+                    }
                 });
             });
         }
         catch(err){
             alert(err);
         }
+
+        function Edit(id) {
+            window.location.assign("/puntodeventa/puntodeventamanager?id=" + id);
+        };
+
+        function Delete(id) {
+            var txt;
+            var r = confirm("¿Seguro que desea eliminar?");
+            if (r == true) {
+                window.location.assign("/puntodeventa/eliminar?id=" + id);
+            }
+        };
     </script>
 </head>
 <body>
@@ -149,12 +180,13 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title letra-blanca">Puntos de Venta</h2>
+                        <h2 class="panel-title letra-blanca">Puntos De Ventas</h2>
 
                     </div>
                     <div class="panel-body">
                         <form action="/puntodeventa/guardar" method="post">
-                            <br/>
+                            <input class="newbutton" type="button" style="float: right" onclick="window.location.assign('/PuntoDeVenta/puntodeventamanager?id=0')" value="Nuevo" />
+                            <br /><br />
                             <div class="row">
                                 <div class="col-md-12">
                                     <table id="listPuntoDeVenta"></table>
