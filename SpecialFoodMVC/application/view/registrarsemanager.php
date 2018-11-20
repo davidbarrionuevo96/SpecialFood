@@ -65,7 +65,7 @@
                                 <br/>
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="/registro/modificar_registro" name="form" id="form" method="POST" onsubmit="return validarmanager()" name="form" id="form">
+                                <form action="/registro/modificar_registro" name="form" id="form" method="POST">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6" style="display: none;">
                                             <select class="form-control" id="perfil" name="perfil">
@@ -93,12 +93,12 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="ContraseÃ±a*">
+                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="Contraseña*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contraseÃ±a*">
+                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contraseña*">
                                             </div>
                                         </div>
                                     </div>

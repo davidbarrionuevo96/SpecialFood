@@ -80,6 +80,6 @@ class Controller_registro extends Controller{
         $password=$_POST['password'];
 
         $this->model->modificar_usuario($idUsuario, $nombre, $apellido, $password, $calle, $numero);
-        $this->view->generate('registrarsemanager.php', 'template_view.php');
+        $this->view->generate('main_view.php', 'template_view.php');
     }
 }

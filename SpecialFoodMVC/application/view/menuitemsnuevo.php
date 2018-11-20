@@ -34,14 +34,14 @@
        </head>
        <body>	
         <header id="header" class="absolute">
-         <div class="container iniciar_sesion2">
-            <div class="row">			
-                <nav id="nav-menu">
-                    <ul class="nav-menu ">
-                        <li class="volver"><a href="/"> << Volver</a></li>
-                    </ul>
-                </nav>				      		  
-            </div>
+     <div class="container iniciar_sesion2">
+        <div class="row">     
+            <nav id="nav-menu">
+                <ul class="nav-menu ">
+                    <li class="volver"><a href="/"> << Volver</a></li>
+                </ul>
+            </nav>                    
+        </div>
         </div>
         <div class="header-top">
             <div class="container">
@@ -49,10 +49,10 @@
                     <div id="logo">
                      <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
                  </div>
-             </div>			  					
+             </div>                 
          </div>
-     </div>
- </header><!-- #header -->			
+     </div>     
+ </header><!-- #header -->      
 
  <!-- start banner Area -->
  <section class="banner-area">		
@@ -87,12 +87,13 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
                                   <div class="custom-file">
-                                    <input type="file" name="imagen" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <input type="file" name="imagen"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                     <label class="custom-file-label" for="inputGroupFile01">Agregar imagen</label>
                                   </div>
                                 </div>                              
                             </div>                        
                         </div>
+                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
                         <input type="submit" name="guardar" class=" btn btn-info btn-block">
                     </form>
                 </div>

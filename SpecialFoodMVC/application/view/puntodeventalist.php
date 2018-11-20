@@ -144,7 +144,7 @@
 
         function Delete(id) {
             var txt;
-            var r = confirm("Â¿Seguro que desea eliminar?");
+            var r = confirm("¿Seguro que desea eliminar?");
             if (r == true) {
                 window.location.assign("/puntodeventa/eliminar?id=" + id);
             }
@@ -180,7 +180,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title letra-blanca">Puntos De Ventas</h2>
+                        <h2 class="panel-title letra-blanca">Puntos de Venta</h2>
 
                     </div>
                     <div class="panel-body">

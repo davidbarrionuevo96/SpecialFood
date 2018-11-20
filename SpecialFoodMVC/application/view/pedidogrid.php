@@ -1,6 +1,5 @@
 <?php
 require('../../core/helpers/conexion.php');
-
 ?>
 
 <?php

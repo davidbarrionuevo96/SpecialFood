@@ -222,4 +222,3 @@ IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdDelivery) references Usuario (IdUsuario),
 FOREIGN KEY (IdPedido) references Pedido (IdPedido));
 
-

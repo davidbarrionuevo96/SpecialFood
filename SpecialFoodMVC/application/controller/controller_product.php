@@ -41,9 +41,9 @@ class Controller_Product extends Controller{
 	    		header("Location: http://localhost/login/login");
 	    	}
     	}
-    	else
-			{
-	    		header("Location: http://localhost/login/login");
-	    	}
+        else
+            {
+                header("Location: http://localhost/login/login");
+            }
     }
 }

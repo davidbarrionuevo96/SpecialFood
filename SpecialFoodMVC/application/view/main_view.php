@@ -42,9 +42,6 @@
 				  		</div>			  					
 					</div>
 				</div>
-
-				
-
 				<div class="container main-menu">
 					<div class="row align-items-center justify-content-center d-flex">			
 				      <nav id="nav-menu-container">
@@ -63,35 +60,34 @@
 								}else if($_SESSION['IdPerfil'] == 2){
 									?>
 									<li><a href="/">Inicio</a></li>
-									<li><a href=''>Mis Menúes</a></li>
+									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>			
 									<li><a href=''>Mis Ventas</a></li>
-
-									<?php
+							<?php
 								}else if($_SESSION['IdPerfil'] == 3){
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href=''>Pedidos</a></li>
 									<li><a href=''>Mis repartos</a></li>
-									
-									<?php
-								}else if($_SESSION['IdPerfil'] == 4){
+
+							<?php
+								}
+								else if($_SESSION['IdPerfil'] == 4){
 									?>
 									<li><a href="/">Inicio</a></li>
-							        <li><a href="about.html">Nosotros</a></li>
-							        <li><a href="menu.html">Menú</a></li>
-							        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
-							        <li><a href="contact.html">Contacto</a></li>
-
-									<?php
+								        <li><a href="about.html">Nosotros</a></li>
+								        <li><a href="menu.html">Menú</a></li>
+								        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+								        <li><a href="contact.html">Contacto</a></li>
+							<?php
 								}
 							 }else{
 							 	?>
 							 	<li><a href="/">Inicio</a></li>
-						        <li><a href="about.html">Nosotros</a></li>
-						        <li><a href="menu.html">Menú</a></li>
+						        	<li><a href="about.html">Nosotros</a></li>
+						        	<li><a href="menu.html">Menú</a></li>
 								<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
-						        <li><a href="contact.html">Contacto</a></li>
-						         <?php
+						        	<li><a href="contact.html">Contacto</a></li>
+					        <?php
 							}
 							?>	
 					        

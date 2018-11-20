@@ -11,7 +11,7 @@ class Model_PuntoDeVenta extends Model{
             $result = mysqli_query($conexion, $sql1);
             $row = mysqli_fetch_assoc($result);
 
-            if (!($row['Numero'] == $numero)) {
+        if (!($row['Numero'] == $numero)) {
 
             $sql = "INSERT INTO `PuntoDeVenta`
 					(
@@ -29,6 +29,7 @@ class Model_PuntoDeVenta extends Model{
 					0,
 					now(),
 					1);";
+					
                 $result = mysqli_query($conexion, $sql);
 
                 return 1;
@@ -66,19 +67,19 @@ class Model_PuntoDeVenta extends Model{
         require('core/helpers/conexion.php');
 
         $sql = "SELECT 
-					p.IdPuntoDeVenta
-        			,p.Numero
-                    ,com.Nombre Comercio
-        			,com.IdComercio IdComercio
-                    ,ca.Descripcion Calle
-        			,ca.IdCalle IdCalle
-        		FROM 
-					PuntoDeVenta p
-                    LEFT JOIN Comercio com ON com.IdComercio = p.IdComercio AND com.BajaLogica = 0
-                    LEFT JOIN Calle ca ON ca.IdCalle = p.IdCalle AND ca.BajaLogica = 0
-				WHERE 
-					p.BajaLogica = 0
-					AND p.IdPuntoDeVenta = $idPuntoDeVenta;";
+			p.IdPuntoDeVenta
+        		,p.Numero
+                    	,com.Nombre Comercio
+        		,com.IdComercio IdComercio
+                    	,ca.Descripcion Calle
+        		,ca.IdCalle IdCalle
+        	FROM 
+			PuntoDeVenta p
+                	LEFT JOIN Comercio com ON com.IdComercio = p.IdComercio AND com.BajaLogica = 0
+                	LEFT JOIN Calle ca ON ca.IdCalle = p.IdCalle AND ca.BajaLogica = 0
+		WHERE 
+			p.BajaLogica = 0
+			AND p.IdPuntoDeVenta = $idPuntoDeVenta;";
 
         $result = mysqli_query($conexion, $sql);
 

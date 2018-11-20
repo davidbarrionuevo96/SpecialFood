@@ -23,7 +23,7 @@ class Model_Registro extends Model{
         include ('core/helpers/conexion.php');
 
         $encryptedPassword = sha1($password);
- 
+
         $sqlInsert = "INSERT INTO `Usuario`
                     (
                         `Nombre`,
@@ -55,7 +55,6 @@ class Model_Registro extends Model{
                         now(),
                         1);";
 
-       
         $result=mysqli_query($conexion,$sqlInsert);
 
         if(isset($result)){
@@ -70,20 +69,20 @@ class Model_Registro extends Model{
 		require('core/helpers/conexion.php');
 
         $sql = "SELECT 
-					IdUsuario
-        			,Nombre
+		     IdUsuario
+        	    ,Nombre
                     ,Apellido
                     ,Password
                     ,Email
                     ,CUIL
-        			,CUIT
+        	    ,CUIT
                     ,IdCalle
                     ,Numero
-        		FROM 
-					`Usuario`
-				WHERE 
-					BajaLogica = 0
-					AND IdUsuario = $idUsuario;";
+        	FROM 
+		    `Usuario`
+		WHERE 
+		    BajaLogica = 0
+		    AND IdUsuario = $idUsuario;";
 
         $result = mysqli_query($conexion, $sql);
 
