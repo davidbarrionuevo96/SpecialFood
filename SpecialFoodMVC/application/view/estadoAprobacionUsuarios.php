@@ -61,8 +61,10 @@
                         <?php
 
                         foreach ($data as $element){
-                            echo "<b class='letra-blanca11'>".$element['IdUsuario']."</b>".
-                            "<b class='letra-blanca11'>".$element['Nombre']."</b>"."<br>".
+                            echo "<b class='letra-blanca11'>"." ".$element['Nombre']."</b>".
+                            "<b class='letra-blanca11'>"." ".$element['Apellido']."</b>".
+                            "<b class='letra-blanca11'>"." ".$element['CUIL']."</b>".
+                            "<b class='letra-blanca11'>"." ".$element['CUIT']."</b>"."<br>".
                             "<a href='/aprobacionUsuario/Aceptar?id=".$element['IdUsuario']."'>"."<button class='primary-btn10'>"."Aceptar"."</button>"."</a>"."     ".
                             "<a href='/aprobacionUsuario/Rechazar?id=".$element['IdUsuario']."'>"."<button class='primary-btn10'>"."Rechazar"."</button>"."</a>"."<br>"."<br>";
                         }
