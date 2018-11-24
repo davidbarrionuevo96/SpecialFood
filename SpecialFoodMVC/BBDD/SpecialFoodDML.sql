@@ -65,13 +65,16 @@ values('Comercio 2', '34123456785', 0, now(), 1);
 insert into MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Menu 1', 1, 0, now(), 1);
 
-insert into EstadoEntrega (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Pendiente', 0, now(), 1);
 
-insert into EstadoEntrega (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+values('Pagado', 0, now(), 1);
+
+insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('En Transito', 0, now(), 1);
 
-insert into EstadoEntrega (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Entregado', 0, now(), 1);
 
 INSERT INTO `specialfooddb`.`menucomercioitem`
@@ -106,13 +109,14 @@ INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(325,1,1,0,now(),1);
 
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
 values('2018/11/20', 50, 35, 1, 1, 1, 1, 0, now(), 1);
 
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
 values('2018/11/20', 60, 45, 1, 2, 1, 1, 0, now(), 1);
 
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadoentrega, bajalogica, fechamodificacion, idusuariomodificacion)
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
 values('2018/11/20', 65, 30, 1, 1, 1, 1, 0, now(), 1);
 
 

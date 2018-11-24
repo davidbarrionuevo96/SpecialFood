@@ -174,7 +174,7 @@ IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdComercio) references Comercio (IdComercio),
 FOREIGN KEY (IdCalle) references Calle (IdCalle));
 
-Create Table EstadoEntrega(
+Create Table EstadoPedido(
 IdEstadoEntrega integer PRIMARY KEY AUTO_INCREMENT,
 Descripcion varchar (100),
 BajaLogica bit not null default 0,
@@ -189,14 +189,14 @@ TiempoEstimadoEntrega integer,
 IdComercio integer,
 IdCliente integer,
 IdPuntoDeVenta integer,
-IdEstadoEntrega integer,
+IdEstadoPedido integer,
 BajaLogica bit not null default 0,
 FechaModificacion datetime not null,
 IdUsuarioModificacion integer not null,
 FOREIGN KEY (IdComercio) references Comercio (IdComercio),
 FOREIGN KEY (IdCliente) references Usuario (IdUsuario),
 FOREIGN KEY (IdPuntoDeVenta) references PuntoDeVenta (IdPuntoDeVenta),
-FOREIGN KEY (IdEstadoEntrega) references EstadoEntrega (IdEstadoEntrega));
+FOREIGN KEY (IdEstadoPedido) references EstadoPedido (IdEstadoEntrega));
 
 Create Table PedidoItem(
 IdPedidoItem integer PRIMARY KEY AUTO_INCREMENT,
