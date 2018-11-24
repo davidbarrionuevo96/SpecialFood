@@ -1,5 +1,4 @@
 <?php
-
 class Controller_Product extends Controller{
 
     function listProduct(){
@@ -17,24 +16,43 @@ class Controller_Product extends Controller{
     	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
     		if(isset($_SESSION['IdUsuario'])){
-
     			$cliente = $_SESSION['IdUsuario'];
     			$idProducto = $_GET['IdProducto'];
     			$cantidad = $_GET['Cantidad'];
 
     			$producto = $this->model->getItem($idProducto);
 
-    			$tiempoEstimado = 10;
-    			$costoDeEntrega = 10.0;
+                $pedidoEnCurso = $this->model->getPedidoByCliente($cliente);
 
-    			$this->model->CrearPedido($producto, $tiempoEstimado, $cliente, $costoDeEntrega);
+                    if($pedidoEnCurso != 0){
 
-    			$this->model->CrearPedidoItem($producto, $cantidad);
+                        $this->model->CrearPedidoItem($producto, $cantidad);
 
-    			$usuario = $_SESSION['IdUsuario'];
-    			$pedidosPendientes = $this->model->getListPedidos($usuario);
+                        $usuario = $_SESSION['IdUsuario'];
 
-    			$this->view->generate('carritoDeCompra.php', 'template_view.php',$pedidosPendientes);
+                        $_SESSION['IdPedido'] = $pedidoEnCurso;
+
+                        $pedidosPendientes = $this->model->getListPedidos($usuario);
+
+                        $this->view->generate('carritoDeCompra.php', 'template_view.php',$pedidosPendientes);
+
+                    }else{
+
+                        $tiempoEstimado = 10;
+                        $costoDeEntrega = 10.0;
+
+                        $this->model->CrearPedido($producto, $tiempoEstimado, $cliente, $costoDeEntrega);
+
+                        $this->model->CrearPedidoItem($producto, $cantidad);
+
+                        $usuario = $_SESSION['IdUsuario'];
+
+                        $_SESSION['IdPedido'] = $this->model->getPedidoByCliente($cliente);
+
+                        $pedidosPendientes = $this->model->getListPedidos($usuario);
+
+                        $this->view->generate('carritoDeCompra.php', 'template_view.php',$pedidosPendientes);
+                    }
 	    	}
 			else
 			{
@@ -46,4 +64,51 @@ class Controller_Product extends Controller{
                 header("Location: http://localhost/login/login");
             }
     }
+
+    function confirmarPedido(){
+
+        if (isset($_SESSION['IdPedido'])) {
+
+        $IdPedido = $_SESSION['IdPedido'];
+        
+        $this->model->confirmarPedido($IdPedido);
+
+        unset($_SESSION['IdPedido']);  
+
+        $this->view->generate('main_view.php', 'template_view.php');
+
+        }
+    }
+
+    function cancelarPedido(){
+
+        if (isset($_SESSION['IdPedido'])) {
+
+            $IdPedido = $_SESSION['IdPedido'];
+
+            $this->model->cancelarPedido($IdPedido);
+
+            unset($_SESSION['IdPedido']);  
+
+            $this->view->generate('main_view.php', 'template_view.php');
+        }
+    }
+
+    function eliminarItem(){
+
+        if (isset($_SESSION['IdPedido'])) {
+            
+            $IdPedido = $_SESSION['IdPedido'];
+            $IdItem = $_GET['item'];
+            $usuario = $_SESSION['IdUsuario'];
+
+            $this->model->elimitarItemDePedido($IdPedido, $IdItem);
+
+            $pedidosPendientes = $this->model->getListPedidos($usuario);
+
+            $this->view->generate('carritoDeCompra.php', 'template_view.php', $pedidosPendientes);
+        }
+            
+    }
+    
 }

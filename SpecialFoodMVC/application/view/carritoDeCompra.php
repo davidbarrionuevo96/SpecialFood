@@ -25,33 +25,13 @@
             <link rel="stylesheet" href="/css/bootstrap.css">
             <link rel="stylesheet" href="/css/magnific-popup.css">
             <link rel="stylesheet" href="/css/jquery-ui.css">               
-            <link rel="stylesheet" href="/css/nice-select.css">                         
+            <link rel="stylesheet" href="/css/nice-select.css">                       
             <link rel="stylesheet" href="/css/animate.min.css">
             <link rel="stylesheet" href="/css/owl.carousel.css">                
             <link rel="stylesheet" href="/css/main.css">
             <link rel="stylesheet" href="/css/custom.css">
 
       <body>  
-        <header id="header" class="absolute">
-     <div class="container iniciar_sesion2">
-        <div class="row">     
-            <nav id="nav-menu">
-                <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
-                </ul>
-            </nav>                    
-        </div>
-        </div>
-        <div class="header-top">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div id="logo">
-                     <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
-                 </div>
-             </div>                 
-         </div>
-     </div>     
- </header><!-- #header -->      
       <section class="banner-area">   
                   <div class="container">
                       <div class="row justify-content-center">
@@ -63,14 +43,15 @@
                                   </div>
                                   <div class="panel-body">
 
-                                      <table class="table">
+                                      <table class="table letra-blanca">
                                         <thead class="thead-light">
                                           <tr>
-                                            <th scope="col">#</th>
+
+                                            <th scope="col" class="cantidadmenu">Cantidad</th>
                                             <th scope="col">Descripción</th>
                                             <th scope="col">Precio</th>
-                                            <th scope="col">Cantidad</th>
                                             <th scope="col">Total</th>
+                                            <th scope="col">Eliminar</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -85,17 +66,21 @@
                                               $row ++;
                                                 echo
                                                   "<tr>".
-                                                    "<th scope='row'>".$row."</th>".
+                                                    "<td><input type='number' id='' class='tablapedido' value='". $element['Cantidad']."'></td>".
                                                     "<td>".$element['Descripcion']."</td>".
-                                                    "<td>".$element['PrecioUnitario']."</td>".
-                                                    "<td>".$element['Cantidad']."</td>".
+                                                    "<td>".$element['PrecioUnitario']."</td>". 
                                                     "<td>".$element['CostoTotal']."</td>".
+                                                    "<td><a href='/product/eliminarItem?item=".$element['IdPedidoItem']."'><button>Eliminar</button></a></td>".
                                                   "</tr>";
                                             }
                                         }
                                         ?>
                                         </tbody>
                                       </table>
+                                      
+                                      <a href="/product/listarProductos"><button>Agregar más productos</button></a>
+                                      <a href="/product/confirmarPedido" margin-left:="" 24em="" style="margin-left: 24em;"><button>Confirmar(PAGO)</button></a>
+                                      <a href="/product/cancelarPedido"><button>Cancelar</button></a>
                                       
                                   </div>
                               </div>

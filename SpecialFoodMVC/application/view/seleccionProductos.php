@@ -31,26 +31,30 @@
             <link rel="stylesheet" href="/css/main.css">
             <link rel="stylesheet" href="/css/custom.css">
 
-      <header id="header" class="absolute">
-     <div class="container iniciar_sesion2">
-        <div class="row">     
-            <nav id="nav-menu">
-                <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
-                </ul>
-            </nav>                    
-        </div>
-        </div>
+      <header id="header">
         <div class="header-top">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div id="logo">
-                     <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
-                 </div>
-             </div>                 
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div id="logo">
+                         <a href="index.html"><img src="../img/logo.png" alt="" title="" /></a>
+                     </div>
+                 </div>                             
+             </div>
          </div>
-     </div>     
- </header><!-- #header -->      
+        <div class="container main-menu">
+          <div class="row align-items-center justify-content-center d-flex">      
+            <nav id="nav-menu-container">
+              <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Nosotros</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                
+              </ul>
+            </nav>                    
+          </div>
+        </div>
+      </header><!-- #header -->
       <section class="banner-area1">   
         <div class="container">
           <div class="row fullscreen align-items-center justify-content-between ">
@@ -70,7 +74,7 @@
                               "<div class='cajaparaboton'>". 
                               "<div class='cajaimagen'>"."<img class='imagencomida' src=".$element['Foto'].">"."</div>".
                                  "<div class='cajaparaboton2'>".$element['Descripcion']."<br>".$element['Precio']."<br>".
-                                 "<input type='number' id='cantidad' name='Cantidad' min='1' max='100' value='1'>"."<br>".
+                                 "<input type='number' class='cantidadprod' id='cantidad' name='Cantidad' min='1' max='100' value='1'>"."<br>".
                                  "<input type='text' name='IdProducto' visibility: hidden value=".$element['IdMenuComercioItem'].">"."<br>".
                               "<input type='submit' value='Agregar al carrito' class='btn btn-info btn-block'>".
                               "</div>".
@@ -79,17 +83,12 @@
                               "</form>" ;
                     }
                 }
-
                 ?> 
                  
             </div>
           </div>
         </div>
       </section>
-
-
-      
-
       <footer class="footer-area">
    <?php
       include 'footer.php';
