@@ -6,7 +6,7 @@ class Model_Login extends Model{
 
 		include ('core/helpers/conexion.php');
 
-		$result = mysqli_query($conexion, "SELECT Email, Password, Nombre, IdPerfil, IdEstadoAprobacionUsuario FROM Usuario WHERE Email = '$email'");
+		$result = mysqli_query($conexion, "SELECT Email, Password, Nombre, IdPerfil, IdEstadoAprobacionUsuario, IdUsuario FROM Usuario WHERE Email = '$email'");
 	
 		$row = mysqli_fetch_assoc($result);
 

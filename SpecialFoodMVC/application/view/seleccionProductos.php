@@ -31,34 +31,26 @@
             <link rel="stylesheet" href="/css/main.css">
             <link rel="stylesheet" href="/css/custom.css">
 
-      <header id="header">
-        <div class="header-top">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div id="logo">
-                         <a href="index.html"><img src="../img/logo.png" alt="" title="" /></a>
-                     </div>
-                 </div>                             
-             </div>
-         </div>
-        <div class="container main-menu">
-          <div class="row align-items-center justify-content-center d-flex">      
-            <nav id="nav-menu-container">
-              <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Nosotros</a></li>
-                <li><a href="menu.html">Menú</a></li>
-                <li><a href="contact.html">Contacto</a></li>
-
-                <li class="derecha"></li>
-                <li><button class="primary-btn1"><a href="iniciar-sesion.html">Iniciar sesión</a></li></button>
-                <li><button class="primary-btn1"><a href="registrarse.html">Registrarse</a></li></button>
-                
-              </ul>
+      <header id="header" class="absolute">
+     <div class="container iniciar_sesion2">
+        <div class="row">     
+            <nav id="nav-menu">
+                <ul class="nav-menu ">
+                    <li class="volver"><a href="/"> << Volver</a></li>
+                </ul>
             </nav>                    
-          </div>
         </div>
-      </header><!-- #header -->
+        </div>
+        <div class="header-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div id="logo">
+                     <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
+                 </div>
+             </div>                 
+         </div>
+     </div>     
+ </header><!-- #header -->      
       <section class="banner-area1">   
         <div class="container">
           <div class="row fullscreen align-items-center justify-content-between ">

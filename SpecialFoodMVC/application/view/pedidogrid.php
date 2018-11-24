@@ -57,9 +57,12 @@ $SQL = $SQL . "WHERE ";
 $SQL = $SQL . "     p.BajaLogica = 0 ";
 //admin 1 , negocio 2, delivery 3
 if ($idPerfil == 3)
-    $SQL = $SQL . " AND est.descripcion like 'Pendiente'";
-if ($idPerfil == 2 || $idPerfil == 4)
-    $SQL = $SQL . " AND cli.IdUsuario='$idUsuario'";
+    $SQL = $SQL . " AND p.IdEstadoEntrega = 1 ";
+/*if ($idPerfil == 2)
+    $SQL = $SQL . " AND cli.IdUsuario= $idUsuario ";
+if ($idPerfil == 4)
+    $SQL = $SQL . " AND cli.IdUsuario= $idUsuario ";*/
+
 $SQL = $SQL . "ORDER BY ";
 $SQL = $SQL . "     $sidx $sord LIMIT $start , $limit";
 

@@ -32,6 +32,26 @@
             <link rel="stylesheet" href="/css/custom.css">
 
       <body>  
+        <header id="header" class="absolute">
+     <div class="container iniciar_sesion2">
+        <div class="row">     
+            <nav id="nav-menu">
+                <ul class="nav-menu ">
+                    <li class="volver"><a href="/"> << Volver</a></li>
+                </ul>
+            </nav>                    
+        </div>
+        </div>
+        <div class="header-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div id="logo">
+                     <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
+                 </div>
+             </div>                 
+         </div>
+     </div>     
+ </header><!-- #header -->      
       <section class="banner-area">   
                   <div class="container">
                       <div class="row justify-content-center">

@@ -111,7 +111,7 @@
                         { name:'NombreCliente', index:'NombreCliente', sortable: false, width: 90 },
                         { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 70 },
                         { name:'NumeroCliente', index:'NumeroCliente', sortable: false, width: 90 },
-                        { name: 'action', index: 'action', width: 40, align: 'center', sortable: false, search: false }
+                        { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPedido', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"Pedidos",
                     rows: []
@@ -122,10 +122,13 @@
                 <?php $session_IdPerfil=(isset($_SESSION['IdPerfil']))?$_SESSION['IdPerfil']:''; ?>
                 <?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
 
-                var idPerfil='<?php echo $session_IdPerfil;?>';
-                var idUsuario='<?php echo $session_IdUsuario;?>';
+                //var idPerfilGrid='<?php echo $session_IdPerfil;?>';
+                //var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
 
-                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfil + "&idUsuario=" + idUsuario, function(data){
+                alert("Perfil: " + idPerfilGrid);
+                alert("Usuario: " + idUsuarioGrid);
+
+                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
                     if (idPerfil==3){
 

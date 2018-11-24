@@ -56,12 +56,13 @@
 									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
 									<li><a href='/usuario/usuariolist'>Imprimir Listados</a></li>
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>			
-									<li><a href=''>Mis Ventas</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 							<?php
 								}else if($_SESSION['IdPerfil'] == 3){
 									?>
@@ -74,19 +75,14 @@
 								else if($_SESSION['IdPerfil'] == 4){
 									?>
 									<li><a href="/">Inicio</a></li>
-								        <li><a href="about.html">Nosotros</a></li>
-								        <li><a href="menu.html">Menú</a></li>
-								        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
-								        <li><a href="contact.html">Contacto</a></li>
+							        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
 							<?php
 								}
 							 }else{
 							 	?>
 							 	<li><a href="/">Inicio</a></li>
-						        	<li><a href="about.html">Nosotros</a></li>
-						        	<li><a href="menu.html">Menú</a></li>
-								<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
-						        	<li><a href="contact.html">Contacto</a></li>
+									<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 					        <?php
 							}
 							?>	
