@@ -99,8 +99,8 @@
                         { name:'nombre', index:'nombre', width: 80, sortable: false},
                         { name:'apellido', index:'apellido', sortable: false },
                         { name:'email', index:'email', width: 200 , sortable: false },
-                        { name:'CUIT', index:'CUIT', align:"center" , width: 80 , sortable: false },
-                        { name:'CUIL', index:'CUIL', align:"center", width: 80 , sortable: false }
+                        { name:'CUIT', index:'CUIT', align:"center" , sortable: false },
+                        { name:'CUIL', index:'CUIL', align:"center", sortable: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerUsuario', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"usuario",
                     rows: []

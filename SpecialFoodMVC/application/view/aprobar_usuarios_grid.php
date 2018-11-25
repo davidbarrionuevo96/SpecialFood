@@ -29,7 +29,7 @@ if ($page > $total_pages)
 
 $start = $limit*$page - $limit; // do not put $limit*($page - 1) 
 
-$SQL = "SELECT IdUsuario, Nombre, Apellido ,CUIT, CUIL FROM Usuario 
+$SQL = "SELECT IdUsuario, Nombre, Apellido , CUIT, CUIL FROM Usuario 
         WHERE BajaLogica = 0 
         AND  IdEstadoAprobacionUsuario = 1
         AND (IdPerfil = 2 OR IdPerfil = 3)

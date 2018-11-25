@@ -99,8 +99,8 @@
                     { name:'IdUsuario', index:'IdUsuario', width: 100, align:"center", sortable: false }, 
                     { name:'Nombre', index:'Nombre', width: 100, sortable: false },
                     { name:'Apellido', index:'Apellido', width: 100, sortable: false }, 
-                    { name:'CUIT', index:'CUIT', align:"center", width: 100, sortable: false },
-                    { name:'CUIL', index:'CUIL', align:"center", width: 100,sortable: false },
+                    { name:'CUIT', index:'CUIT', align:"center", sortable: false },
+                    { name:'CUIL', index:'CUIL', align:"center", sortable: false },
                     { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerUsuarios', sortname: 'id', 
                   viewrecords: true, sortorder: "desc", caption:"Usuarios",

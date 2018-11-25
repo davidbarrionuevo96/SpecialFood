@@ -56,8 +56,18 @@ $SQL = $SQL . "     LEFT JOIN Calle cau ON cau.IdCalle = cli.IdCalle AND cau.Baj
 $SQL = $SQL . "WHERE ";
 $SQL = $SQL . "     p.BajaLogica = 0 ";
 //admin 1 , negocio 2, delivery 3
-if ($idPerfil == 3)
-    $SQL = $SQL . " AND p.IdEstadoEntrega = 1 ";
+if ($idPerfil == 2){
+    $SQL = $SQL . " AND p.IdPuntoDeVenta = $idUsuario";
+}
+
+if ($idPerfil == 3){
+    $SQL = $SQL . " AND p.IdDelivery =  $idUsuario";
+}
+
+if ($idPerfil == 4){
+    $SQL = $SQL . " AND p.IdCliente = $idUsuario";
+}
+    
 /*if ($idPerfil == 2)
     $SQL = $SQL . " AND cli.IdUsuario= $idUsuario ";
 if ($idPerfil == 4)
@@ -90,7 +100,7 @@ while($row=mysqli_fetch_assoc($result))
     $response->rows[$i]['CallePuntoDeVenta']=$row['CallePuntoDeVenta'];
     $response->rows[$i]['NumeroPuntoDeVenta']=$row['NumeroPuntoDeVenta'];
     $response->rows[$i]['NombreCliente']=$row['NombreCliente'];
-    $response->rows[$i]['CalleCliente']=$row['CalleCliente'];
+    $response->rows[$i]['CalleCliente']=$row['CalleCliente']. + . $row['NumeroCliente'];
     $response->rows[$i]['NumeroCliente']=$row['NumeroCliente'];
 
     $i++;
