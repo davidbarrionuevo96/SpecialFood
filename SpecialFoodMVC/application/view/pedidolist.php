@@ -95,13 +95,14 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['Costo','Tiempo Entrega','Nro. Pto. Venta','Calle Comercio','Número','Calle Cliente', 'Número',''],
+                    colNames:['IdPedido','Costo','Tiempo Entrega','Nro. Pto. Venta', 'Comercio','Calle Comercio','Número','Calle Cliente', 'Número',''],
 
                     colModel:[
-
+                        { name:'IdPedido', index:'IdPedido', hidden: true, sortable: false, width: 50 },
                         { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
                         { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
                         { name:'PuntoDeVenta', index:'PuntoDeVenta', sortable: false, width: 90 },
+                        { name:'Comercio', index:'Comercio', sortable: false, width: 70 },
                         { name:'CallePuntoDeVenta', index:'CallePuntoDeVenta', sortable: false, width: 90 },
                         { name:'NumeroPuntoDeVenta', index:'NumeroPuntoDeVenta', sortable: false, width: 90 },
                         { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 70 },

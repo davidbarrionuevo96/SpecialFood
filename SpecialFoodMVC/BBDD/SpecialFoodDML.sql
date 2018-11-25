@@ -37,19 +37,19 @@ values ('Usuario', 0, now(), 1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("admin","admin",1,254,"admin@admin.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20325489717',null,1,2,0,now(),1);
+VALUES("admin","admin",1,254,"admin@admin.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20-32548971-7',null,1,2,0,now(),1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Cliente","cliente",2,154,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30548796547',null,4,2,0,now(),1);
+VALUES("Cliente","cliente",2,154,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-54879654-7',null,4,2,0,now(),1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Comercio","comercio",3,487,"comercio@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,'203548312455',3,1,0,now() ,1);
+VALUES("Comercio","comercio",3,487,"comercio@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,'20-354831245-5',3,2,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Repartidor","repartidor",2,784,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'3078423157',null,2,1,0,now() ,1);
+VALUES("Repartidor","repartidor",2,784,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-7842315-7',null,2,1,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
@@ -57,18 +57,18 @@ VALUES("Tomas","Juarez",1,458,"tomas@tomas.com","7c4a8d09ca3762af61e59520943dc26
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Diego","Gonzalez",1,458,"diego@diego.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20369854752',null,3,1,0,now() ,1);
+VALUES("Diego","Gonzalez",1,458,"diego@diego.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20-36985475-2',null,3,1,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Ignacio","Baldo",1,458,"ignacio@ignacio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30665411582',null,4,1,0,now() ,1);
+VALUES("Ignacio","Baldo",1,458,"ignacio@ignacio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-66541158-2',null,4,1,0,now() ,1);
 
 insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
-values ('Mc Donalds', 20325489717, 0, now(), 1);
+values ('Mc Donalds', '30-7842315-7', 0, now(), 1);
 insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
-values('Burger King', 20325489717, 0, now(), 1);
+values('Burger King','30-7842315-7', 0, now(), 1);
 insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
-values('Wendys', 20325489717, 0, now(), 1);
+values('Wendys','30-7842315-7', 0, now(), 1);
 
 insert into MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Menu Mc', 1, 0, now(), 1);
