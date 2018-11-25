@@ -257,43 +257,6 @@ text-align: center;
    
 }
 
-
-
-@media (max-width: 1199px ){
-    
-.cajag{
-    margin-top: 30em;
-    height: 30em;
-}
-.caja10{
-    height: 63em;
-}
-.banner-area1{
-    height: 93em;
-}
-
-@media (max-width: 800px ){
-    
-.cajag{
-    margin-top: 83em;
-    height:85em;
-}
-.caja10{
-    height: 85em;
-
-}
-.cajaimagen{
-     margin-left: 15%;
-}
-
-.cajaparaboton2{
-
-    margin-left: 15%;
-}
-.banner-area1{
-    height: 111em;
-}
-
 .newbutton
 {
   display: -webkit-inline-box;
@@ -333,6 +296,51 @@ text-align: center;
   width: 100%;
 }
 
+.newbutton a:hover
+{
+  color: #01040D !important;
+  font-weight: bold;
+}
+
+
+@media (max-width: 1199px ){
+    
+  .cajag{
+      margin-top: 30em;
+      height: 30em;
+  }
+  .caja10{
+      height: 63em;
+  }
+  .banner-area1{
+      height: 93em;
+  }
+}
+
+@media (max-width: 800px ){
+    
+    .cajag{
+        margin-top: 83em;
+        height:85em;
+    }
+    .caja10{
+        height: 85em;
+
+    }
+    .cajaimagen{
+         margin-left: 15%;
+    }
+
+    .cajaparaboton2{
+
+        margin-left: 15%;
+    }
+    .banner-area1{
+        height: 111em;
+    }
+}
+
+
 @media (max-width: 421px ){
     
 	.cajag{
@@ -355,8 +363,3 @@ text-align: center;
 	}
 }
 
-.newbutton a:hover
-{
-  color: #01040D !important;
-  font-weight: bold;
-}

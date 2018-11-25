@@ -24,7 +24,6 @@
 			<link rel="stylesheet" href="/css/font-awesome.min.css">
 			<link rel="stylesheet" href="/css/bootstrap.css">
 			<link rel="stylesheet" href="/css/magnific-popup.css">
-			<!--<link rel="stylesheet" href="/css/jquery-ui.css">				-->
 			<link rel="stylesheet" href="/css/nice-select.css">
 			<link rel="stylesheet" href="/css/animate.min.css">
 			<link rel="stylesheet" href="/css/owl.carousel.css">
@@ -96,10 +95,10 @@
                   datatype: "local", 
                   colNames:['Id Comercio','Nombre', 'CUIT', ''], 
                   colModel:[ 
-                    { name:'idcomercio', index:'idcomercio', width: 200, align:"center", sortable: false }, 
-                    { name:'nombre', index:'nombre', width: 350, sortable: false }, 
+                    { name:'idcomercio', index:'idcomercio', align:"center", hidden: true, sortable: false }, 
+                    { name:'nombre', index:'nombre', sortable: false }, 
                     { name:'cuit', index:'cuit', align:"center", sortable: false },
-                    { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
+                    { name: 'action', index: 'action', width: 90, align: 'center', sortable: false, search: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerComercios', sortname: 'id', 
                   viewrecords: true, sortorder: "desc", caption:"Comercios",
                   rows: []
@@ -128,9 +127,13 @@
                           checkOut = checkOut + "</tr></table>";
 
                           jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
+
+                          $("#listComercios").setGridWidth($("#containerGrid").width());
                     }
                 });
               }); 
+
+              
           }
           catch(err){
             alert(err);
@@ -147,6 +150,10 @@
                   window.location.assign("/Comercio/eliminar?id=" + id);
               }
           };
+
+          $(window).bind('resize', function () {
+              $("#listComercios").setGridWidth($("#containerGrid").width());
+          }).trigger('resize');
      </script>
  </head>
  <body>	
@@ -174,19 +181,18 @@
  <!-- start banner Area -->
  <section class="banner-area">		
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Comercios</h2>
-                        
                     </div>
                     <div class="panel-body">
                         <form action="/comercio/guardar" method="post">
-                          <input class="newbutton" type="button" style="float: right" onclick="window.location.assign('/Comercio/comerciomanager?id=0')" value="Nuevo" />
-                          <br /><br />
-                          <div class="row">
+                          <div class="row" id="containerGrid">
                              <div class="col-md-12">
+                                <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/Comercio/comerciomanager?id=0')" value="Nuevo" />
+                                <br/><br/>
                                 <table id="listComercios"></table>
                                 <div id="pagerComercios"></div>
                             </div>             
@@ -197,7 +203,7 @@
                     </div>
                   </div>
                 </div>
-</div>
+      </div>
 </section>
 <footer class="footer-area">
    <?php
