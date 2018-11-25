@@ -145,7 +145,7 @@
 
         function Delete(id) {
             var txt;
-            var r = confirm("¿Seguro que desea eliminar?");
+            var r = confirm("ï¿½Seguro que desea eliminar?");
             if (r == true) {
                 window.location.assign("/puntodeventa/eliminar?id=" + id);
             }

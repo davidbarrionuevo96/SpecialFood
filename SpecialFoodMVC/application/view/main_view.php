@@ -63,26 +63,28 @@
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>			
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 							<?php
 								}else if($_SESSION['IdPerfil'] == 3){
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 									<li><a href='/puntodeventa/puntodeventalist'>Mis repartos</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 
 							<?php
 								}
 								else if($_SESSION['IdPerfil'] == 4){
 									?>
 									<li><a href="/">Inicio</a></li>
-							        <li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+									<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 							<?php
 								}
 							 }else{
 							 	?>
 							 	<li><a href="/">Inicio</a></li>
 									<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
-									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 					        <?php
 							}
 							?>	
@@ -91,7 +93,7 @@
 							<?php
 							 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 							 	?>
-							 	<li><a href="#" onclick="IrAMiPerfil(); return false;">Mi Perfil</a></li>
+							 	<li><a href="#" onclick="IrAMiPerfil(); return false;"><?PHP echo $_SESSION['nombre']; ?></a></li>
 						        <li><a href='/login/cerrarSesion'>Cerrar Sesion</a></li>
 						         <?php
 							 }else{								

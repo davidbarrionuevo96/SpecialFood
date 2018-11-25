@@ -95,20 +95,15 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['Id','Fecha','Estado','Costo','Tiempo Entrega','Comercio','Nro. Pto. Venta','Calle','Numero', 'Cliente', 'Calle Cliente', 'Número',''],
+                    colNames:['Costo','Tiempo Entrega','Nro. Pto. Venta','Calle Comercio','Número','Calle Cliente', 'Número',''],
 
                     colModel:[
 
-                        { name:'IdPedido', index:'IdPedido', sortable: false, width: 20 },
-                        { name:'FechaPedido', index:'FechaPedido',  sortable: false, width: 70 },
-                        { name:'Estado', index:'Estado', sortable: false, width: 70 },
                         { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
                         { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
-                        { name:'Comercio', index:'Comercio', sortable: false, width: 90 },
                         { name:'PuntoDeVenta', index:'PuntoDeVenta', sortable: false, width: 90 },
                         { name:'CallePuntoDeVenta', index:'CallePuntoDeVenta', sortable: false, width: 90 },
                         { name:'NumeroPuntoDeVenta', index:'NumeroPuntoDeVenta', sortable: false, width: 90 },
-                        { name:'NombreCliente', index:'NombreCliente', sortable: false, width: 90 },
                         { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 70 },
                         { name:'NumeroCliente', index:'NumeroCliente', sortable: false, width: 90 },
                         { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }

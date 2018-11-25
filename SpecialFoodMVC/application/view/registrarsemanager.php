@@ -31,14 +31,94 @@
 			<link rel="stylesheet" href="/css/main.css">
 			<link rel="stylesheet" href="/css/custom.css">
 			<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
-	</head>
+    </head>
+    
+    <script>
+        function PostForm() {
+            if (IsValid()) {
+                $("#lblErrorP").text("");
+
+                document.forms["frmregistrom"].submit();
+            }
+        }
+
+        function IsValid() {
+            HideDivMessageP();
+
+            var field;
+            var regexemail = /^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$/;
+            var regexnumero = /^[0-9]+$/;
+            var regexcuilcuit = /^[0-9]{2}-[0-9]{8}-[0-9]$/;
+
+            field = $("#nombre").val();
+            if (field.length == 0) {
+                $("#lblErrorP").text("Debe ingresar el nombre.");
+                ShowDivMessageP();
+                return false;
+            }
+
+            field = $("#apellido").val();
+            if (field.length == 0) {
+                $("#lblErrorP").text("Debe ingresar el apellido.");
+                ShowDivMessageP();
+                return false;
+            }
+            /*
+            field = $("#password").val();
+            if (field.length == 0) {
+                $("#lblErrorP").text("Debe ingresar una contraseña.");
+                ShowDivMessageP();
+                return false;
+            }
+
+            field2 = $("#password_confirmation").val();
+            if (field != field2) {
+                $("#lblErrorP").text("Las contraseñas deben ser iguales");
+                ShowDivMessageP();
+                return false;
+            }
+            
+            field = $("#email").val();
+            if (!(field.match(regexemail))) {
+                $("#lblErrorP").text("El email no es válido.");
+                ShowDivMessageP();
+                return false;
+            }
+            */
+            field = $("#calle").val();
+            if (field.length == 0) {
+                $("#lblErrorP").text("Debe ingresar una calle.");
+                ShowDivMessageP();
+                return false;
+            }
+
+            field = $("#numero").val();
+            if (!(field.match(regexnumero))) {
+                $("#lblErrorP").text("Debe ingresar una número de calle.");
+                ShowDivMessageP();
+                return false;
+            }
+
+            return true;
+        }
+
+        function ShowDivMessageP() {
+            scroll(0, 0);
+            $("#divMessagesP").show("slow", function () { });
+        }
+
+        function HideDivMessageP() {
+            $("#divMessagesP").hide();
+        }
+    </script>
+
     <body>	
         <header id="header" class="absolute">
 			<div class="container iniciar_sesion">
                 <div class="row">			
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                            <li><a href="/">Volver</a></li>
+                            <li class="volver"><a href="/"> << Volver</a></li>
                         </ul>
                     </nav>				      		  
                 </div>
@@ -64,8 +144,15 @@
                                 <h3 class="panel-title letra-blanca">Datos del Usuario</h3>
                                 <br/>
                             </div>
+                            <div id="divMessagesP" style="display: none;">
+                                <p align="left">
+                                    <div class="alert alert-danger" style="text-align: left;">
+                                        <label id="lblErrorP" style="font-size: 12px; color: firebrick; font-weight: bold; margin-left: 5px;"></label>
+                                    </div>
+                                </p>
+                            </div>
                             <div class="panel-body">
-                                <form action="/registro/modificar_registro" name="form" id="form" method="POST">
+                                <form action="/registro/modificar_registro" name="frmregistrom" id="frmregistrom" method="POST">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6" style="display: none;">
                                             <select class="form-control" id="perfil" name="perfil">
@@ -90,19 +177,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <!--<div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="Contrase�a*">
+                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="Contrase�a*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contrase�a*">
+                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contrase�a*">
                                             </div>
                                         </div>
                                     </div>
-
+                                    -->
                                     <div class="row" style="display: none;">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
@@ -142,7 +229,7 @@
                           <br/>
                           <div class="row">
                             <div class="col-md-12">
-                            <input type="submit" value="Guardar" class="btn btn-info btn-block">
+                            <input type="submit" value="Guardar" onclick="PostForm(); return false" class="btn btn-info btn-block">
                             </div>
                           </div>
 

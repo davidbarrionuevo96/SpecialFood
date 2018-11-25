@@ -32,48 +32,57 @@ insert into perfil (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModific
 values ('Comercio', 0, now(), 1);
 insert into perfil (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Delivery', 0, now(), 1);
-
 insert into perfil (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Usuario', 0, now(), 1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("admin","admin",1,1111111,"admin@admin.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,1,1,0,now(),1);
+VALUES("admin","admin",1,254,"admin@admin.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20-32548971-7',null,1,2,0,now(),1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Cliente","cliente",1,1111111,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,4,2,0,now(),1);
+VALUES("Cliente","cliente",2,154,"cliente@cliente.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-54879654-7',null,4,2,0,now(),1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Comercio","comercio",1,1111111,"comercion@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,2011115,3,1,0,now() ,1);
+VALUES("Comercio","comercio",3,487,"comercio@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,'20-354831245-5',3,1,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Repartidor","repartidor",1,1111111,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,2,1,0,now() ,1);
+VALUES("Repartidor","repartidor",2,784,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-7842315-7',null,2,1,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("repartidor2","repartidor",1,1111111,"repartidorNoAprobad@admin.com","7c4a8d09ca3762af61e59520943dc26494f8941b",2011115,null,2,1,0,now() ,1);
+VALUES("Tomas","Nuñez",1,458,"tomas@tomas.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20-65849135-7',null,2,1,0,now() ,1);
+
+INSERT INTO `specialfooddb`.`usuario`
+(`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES("Diego","Gonzalez",1,458,"diego@diego.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'20-36985475-2',null,3,1,0,now() ,1);
+
+INSERT INTO `specialfooddb`.`usuario`
+(`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES("Ignacio","Baldo",1,458,"ignacio@ignacio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-66541158-2',null,4,1,0,now() ,1);
 
 insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
-values ('Comercio 1', '12123123122', 0, now(), 1);
-
+values ('Mc Donalds', 20-32548971-7, 0, now(), 1);
 insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
-values('Comercio 2', '34123456785', 0, now(), 1);
+values('Burger King', 20-32548971-7, 0, now(), 1);
+insert into comercio (nombre, cuit, bajalogica, fechamodificacion, idusuariomodificacion)
+values('Wendys', 20-32548971-7, 0, now(), 1);
 
 insert into MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
-values('Menu 1', 1, 0, now(), 1);
+values('Menu Mc', 1, 0, now(), 1);
+insert into MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+values('Menu Bk', 2, 0, now(), 1);
+insert into MenuComercio (Descripcion, IdComercio, BajaLogica, FechaModificacion, IdUsuarioModificacion)
+values('Menu W', 3, 0, now(), 1);
 
 insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Pendiente', 0, now(), 1);
-
 insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Pagado', 0, now(), 1);
-
 insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('En Transito', 0, now(), 1);
-
 insert into EstadoPedido (Descripcion, BajaLogica, FechaModificacion, IdUsuarioModificacion)
 values('Entregado', 0, now(), 1);
 
@@ -81,17 +90,14 @@ INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
 ("Pancho",10.0,"https://lamburger.com.ar/wp-content/uploads/2017/09/Super-pancho.jpg",1,0,now(),1);
-
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
 ("Milanesas",10.0,"https://images.clarin.com/2017/07/18/S1KW2joSW_1256x620.jpg",1,0,now(),1);
-
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
 ("Pizza",10.0,"https://placeralplato.com/files/2016/01/Pizza-con-pepperoni.jpg",1,0,now(),1);
-
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
@@ -99,27 +105,29 @@ VALUES
 
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(1234,1,1,0,now(),1);
-
+VALUES(168,1,1,0,now(),1);
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(458,1,1,0,now(),1);
-
+VALUES(458,2,2,0,now(),1);
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(325,1,1,0,now(),1);
+VALUES(325,3,3,0,now(),1);
 
 
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
 values('2018/11/20', 50, 35, 1, 1, 1, 1, 0, now(), 1);
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 60, 45, 2, 2, 1, 2, 0, now(), 1);
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 65, 30, 3, 1, 1, 3, 0, now(), 1);
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 65, 30, 3, 1, 1, 4, 0, now(), 1);
+insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
+values('2018/11/20', 65, 30, 3, 1, 1, 4, 0, now(), 1);
 
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 60, 45, 1, 2, 1, 1, 0, now(), 1);
-
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, idcomercio, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 65, 30, 1, 1, 1, 1, 0, now(), 1);
-
-
-
-
-
+insert into oferta (preciooferta, fechadesde, fechahasta, idmenucomercioitem, bajalogica, fechamodificacion, idusuariomodificacion)
+values(45,'2018/11/20','2018/11/25',2,0,now(),1);
+insert into oferta (preciooferta, fechadesde, fechahasta, idmenucomercioitem, bajalogica, fechamodificacion, idusuariomodificacion)
+values(150,'2018/11/20','2018/11/25',3,0,now(),1);
+insert into oferta (preciooferta, fechadesde, fechahasta, idmenucomercioitem, bajalogica, fechamodificacion, idusuariomodificacion)
+values(32,'2018/11/20','2018/11/25',1,0,now(),1);

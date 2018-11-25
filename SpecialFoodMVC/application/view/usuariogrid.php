@@ -19,7 +19,7 @@ if( $count >0 )
 {
     $total_pages = ceil($count/$limit);
 }
-// admin 1, comercio 2, delivery 3
+// admin 1, comercio 2, delivery 3, cliente 4
 else
 {
     $total_pages = 0;
