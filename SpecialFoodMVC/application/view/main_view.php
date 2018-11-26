@@ -30,6 +30,9 @@
 			<link rel="stylesheet" href="../css/owl.carousel.css">				
 			<link rel="stylesheet" href="../css/main.css">
 			<link rel="stylesheet" href="../css/custom.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		</head>
 		<body>	
 			<header id="header">
@@ -79,6 +82,7 @@
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/product/listarProductos'>Realizar Pedido</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/product/verCarritoDeCompra'><span class="glyphicon glyphicon-shopping-cart letra-blanca"></a></span></li>
 							<?php
 								}
 							 }else{

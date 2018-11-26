@@ -66,7 +66,7 @@
                                               $row ++;
                                                 echo
                                                   "<tr>".
-                                                    "<td><input type='number' id='' class='tablapedido' value='". $element['Cantidad']."'></td>".
+                                                    "<td><input onclick='myFunction()' type='number' id='cant' class='tablapedido' value='". $element['Cantidad']."'></td>".
                                                     "<td>".$element['Descripcion']."</td>".
                                                     "<td>".$element['PrecioUnitario']."</td>". 
                                                     "<td>".$element['CostoTotal']."</td>".
@@ -79,7 +79,7 @@
                                       </table>
                                       
                                       <a href="/product/listarProductos"><button>Agregar más productos</button></a>
-                                      <a href="/product/confirmarPedido" margin-left:="" 24em="" style="margin-left: 24em;"><button>Confirmar(PAGO)</button></a>
+                                      <a href="/product/confirmarPedido" margin-left:="" 22em="" style="margin-left: 24em;"><button>Confirmar(PAGO)</button></a>
                                       <a href="/product/cancelarPedido"><button>Cancelar</button></a>
                                       
                                   </div>
@@ -109,4 +109,17 @@
            <script src="js/isotope.pkgd.min.js"></script>                              
            <script src="js/mail-script.js"></script>   
            <script src="js/main.js"></script>  
+
+          <script type="text/javascript">
+            
+            function myFunction(){
+
+              //var cant =document.getElementById("cant").value;
+
+
+
+
+            }
+
+          </script>
 </html>

@@ -11,6 +11,14 @@ class Controller_Product extends Controller{
         $this->view->generate('seleccionProductos.php', 'template_view.php', $data);
     }
 
+    function verCarritoDeCompra(){
+        $cliente = $_SESSION['IdUsuario'];
+
+        $pedidos = $this->model->getListPedidos($cliente);
+
+        $this->view->generate('carritoDeCompra.php', 'template_view.php',$pedidos);
+    }
+
     function irACarrito(){
 
     	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
@@ -75,7 +83,7 @@ class Controller_Product extends Controller{
 
         unset($_SESSION['IdPedido']);  
 
-        $this->view->generate('main_view.php', 'template_view.php');
+        header("Location: http://localhost/pedido/pedidolist");
 
         }
     }
@@ -90,7 +98,8 @@ class Controller_Product extends Controller{
 
             unset($_SESSION['IdPedido']);  
 
-            $this->view->generate('main_view.php', 'template_view.php');
+            
+            header("Location: http://localhost");
         }
     }
 
