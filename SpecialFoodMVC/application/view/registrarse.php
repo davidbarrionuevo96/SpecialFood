@@ -174,8 +174,8 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <select class="form-control" id="perfil" name="perfil">
                                                 <option value="4">Cliente</option>
-                                                <option value="2">Repartidor</option>                                                
-                                                <option value="3">Comercio</option>
+                                                <option value="3">Repartidor</option>                                                
+                                                <option value="2">Comercio</option>
                                             </select>
                                         </div>       
                                     </div>

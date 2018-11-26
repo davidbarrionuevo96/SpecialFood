@@ -53,7 +53,7 @@
 
 							<?php
 							 if (isset($_SESSION['IdPerfil'])){
-								if ($_SESSION['IdPerfil'] == 1){
+								if ($_SESSION['IdPerfil'] == 1){ //admin
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
@@ -61,23 +61,23 @@
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 									<?php
-								}else if($_SESSION['IdPerfil'] == 2){
+								}else if($_SESSION['IdPerfil'] == 2){ //Comercio
 									?>
 									<li><a href="/">Inicio</a></li>
-									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>			
+									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
-									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/puntodeventa/puntodeventalist'>Puntos de venta</a></li>
 							<?php
-								}else if($_SESSION['IdPerfil'] == 3){
+								}else if($_SESSION['IdPerfil'] == 3){ //Delivery
 									?>
 									<li><a href="/">Inicio</a></li>
-									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/pedido/pedidolist'>Pedidos</a></li>			
 									<li><a href='/puntodeventa/puntodeventalist'>Mis repartos</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 
 							<?php
 								}
-								else if($_SESSION['IdPerfil'] == 4){
+								else if($_SESSION['IdPerfil'] == 4){ //Cliente
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/product/listarProductos'>Realizar Pedido</a></li>

@@ -45,11 +45,11 @@ VALUES("Cliente","cliente",2,154,"cliente@cliente.com","7c4a8d09ca3762af61e59520
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Comercio","comercio",3,487,"comercio@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,'20-354831245-5',3,2,0,now() ,1);
+VALUES("Comercio","comercio",3,487,"comercio@comercio.com","7c4a8d09ca3762af61e59520943dc26494f8941b",null,'20-354831245-5',2,2,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES("Repartidor","repartidor",2,784,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-7842315-7',null,2,1,0,now() ,1);
+VALUES("Repartidor","repartidor",2,784,"repartidor@repartidor.com","7c4a8d09ca3762af61e59520943dc26494f8941b",'30-7842315-7',null,3,2,0,now() ,1);
 
 INSERT INTO `specialfooddb`.`usuario`
 (`Nombre`,`Apellido`,`IdCalle`,`Numero`,`Email`,`Password`,`CUIL`,`CUIT`,`IdPerfil`,`IdEstadoAprobacionUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
