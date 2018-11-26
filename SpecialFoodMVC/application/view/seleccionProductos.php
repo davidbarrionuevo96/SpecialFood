@@ -33,12 +33,12 @@
 
       <header id="header" class="absolute">
           <div class="container iniciar_sesion2">
-              <div class="row">			
+              <div class="row">     
                   <nav id="nav-menu">
                       <ul class="nav-menu ">
                           <li class="volver"><a href="/"> << Volver</a></li>
                       </ul>
-                  </nav>				      		  
+                  </nav>                    
               </div>
               </div>
               <div class="header-top">
@@ -47,10 +47,9 @@
                           <div id="logo">
                           <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
                       </div>
-                  </div>			  					
+                  </div>                  
               </div>
-          </div>     
-      </header><!-- #header -->
+          </div>
       <section class="banner-area1">   
         <div class="container">
           <div class="row fullscreen align-items-center justify-content-between ">
