@@ -30,6 +30,7 @@
 			<link rel="stylesheet" href="/css/owl.carousel.css">				
 			<link rel="stylesheet" href="/css/main.css">
 			<link rel="stylesheet" href="/css/custom.css">
+            
 			<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
 	</head>
     <body>	

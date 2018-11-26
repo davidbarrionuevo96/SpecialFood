@@ -86,6 +86,9 @@ class Controller_Product extends Controller{
         header("Location: http://localhost/pedido/pedidolist");
 
         }
+        else{
+            header("Location: http://localhost");
+        }
     }
 
     function cancelarPedido(){
@@ -99,6 +102,8 @@ class Controller_Product extends Controller{
             unset($_SESSION['IdPedido']);  
 
             
+            header("Location: http://localhost");
+        }else{
             header("Location: http://localhost");
         }
     }
@@ -115,7 +120,18 @@ class Controller_Product extends Controller{
 
             $pedidosPendientes = $this->model->getListPedidos($usuario);
 
-            $this->view->generate('carritoDeCompra.php', 'template_view.php', $pedidosPendientes);
+            if(count($pedidosPendientes) >= 1){
+
+                $this->view->generate('carritoDeCompra.php', 'template_view.php', $pedidosPendientes);
+
+            }else{
+
+                $IdPedido = $_SESSION['IdPedido'];
+
+                $this->model->cancelarPedido($IdPedido);
+
+                $this->listarProductos();
+            }          
         }
             
     }

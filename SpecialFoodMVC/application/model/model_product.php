@@ -49,7 +49,7 @@ class Model_Product extends Model{
 	    						 pi.Cantidad , 
 	    						 (pi.Cantidad * pi.PrecioUnitario) 'CostoTotal'  
 						FROM Pedido p
-						LEFT JOIN PedidoItem pi ON p.IdPedido = pi.IdPedido AND pi.bajalogica = 0
+						INNER JOIN PedidoItem pi ON p.IdPedido = pi.IdPedido AND pi.bajalogica = 0
 						LEFT JOIN menucomercioitem mci ON mci.IdMenuComercioItem = pi.IdMenuComercioItem AND mci.bajalogica = 0
 						WHERE p.IdEstadoPedido = 1 AND p.bajalogica = 0 AND p.IdCliente = ".$idUsuario."" ;
 		$run_query = mysqli_query($conexion,$product_query);

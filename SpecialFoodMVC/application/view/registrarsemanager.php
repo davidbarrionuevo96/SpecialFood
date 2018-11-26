@@ -30,6 +30,7 @@
 			<link rel="stylesheet" href="/css/owl.carousel.css">				
 			<link rel="stylesheet" href="/css/main.css">
 			<link rel="stylesheet" href="/css/custom.css">
+            
 			<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">-->
     </head>
     
@@ -119,6 +120,13 @@
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                             <li class="volver"><a href="/"> << Volver</a></li>
+                            <?PHP 
+                            if(isset($_SESSION['IdPerfil']) && $_SESSION['IdPerfil'] == 4){
+                                ?>
+                                <li><a href="/product/verCarritoDeCompra"><img src="/img/carrito2.png" alt="carrito" class="imgcarrito"/></a></li>
+                                <?PHP
+                            }
+                            ?>
                         </ul>
                     </nav>				      		  
                 </div>

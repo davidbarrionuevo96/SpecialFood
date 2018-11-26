@@ -1,16 +1,16 @@
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Moron', '1708', 0, now(), 1);
+values ('Morón', '1708', 0, now(), 1);
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Castelar', '1709', 0, now(), 1);
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Ituzaingo', '1710', 0, now(), 1);
+values ('Ituzaingó', '1710', 0, now(), 1);
 
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Moron Norte', 1, 0, now(), 1);
+values ('Morón Norte', 1, 0, now(), 1);
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Castelar Norte', 2, 0, now(), 1);
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Ituzaingo Sur', 3, 0, now(), 1);
+values ('Ituzaingó Sur', 3, 0, now(), 1);
 
 insert into Calle (Descripcion, IdBarrio, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Coronel Machado', 1, 0, now(), 1);

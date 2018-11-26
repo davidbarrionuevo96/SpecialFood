@@ -30,18 +30,28 @@
             <link rel="stylesheet" href="/css/owl.carousel.css">                
             <link rel="stylesheet" href="/css/main.css">
             <link rel="stylesheet" href="/css/custom.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
       <header id="header" class="absolute">
           <div class="container iniciar_sesion2">
               <div class="row">     
-                  <nav id="nav-menu">
+                  <nav id="nav-menu" class="zindex">
                       <ul class="nav-menu ">
                           <li class="volver"><a href="/"> << Volver</a></li>
+                          <?PHP 
+                            if(isset($_SESSION['IdPerfil']) && $_SESSION['IdPerfil'] == 4){
+                                ?>
+                                <li><a href="/product/verCarritoDeCompra"><img src="/img/carrito2.png" alt="carrito" class="imgcarrito"/></a></li>
+                                <?PHP
+                            }
+                            ?>
                       </ul>
                   </nav>                    
               </div>
               </div>
-              <div class="header-top">
+              <div class="header-top cosa_rara">
                   <div class="container">
                       <div class="row justify-content-center">
                           <div id="logo">
