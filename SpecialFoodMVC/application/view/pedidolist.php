@@ -102,8 +102,8 @@
                         { name:'IdDelivery', index:'IdDelivery',hidden:true, sortable: false, width: 50 },
                         { name:'IdPedido', index:'IdPedido', hidden: true, sortable: false, width: 50 },
                         { name:'Estado', index:'Estado', sortable: false, width: 50 },
-                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
-                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
+                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50, align: 'right' },
+                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90, align: 'center' },
                         { name:'Comercio', index:'Comercio', sortable: false, width: 70 },
                         { name:'CalleComercio', index:'CalleComercio', sortable: false, width: 120 },
                         { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 120 },
@@ -120,12 +120,6 @@
 
                 var idPerfilGrid='<?php echo $session_IdPerfil;?>';
                 var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
-
-
-                //alert("Perfil: " + idPerfiGrid);
-                //alert("Usuario: " + idUsuarioGrid);
-
-
 
                 $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
@@ -167,9 +161,12 @@
                            checkOut = checkOut + "</tr></table>";
 
                            jQuery("#listPedido").jqGrid('setRowData', rowId, {action: checkOut});
+
                        }
                    }
                 });
+
+                $("#listPedido").setGridWidth($("#containerGrid").width());
             });
         }
         catch(err){
@@ -186,6 +183,10 @@
         function Entregado(id) {
             window.location.assign("/pedido/entregado?id=" + id);
         };
+
+        $(window).bind('resize', function () {
+              $("#listPedido").setGridWidth($("#containerGrid").width());
+          }).trigger('resize');
     </script>
 </head>
 <body>

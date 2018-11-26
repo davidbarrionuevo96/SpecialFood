@@ -42,8 +42,8 @@ $SQL = $SQL . "     ,est.Descripcion Estado";
 $SQL = $SQL . "     ,c.Nombre Comercio ";
 $SQL = $SQL . "     ,p.IdPuntoDeVenta PuntoDeVenta ";
 $SQL = $SQL . "     ,CONCAT(cli.Nombre, ' ', cli.Apellido) NombreCliente ";
-$SQL = $SQL . "     ,CONCAT(pv.Numero, ' ', ca.Descripcion) CalleComercio ";
-$SQL = $SQL . "     ,CONCAT(cli.Numero, ' ', cau.Descripcion) CalleCliente ";
+$SQL = $SQL . "     ,CONCAT(ca.Descripcion, ' ', pv.Numero, ' ', bac.Descripcion) CalleComercio ";
+$SQL = $SQL . "     ,CONCAT(cau.Descripcion, ' ', cli.Numero, ' ', bau.Descripcion) CalleCliente ";
 $SQL = $SQL . "FROM ";
 $SQL = $SQL . "     Pedido p ";
 $SQL = $SQL . "     LEFT JOIN PuntoDeVenta pv ON pv.IdPuntoDeVenta = p.IdPuntoDeVenta AND pv.BajaLogica = 0 ";
@@ -51,8 +51,10 @@ $SQL = $SQL . "     LEFT JOIN Comercio c ON c.IdComercio = pv.IdComercio AND c.B
 $SQL = $SQL . "     LEFT JOIN UsuarioComercio uc on uc.IdComercio=c.IdComercio AND uc.BajaLogica=0 ";
 $SQL = $SQL . "     LEFT JOIN EstadoPedido est ON est.IdEstadoEntrega= p.IdEstadoPedido and est.BajaLogica = 0 ";
 $SQL = $SQL . "     LEFT JOIN Calle ca ON ca.IdCalle = pv.IdCalle AND ca.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Barrio bac ON bac.IdBarrio = ca.IdBarrio AND bac.BajaLogica = 0 ";
 $SQL = $SQL . "     LEFT JOIN Usuario cli ON cli.IdUsuario = p.IdCliente AND cli.BajaLogica = 0 ";
 $SQL = $SQL . "     LEFT JOIN Calle cau ON cau.IdCalle = cli.IdCalle AND cau.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Barrio bau ON bau.IdBarrio = cau.IdBarrio AND bau.BajaLogica = 0 ";
 $SQL = $SQL . "WHERE ";
 $SQL = $SQL . "     p.BajaLogica = 0 ";
 //admin 1 , comercio 2, delivery 3, usuario 4
@@ -62,7 +64,7 @@ $SQL = $SQL . "     p.BajaLogica = 0 ";
 }
 
 if ($idPerfil == 3){
-    $SQL = $SQL . " AND p.IdDelivery=$idUsuario || p.IdEstadoPedido='2' ";
+    $SQL = $SQL . " AND (p.IdDelivery=$idUsuario || p.IdEstadoPedido='2') ";
 }
 
 if ($idPerfil == 4){
