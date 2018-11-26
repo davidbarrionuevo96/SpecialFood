@@ -99,7 +99,6 @@ class Model_Product extends Model{
 								     ped.FechaPedido,
 								     ped.CostoEntrega,
 								     ped.TiempoEstimadoEntrega,
-								     ped.IdComercio,
 								     ped.IdCliente,
 								     ped.IdPuntoDeVenta,
 								     ped.IdEstadoPedido,
@@ -108,7 +107,7 @@ class Model_Product extends Model{
 								     ped.IdUsuarioModificacion
 								FROM pedido ped
 								WHERE ped.BajaLogica = 0 AND ped.IdEstadoPedido = 1 AND ped.IdCliente = ".$idCliente."" ;
-
+								
 		$run_query = mysqli_query($conexion,$product_query);
 		
 		if($run_query == true){
