@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 <head>
@@ -95,18 +96,17 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['IdPedido','Costo','Tiempo Entrega','Nro. Pto. Venta', 'Comercio','Calle Comercio','Número','Calle Cliente', 'Número',''],
+                    colNames:['IdDelivery','IdPedido','Estado','Costo','Tiempo Entrega', 'Comercio','Dir. Comercio','Dir. Cliente',''],
 
                     colModel:[
+                        { name:'IdDelivery', index:'IdDelivery',hidden:true, sortable: false, width: 50 },
                         { name:'IdPedido', index:'IdPedido', hidden: true, sortable: false, width: 50 },
+                        { name:'Estado', index:'Estado', sortable: false, width: 50 },
                         { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
                         { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
-                        { name:'PuntoDeVenta', index:'PuntoDeVenta', sortable: false, width: 90 },
                         { name:'Comercio', index:'Comercio', sortable: false, width: 70 },
-                        { name:'CallePuntoDeVenta', index:'CallePuntoDeVenta', sortable: false, width: 90 },
-                        { name:'NumeroPuntoDeVenta', index:'NumeroPuntoDeVenta', sortable: false, width: 90 },
-                        { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 70 },
-                        { name:'NumeroCliente', index:'NumeroCliente', sortable: false, width: 90 },
+                        { name:'CalleComercio', index:'CalleComercio', sortable: false, width: 120 },
+                        { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 120 },
                         { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPedido', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"Pedidos",
@@ -118,36 +118,57 @@
                 <?php $session_IdPerfil=(isset($_SESSION['IdPerfil']))?$_SESSION['IdPerfil']:''; ?>
                 <?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
 
-                //var idPerfilGrid='<?php echo $session_IdPerfil;?>';
-                //var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
+                var idPerfilGrid='<?php echo $session_IdPerfil;?>';
+                var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
 
-                alert("Perfil: " + idPerfilGrid);
-                alert("Usuario: " + idUsuarioGrid);
+
+                //alert("Perfil: " + idPerfiGrid);
+                //alert("Usuario: " + idUsuarioGrid);
+
+
 
                 $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
-                    if (idPerfil==3){
+                    <?php $session_IdPerfil=(isset($_SESSION['IdPerfil']))?$_SESSION['IdPerfil']:''; ?>
+                    <?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
 
-                    var ids = jQuery("#listPedido").jqGrid('getDataIDs');
-                    for (var i = 0; i < ids.length; i++) {
-                        var rowId = ids[i];
+                    var idPerfilGrid='<?php echo $session_IdPerfil;?>';
+                    var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
 
-                        var IdPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdPedido;
+                   if (idPerfilGrid==3) {
 
-                        var checkOut = "<table><tr>";
 
-                        checkOut = checkOut + "<td title='Tomar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
-                        checkOut = checkOut +"<span class='ui-icon ui-icon-pin-s' onclick=\"Tomar(" + IdPedido + ");\"></span></td>";
+                       var ids = jQuery("#listPedido").jqGrid('getDataIDs');
+                       var cont=0;
 
-                        checkOut = checkOut +
-                            "<td title='Entregado' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
-                            "<span class='ui-icon ui-icon-check' onclick=\"Entregado(" + IdPedido + ");\"></span></td>";
 
-                        checkOut = checkOut + "</tr></table>";
+                       for (var i = 0; i < ids.length; i++) {
 
-                        jQuery("#listPedido").jqGrid('setRowData', rowId, { action: checkOut });
-                    }
-                    }
+                           var rowId = ids[i];
+
+                           var IdPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdPedido;
+                           var IdDelivery = jQuery("#listPedido").jqGrid('getRowData')[i].IdDelivery;
+
+                           var checkOut = "<table><tr>";
+                           if (IdDelivery<1){
+
+                               checkOut = checkOut + "<td title='Tomar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
+                               checkOut = checkOut + "<span class='ui-icon ui-icon-pin-s' onclick=\"Tomar(" + IdPedido + ");\"></span></td>";
+
+                           }
+                            else{
+
+                               checkOut = checkOut +
+                                   "<td title='Entregado' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                                   "<span class='ui-icon ui-icon-check' onclick=\"Entregado(" + IdPedido + ");\"></span></td>";
+                           }
+
+
+                           checkOut = checkOut + "</tr></table>";
+
+                           jQuery("#listPedido").jqGrid('setRowData', rowId, {action: checkOut});
+                       }
+                   }
                 });
             });
         }
@@ -156,7 +177,11 @@
         }
 
         function Tomar(id) {
-            window.location.assign("/pedido/tomar?id=" + id);
+            <?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
+
+            var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
+
+            window.location.assign("/pedido/tomar?id=" + id + "&idUsuario=" + idUsuarioGrid);
         };
         function Entregado(id) {
             window.location.assign("/pedido/entregado?id=" + id);
@@ -188,7 +213,7 @@
 <!-- start banner Area -->
 <section class="banner-area">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -197,9 +222,9 @@
                     </div>
                     <div class="panel-body">
                         <form action="/pedido/guardar" method="post">
-                            <br/>
-                            <div class="row">
+                            <div class="row" id="containerGrid">
                                 <div class="col-md-12">
+                                    <br/><br/>
                                     <table id="listPedido"></table>
                                     <div id="pagerPedido"></div>
                                 </div>
@@ -219,5 +244,6 @@
 </footer>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
 <script src="/js/validar-formulario.js"></script>
+
 </body>
 </html>
