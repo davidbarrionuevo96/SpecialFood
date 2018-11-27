@@ -103,12 +103,13 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['IdDelivery','IdPedido','Estado', 'Importe', 'Costo Envío','Mins. p/ Entrega', 'Comercio','Dir. Comercio','Dir. Cliente','',''],
+                    colNames:['IdDelivery','IdPedido','Estado', 'Fecha', 'Importe', 'Costo Envío','Mins. p/ Entrega', 'Comercio','Dir. Comercio','Dir. Cliente','',''],
 
                     colModel:[
                         { name:'IdDelivery', index:'IdDelivery',hidden:true },
                         { name:'IdPedido', index:'IdPedido', hidden: true },
                         { name:'Estado', index:'Estado', sortable: false, align: 'center' },
+                        { name:'FechaPedido', index:'FechaPedido', sortable: false, align: 'center' },
                         { name:'CostoTotal', index:'CostoTotal', sortable: false, align: 'center' },
                         { name:'CostoEntrega', index:'CostoEntrega', sortable: false, align: 'right' },
                         { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, align: 'center' },
