@@ -24,15 +24,42 @@ class Model_aprobacionUsuario extends Model{
         return $MenuComercio;
     }
 
-    public function Aceptar($id){
+    public function Aceptar($id, $idcomercio){
 
         require('core/helpers/conexion.php');
-        $sql = "update Usuario
+
+        
+        if(isset($idcomercio))
+        {
+            $sql3 = "SELECT COUNT(*) as Cantidad
+                    FROM UsuarioComercio uc
+                    LEFT JOIN Usuario u ON u.IdUsuario = uc.IdUsuario and u.BajaLogica = 0
+                    WHERE uc.IdComercio = '$idcomercio' ANd u.IdEstadoAprobacionUsuario = 2;
+                    ";
+
+            $result3 = mysqli_query($conexion,$sql3);
+            
+            $data=mysqli_fetch_assoc($result3);
+
+            if($data['Cantidad'] <= 5){
+                    $sql = "update Usuario
+                    SET IdEstadoAprobacionUsuario = 2
+                    where IdUsuario = '$id';";
+
+                $result = mysqli_query($conexion,$sql);
+
+            }else{
+                return $MenuComercio = null;
+            }
+        }else{
+            
+            $sql = "update Usuario
                 SET IdEstadoAprobacionUsuario = 2
                 where IdUsuario = '$id';";
 
-        $result = mysqli_query($conexion,$sql);
-
+            $result = mysqli_query($conexion,$sql);
+        }
+        
         $sql2 = "select * 
                 from Usuario
                 WHERE IdEstadoAprobacionUsuario = 1

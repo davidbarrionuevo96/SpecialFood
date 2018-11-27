@@ -39,7 +39,7 @@
         <div class="row">           
             <nav id="nav-menu">
                 <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
+                    <li class="volver"><a href="/Menu/ListarMenu"> << Volver</a></li>
                 </ul>
             </nav>                            
         </div>

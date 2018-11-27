@@ -94,13 +94,14 @@
                   //url: 'application/view/comerciogrid.php?page=1&rows=20&sidx=1&sord=asc',
                   //datatype: "json", 
                   datatype: "local", 
-                  colNames:['Id Usuario','Nombre','Apellido','CUIT','CUIL',''], 
+                  colNames:['Id Usuario','Nombre','Apellido','CUIT','CUIL','IdComercio',''], 
                   colModel:[ 
                     { name:'IdUsuario', index:'IdUsuario', width: 100, align:"center", sortable: false }, 
                     { name:'Nombre', index:'Nombre', width: 100, sortable: false },
                     { name:'Apellido', index:'Apellido', width: 100, sortable: false }, 
                     { name:'CUIT', index:'CUIT', align:"center", sortable: false },
                     { name:'CUIL', index:'CUIL', align:"center", sortable: false },
+                    { name:'IdComercio', index:'IdComercio', align:"center", hidden: true, sortable: false },
                     { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerUsuarios', sortname: 'id', 
                   viewrecords: true, sortorder: "desc", caption:"Usuarios",
@@ -117,11 +118,11 @@
                           var rowId = ids[i];
 
                           var IdUsuario = jQuery("#listUsuarios").jqGrid('getRowData')[i].IdUsuario;
-
+                          var IdComercio = jQuery("#listUsuarios").jqGrid('getRowData')[i].IdComercio;
                           var checkOut = "<table><tr>";
-
+                         
                           checkOut = checkOut + "<td title='Aceptar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
-                          checkOut = checkOut +"<span class='ui-icon ui-icon-check' onclick=\"Edit(" + IdUsuario + ");\"></span></td>";
+                          checkOut = checkOut +"<span class='ui-icon ui-icon-check' onclick=\"Edit("+ IdUsuario + ", " + IdComercio +");\"></span></td>";
 
                           checkOut = checkOut +
                               "<td title='Rechazar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
@@ -138,9 +139,9 @@
             alert(err);
           }
 
-          function Edit(id) {
-              window.location.assign("/aprobacionUsuario/Aceptar?id=" + id);
-          };
+          function Edit(id, IdComercio) {
+              window.location.assign("/aprobacionUsuario/Aceptar?id=" + id  + "&IdComercio=" + IdComercio);
+           };
 
           function Delete(id) {
               var txt;
@@ -173,12 +174,53 @@
      </div>     
  </header><!-- #header -->			
 
+<script>
+            function PostForm() {
+                if (IsValid()) {
+                    $("#lblErrorP").text("");
+
+                    document.forms["frmmenuitem"].submit();
+                }
+            }
+
+            function IsValid() {
+                HideDivMessageP();
+
+                var field;
+
+                field = $("#Producto_nombre").val();
+                if (field.length == 0) {
+                    $("#lblErrorP").text("Debe ingresar el nombre.");
+                    ShowDivMessageP();
+                    return false;
+                }
+
+                return true;
+            }
+
+            function ShowDivMessageP() {
+                scroll(0, 0);
+                $("#divMessagesP").show("slow", function () { });
+            }
+
+            function HideDivMessageP() {
+                $("#divMessagesP").hide();
+            }
+            </script>
+
  <!-- start banner Area -->
  <section class="banner-area">		
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
+                    <?PHP 
+                        if($msgError != NULL){
+                        ?>
+                            <div class="mensajeerror" id="error"><p><?PHP echo $msgError; ?></p></div>
+                        <?PHP
+                        }
+                    ?>
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Usuarios pendientes de aprobación</h2>
                         

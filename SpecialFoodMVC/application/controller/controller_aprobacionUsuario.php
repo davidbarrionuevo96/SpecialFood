@@ -13,8 +13,19 @@ class Controller_aprobacionUsuario extends Controller{
 
     function Aceptar(){
         $id = $_GET["id"];
-        $data = $this->model->Aceptar($id);
-        $this->view->generate('aprobar_usuarios_list.php', 'template_view.php', $data);
+        $idcomercio = $_GET["IdComercio"];
+
+        $data = $this->model->Aceptar($id, $idcomercio);
+
+        $msgError = "";
+
+        if($data != null){
+            $this->view->generate('aprobar_usuarios_list.php', 'template_view.php', $data,$msgError);
+        }
+        else{
+            $msgError = "Limite de usuarios permitidos por Comercio";
+            $this->view->generate('aprobar_usuarios_list.php', 'template_view.php', $data,$msgError);
+        }
     }
 
     function Rechazar(){

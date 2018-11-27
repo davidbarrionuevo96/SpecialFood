@@ -8,7 +8,7 @@ class View{
         $this->path = Path::getInstance();
     }
 
-    function generate($content_view, $template_view, $data = null){
+    function generate($content_view, $template_view, $data = null,$msgError = null){
 
         include $this->path->getPath("view", $template_view );
     }

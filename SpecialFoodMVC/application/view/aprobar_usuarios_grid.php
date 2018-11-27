@@ -29,10 +29,12 @@ if ($page > $total_pages)
 
 $start = $limit*$page - $limit; // do not put $limit*($page - 1) 
 
-$SQL = "SELECT IdUsuario, Nombre, Apellido , CUIT, CUIL FROM Usuario 
-        WHERE BajaLogica = 0 
-        AND  IdEstadoAprobacionUsuario = 1
-        AND (IdPerfil = 2 OR IdPerfil = 3)
+$SQL = "SELECT u.IdUsuario, u.Nombre, u.Apellido , u.CUIT, u.CUIL, uc.IdComercio
+        FROM Usuario u
+        LEFT JOIN UsuarioComercio uc ON uc.IdUsuario = u.IdUsuario AND uc.BajaLogica = 0
+        WHERE u.BajaLogica = 0 
+        AND  u.IdEstadoAprobacionUsuario = 1
+        AND (u.IdPerfil = 2 OR u.IdPerfil = 3)
         ORDER BY $sidx $sord LIMIT $start , $limit"; 
 
 $result = mysqli_query($conexion, $SQL ) or die("Couldn t execute query.".mysql_error()); 
@@ -54,6 +56,7 @@ while($row=mysqli_fetch_assoc($result))
   $response->rows[$i]['Apellido']=$row['Apellido']; 
   $response->rows[$i]['CUIT']=$row['CUIT'];
   $response->rows[$i]['CUIL']=$row['CUIL'];
+  $response->rows[$i]['IdComercio']=$row['IdComercio'];
   //$response->rows[$i]['cell']=array($row['idcomercio'],$row['nombre'],$row['cuit']); 
 
   //$response->rows[$i]="{ 'idcomercio': '".$row['idcomercio']."', 'nombre' : '".$row['nombre']."', 'cuit': '".$row['cuit']."'}"; 
