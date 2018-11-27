@@ -122,7 +122,7 @@ class Model_Registro extends Model{
         }
     }
 
-    public function modificar_usuario($idUsuario, $nombre, $apellido,/* $password,*/ $calle, $numero){
+    public function modificar_usuario($idUsuario, $nombre, $apellido,/* $password,*/ $Idcalle, $numero){
 
         require('core/helpers/conexion.php');
 
@@ -130,7 +130,7 @@ class Model_Registro extends Model{
                 SET 
                     Nombre = '$nombre'
                     ,Apellido = '$apellido'
-                    ,IdCalle = '$calle'
+                    ,IdCalle = '$Idcalle'
                     ,Numero = '$numero'
                     ,FechaModificacion = now()
 					,IdUsuarioModificacion = 1

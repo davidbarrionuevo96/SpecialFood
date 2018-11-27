@@ -104,7 +104,7 @@
 							 }else{								
 								?>
 							 	<li><a href='/main/iniciarsesion'>Iniciar Sesión</a></li>
-						        <li><a href='/application/view/registrarse.php'>Registrarse</a></li>
+						        <li><a href='/registro/cargarPantalla'>Registrarse</a></li>
 						        <?php
 							 }
 							?>

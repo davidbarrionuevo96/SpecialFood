@@ -426,3 +426,8 @@ text-align: center;
 .combocomercio{
     display: none;
 }
+
+.labels label{
+    color: white;
+    font-size: 20px;
+}

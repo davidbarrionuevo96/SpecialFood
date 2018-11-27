@@ -141,7 +141,11 @@
                 </div>
             </div>
         </header><!-- #header -->	
-        
+                            
+        <?PHP 
+        include ('core/helpers/conexion.php');
+        ?>
+
         <!-- start banner Area -->
         <section class="banner-area">		
             <div class="container">
@@ -160,7 +164,7 @@
                                 </p>
                             </div>
                             <div class="panel-body">
-                                <form action="/registro/modificar_registro" name="frmregistrom" id="frmregistrom" method="POST">
+                                <form action="/registro/modificar_registro" name="frmregistrom" id="frmregistrom" method="POST" class="labels">
                                     <div class="row"> 
                                         <div class="col-xs-6 col-sm-6 col-md-6" style="display: none;">
                                             <select class="form-control" id="perfil" name="perfil">
@@ -175,11 +179,13 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                         <input type="text" style="display: none;" name="Usuario_id" id="Usuario_id" value="<?php echo $data['IdUsuario']; ?>" />
                                             <div class="form-group">
+                                                <label for="nombre">Nombre
                                                 <input type="text" name="nombre" id="nombre" value="<?php echo $data['Nombre']; ?>" class="form-control input-sm" placeholder="Nombre*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
+                                            <label for="apellido">Apellido
                                                 <input type="text" name="apellido" id="apellido" value="<?php echo $data['Apellido']; ?>" class="form-control input-sm" placeholder="Apellido*"> 
                                             </div>
                                         </div>
@@ -214,12 +220,19 @@
 
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="calle" id="calle" value="<?php echo $data['IdCalle']; ?>" class="form-control input-sm" placeholder="Calle*">
-                                            </div>
+                                            <label for="Idcalle">Calle
+                                            <select class="form-control" id="Idcalle" name="Idcalle">
+                                                <?php $datoscalle=$conexion->query("select * from Calle");
+                                                    while($com = mysqli_fetch_array($datoscalle)) {?>
+
+                                                    <option value="<?php echo $com['IdCalle']; ?>"><?php echo $com['Descripcion']; ?></option>
+
+                                                 <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
+                                                <label for="numero">Número
                                                 <input type="text" name="numero" id="numero" value="<?php echo $data['Numero']; ?>" class="form-control input-sm" placeholder="Numero*">
                                             </div>
                                         </div>

@@ -74,13 +74,13 @@ class Controller_registro extends Controller{
         $apellido=$_POST['apellido'];
         $apellido=ucfirst($apellido);
 
-        $calle=$_POST['calle'];
+        $Idcalle=$_POST['Idcalle'];
 
         $numero=$_POST['numero'];
 
         //$password=$_POST['password'];
 
-        $this->model->modificar_usuario($idUsuario, $nombre, $apellido,/* $password,*/ $calle, $numero);
+        $this->model->modificar_usuario($idUsuario, $nombre, $apellido,/* $password,*/ $Idcalle, $numero);
         $this->view->generate('main_view.php', 'template_view.php');
     }
 }
