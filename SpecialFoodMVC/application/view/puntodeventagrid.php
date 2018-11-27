@@ -33,22 +33,16 @@ $start = $limit*$page - $limit; // do not put $limit*($page - 1)
 $SQL = "";
 $SQL = $SQL . "SELECT ";
 $SQL = $SQL . "      p.IdPuntoDeVenta ";
-$SQL = $SQL . "      ,p.Numero NumeroPunto";
-$SQL = $SQL . "     ,c.Nombre  Comercio";
-$SQL = $SQL . "     ,ca.Descripcion NombreCalle";
-$SQL = $SQL . "     ,cli.Numero NumeroCalle ";
+$SQL = $SQL . "     ,CONCAT(p.Numero, ' ', ca.Descripcion) CallePuntoDeVenta ";
+$SQL = $SQL . "     ,c.Nombre  NombreComercio ";
 $SQL = $SQL . "FROM ";
 $SQL = $SQL . "     PuntoDeVenta p ";
-$SQL = $SQL . "     LEFT JOIN Comercio c ON c.IdComercio = p.IdComercio AND c.BajaLogica = 0 ";
-$SQL = $SQL . "     LEFT JOIN Calle ca ON ca.IdCalle = p.IdCalle AND ca.BajaLogica = 0 ";
-$SQL = $SQL . "     LEFT JOIN Usuario cli ON cli.IdCalle = p.IdCalle AND cli.BajaLogica = 0 ";
+$SQL = $SQL . "     LEFT JOIN Calle ca ON ca.IdCalle = p.IdCalle AND ca.BajaLogica = 0  ";
+$SQL = $SQL . "     LEFT JOIN Comercio c ON c.IdComercio = p.IdComercio AND c.BajaLogica = 0  ";
 $SQL = $SQL . "WHERE ";
 $SQL = $SQL . "     p.BajaLogica = 0 ";
 $SQL = $SQL . "ORDER BY ";
 $SQL = $SQL . "     $sidx $sord LIMIT $start , $limit";
-
-
-
 
 $result = mysqli_query($conexion, $SQL ) or die("Couldn t execute query.".mysql_error());
 
@@ -64,10 +58,9 @@ $i=0;
 
 while($row=mysqli_fetch_assoc($result))
 {   $response->rows[$i]['IdPuntoDeVenta']=$row['IdPuntoDeVenta'];
-    $response->rows[$i]['NumeroPunto']=$row['NumeroPunto'];
-    $response->rows[$i]['NumeroCalle']=$row['NumeroCalle'];
-    $response->rows[$i]['NombreCalle']=$row['NombreCalle'];
-    $response->rows[$i]['Comercio']=$row['Comercio'];
+    $response->rows[$i]['CallePuntoDeVenta']=$row['CallePuntoDeVenta'];
+    $response->rows[$i]['NombreComercio']=$row['NombreComercio'];
+
     //$response->rows[$i]['cell']=array($row['idcomercio'],$row['nombre'],$row['cuit']);
 
     //$response->rows[$i]="{ 'idcomercio': '".$row['idcomercio']."', 'nombre' : '".$row['nombre']."', 'cuit': '".$row['cuit']."'}";

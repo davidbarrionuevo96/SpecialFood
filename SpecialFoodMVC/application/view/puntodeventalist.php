@@ -94,14 +94,12 @@
                     //url: 'application/view/comerciogrid.php?page=1&rows=20&sidx=1&sord=asc',
                     //datatype: "json",
                     datatype: "local",
-                    colNames:['IdPuntoDeVenta','Numero De PuntoDeVenta','Nombre del Comercio','Calle',''],
+                    colNames:['IdPuntoDeVenta','Dir. Punto De Venta','Nombre Del Comercio',''],
                     //Numero,IdComercio,IdCalle,BajaLogica,FechaModificacion,IdUsuarioModificacion
                     colModel:[
-                        { name:'IdPuntoDeVenta', index:'IdPuntoDeVenta', sortable: false },
-                        { name:'NumeroPunto', index:'NumeroPunto', sortable: false },
-                        { name:'NombreCalle', index:'NombreCalle', sortable: false },
-                        { name:'NumeroCalle', index:'NumeroCalle', sortable: false },
-                        { name:'Comercio', index:'Comercio', sortable: false },
+                        { name:'IdPuntoDeVenta', index:'IdPuntoDeVenta',hidden:true, sortable: false },
+                        { name:'CallePuntoDeVenta', index:'Dir. Punto De Venta', sortable: false },
+                        { name:'NombreComercio', index:'Nombre Del Comercio', sortable: false },
                         { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPuntoDeVenta', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"puntodeventa",
@@ -145,7 +143,7 @@
 
         function Delete(id) {
             var txt;
-            var r = confirm("�Seguro que desea eliminar?");
+            var r = confirm("¿Seguro que desea eliminar?");
             if (r == true) {
                 window.location.assign("/puntodeventa/eliminar?id=" + id);
             }
@@ -178,7 +176,7 @@
 <section class="banner-area">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
+            <div class="col-xs-12 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title letra-blanca">Puntos de Venta</h2>
