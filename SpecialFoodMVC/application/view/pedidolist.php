@@ -96,17 +96,18 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['IdDelivery','IdPedido','Estado','Costo','Tiempo Entrega', 'Comercio','Dir. Comercio','Dir. Cliente',''],
+                    colNames:['IdDelivery','IdPedido','Estado','Costo','Tiempo Entrega', 'Comercio','Dir. Comercio','Dir. Cliente','',''],
 
                     colModel:[
                         { name:'IdDelivery', index:'IdDelivery',hidden:true, sortable: false, width: 50 },
                         { name:'IdPedido', index:'IdPedido', hidden: true, sortable: false, width: 50 },
                         { name:'Estado', index:'Estado', sortable: false, width: 50 },
-                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50, align: 'right' },
-                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90, align: 'center' },
+                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
+                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
                         { name:'Comercio', index:'Comercio', sortable: false, width: 70 },
                         { name:'CalleComercio', index:'CalleComercio', sortable: false, width: 120 },
                         { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 120 },
+                        { name:'IdEstadoPedido', index:'IdEstadoPedido', hidden:true },
                         { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPedido', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"Pedidos",
@@ -120,6 +121,12 @@
 
                 var idPerfilGrid='<?php echo $session_IdPerfil;?>';
                 var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
+
+
+                //alert("Perfil: " + idPerfiGrid);
+                //alert("Usuario: " + idUsuarioGrid);
+
+
 
                 $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
@@ -135,6 +142,19 @@
                        var ids = jQuery("#listPedido").jqGrid('getDataIDs');
                        var cont=0;
 
+                        var tienePedidoEnCurso = false;
+
+                       for (var i = 0; i < ids.length; i++) {
+                           var rowId = ids[i];
+
+                           var idEstadoPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdEstadoPedido;
+
+                           if (idEstadoPedido == 3)
+                           {
+                               tienePedidoEnCurso = true;
+                               break;
+                           }
+                       }
 
                        for (var i = 0; i < ids.length; i++) {
 
@@ -142,31 +162,27 @@
 
                            var IdPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdPedido;
                            var IdDelivery = jQuery("#listPedido").jqGrid('getRowData')[i].IdDelivery;
+                           var idEstadoPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdEstadoPedido;
 
                            var checkOut = "<table><tr>";
-                           if (IdDelivery<1){
 
+                           //si esta pagado
+                           if (idEstadoPedido == 2 && !tienePedidoEnCurso){
                                checkOut = checkOut + "<td title='Tomar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
                                checkOut = checkOut + "<span class='ui-icon ui-icon-pin-s' onclick=\"Tomar(" + IdPedido + ");\"></span></td>";
-
                            }
-                            else{
-
+                           if (idEstadoPedido == 3){
                                checkOut = checkOut +
                                    "<td title='Entregado' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
                                    "<span class='ui-icon ui-icon-check' onclick=\"Entregado(" + IdPedido + ");\"></span></td>";
                            }
 
-
                            checkOut = checkOut + "</tr></table>";
 
                            jQuery("#listPedido").jqGrid('setRowData', rowId, {action: checkOut});
-
                        }
                    }
                 });
-
-                $("#listPedido").setGridWidth($("#containerGrid").width());
             });
         }
         catch(err){
@@ -183,10 +199,6 @@
         function Entregado(id) {
             window.location.assign("/pedido/entregado?id=" + id);
         };
-
-        $(window).bind('resize', function () {
-              $("#listPedido").setGridWidth($("#containerGrid").width());
-          }).trigger('resize');
     </script>
 </head>
 <body>

@@ -1,16 +1,16 @@
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Morón', '1708', 0, now(), 1);
+values ('MorÃ³n', '1708', 0, now(), 1);
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Castelar', '1709', 0, now(), 1);
 insert into Localidad (Descripcion, CodigoPostal, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Ituzaingó', '1710', 0, now(), 1);
+values ('ItuzaingÃ³', '1710', 0, now(), 1);
 
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Morón Norte', 1, 0, now(), 1);
+values ('MorÃ³n Norte', 1, 0, now(), 1);
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Castelar Norte', 2, 0, now(), 1);
 insert into Barrio (Descripcion, IdLocalidad, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-values ('Ituzaingó Sur', 3, 0, now(), 1);
+values ('ItuzaingÃ³ Sur', 3, 0, now(), 1);
 
 insert into Calle (Descripcion, IdBarrio, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
 values ('Coronel Machado', 1, 0, now(), 1);
@@ -112,23 +112,30 @@ VALUES(458,2,2,0,now(),1);
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(325,3,3,0,now(),1);
+/*
+set sql_safe_updates = 0
+update pedido set iddelivery = null, idestadopedido = 2, tiempoestimadoentrega=null;
+select * from pedido
 
-
+select * from penalidadDelivery
+*/
 insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 50, 35, 1, 1, 1, 1, 0, now(), 1);
+values('2018-11-26 15:25:40', 60, 45, 6, 2, 2, 2, 0, now(), 1);
 insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 60, 45, 2, 2, 1, 2, 0, now(), 1);
+values('2018-11-26 14:25:40', 65, 30, 4, 7, 1, 3, 0, now(), 1);
 insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 65, 30, 3, 1, 1, 3, 0, now(), 1);
+values('2018-11-26 18:25:40', 65, 30, null, 7, 2, 4, 0, now(), 1);
 insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 65, 30, 3, 1, 1, 4, 0, now(), 1);
-insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery, idcliente, idpuntodeventa, idestadopedido, bajalogica, fechamodificacion, idusuariomodificacion)
-values('2018/11/20', 65, 30, 3, 1, 1, 4, 0, now(), 1);
+values('2018-11-26 20:28:40', 65, 30, null, 2, 1, 4, 0, now(), 1);
 
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(1,3,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(2,5,0,now(),1);
+INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
+VALUES(3,5,0,now(),1);
+
+select * from pedido;
 
 insert into oferta (preciooferta, fechadesde, fechahasta, idmenucomercioitem, bajalogica, fechamodificacion, idusuariomodificacion)
 values(45,'2018/11/20','2018/11/25',2,0,now(),1);
