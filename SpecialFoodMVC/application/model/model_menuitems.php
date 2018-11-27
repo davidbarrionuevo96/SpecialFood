@@ -2,55 +2,49 @@
 <?php
 
 class Model_menuitems extends Model{
-    public function guardar($producto, $precio, $imagen,$idMenu){
+    public function guardar($producto,$precio,$destino,$idMenu){
 
         require('core/helpers/conexion.php');
-
-
-
-                $sql = "select mni.Descripcion d
+        $sql = "select mni.Descripcion d
                 from MenuComercioItem mni 
                 where mni.Descripcion='$producto'";
 
-                $result=mysqli_query($conexion,$sql);
-                $asd=mysqli_fetch_assoc($result);
+        $result=mysqli_query($conexion,$sql);
 
-                if(!($asd['d'] == $producto))
-                {
+        $asd=mysqli_fetch_assoc($result);
 
-
-
-                  $sql2 = "";
-                  $sql2 = $sql2 . "INSERT INTO MenuComercioItem ";
-                  $sql2 = $sql2 . "( ";
-                  $sql2 = $sql2 . "   Descripcion, ";
-                  $sql2 = $sql2 . "   Precio, ";
-                  $sql2 = $sql2 . "   Foto, ";
-                  $sql2 = $sql2 . "   IdMenuComercio, ";
-                  $sql2 = $sql2 . "   BajaLogica, ";
-                  $sql2 = $sql2 . "   FechaModificacion, ";
-                  $sql2 = $sql2 . "   IdUsuarioModificacion ";
-                  $sql2 = $sql2 . ")  ";
-                  $sql2 = $sql2 . "VALUES ";
-                  $sql2 = $sql2 . "( ";
-                  $sql2 = $sql2 . "   '$producto', ";
-                  $sql2 = $sql2 . "   '$precio', ";
-                  $sql2 = $sql2 . "   '$imagen', ";
-                  $sql2 = $sql2 . "   '$idMenu', ";
-                  $sql2 = $sql2 . "    0, ";
-                  $sql2 = $sql2 ."    NOW(), ";
-                  $sql2 = $sql2 . "    1 ";
-                  $sql2 = $sql2 . ");";
+        if(!($asd['d'] == $producto)) {
+            $sql2 = "";
+            $sql2 = "INSERT INTO MenuComercioItem 
+                                ( 
+                                   Descripcion, 
+                                   Precio, 
+                                   Foto, 
+                                   IdMenuComercio, 
+                                   BajaLogica, 
+                                   FechaModificacion, 
+                                   IdUsuarioModificacion 
+                                )  
+                                VALUES 
+                                ( 
+                                   '$producto', 
+                                   $precio, 
+                                 '" . $destino . "', 
+                                   $idMenu, 
+                                    0, 
+                                   NOW(), 
+                                    1 
+                                );";
 
 
-                  $result2=mysqli_query($conexion,$sql2);
+            $result2=mysqli_query($conexion,$sql2);
 
-                  return true;
-                }
-                else
-                {
-                   return false;
-                }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 
@@ -103,26 +97,26 @@ class Model_menuitems extends Model{
         return $MenuComercio;
     }
 
-    public function actualizar($Descripcion,$Precio,$Imagen, $id){
+    public function actualizar($producto , $precio, $destino,$idMenu){
 
         require('core/helpers/conexion.php');
 
 
         $sql1 = "update MenuComercioItem
-                SET Descripcion = '$Descripcion'
-                where IdMenuComercioItem = '$id';";
+                SET Descripcion = '$producto'
+                where IdMenuComercioItem = $idMenu;";
 
         $result1 = mysqli_query($conexion,$sql1);
 
         $sql2 = "update MenuComercioItem
-                SET Precio = '$Precio'
-                where IdMenuComercioItem = '$id';";
+                SET Precio = $precio
+                where IdMenuComercioItem = $idMenu;";
 
         $result2 = mysqli_query($conexion,$sql2);
 
         $sql3 = "update MenuComercioItem
-                SET Foto = '$Imagen'
-                where IdMenuComercioItem = '$id';";
+                SET Foto = '" . $destino . "'
+                where IdMenuComercioItem = $idMenu;";
         $result3 = mysqli_query($conexion,$sql3);
 
 
@@ -130,7 +124,7 @@ class Model_menuitems extends Model{
 
         $sql4 = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0 AND mc.idmenucomercio= '$idUsuario';";
+                WHERE mc.BajaLogica=0 AND mc.idmenucomercio= 'idUsuario';";
 
         $result4 = mysqli_query($conexion,$sql4);
 

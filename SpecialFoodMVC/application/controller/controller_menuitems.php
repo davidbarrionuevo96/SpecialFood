@@ -6,36 +6,44 @@ class Controller_menuitems extends Controller{
     }
 
     function nuevo(){
-        $this->view->generate('Menuitemsnuevo.php', 'template_view.php');
+        $this->view->generate('menuitemsnuevo.php', 'template_view.php');
     }
 
     function guardar(){
-
         $producto=$_POST['Producto_nombre'];
         $producto= strtolower($producto);
         $producto= ucfirst($producto);
-
+        $idMenu=$_POST['idMenu'];
         $precio=$_POST['Producto_precio'];
 
-        $imagen=$_POST['imagen'];
-        $idMenu=$_POST['idMenu'];
+        $nombre = $_FILES['imagen']['name'];
 
-        if (empty($producto) || empty($precio)|| empty($imagen)) {
+        $nombrer = strtolower($nombre);
+
+        $cd=$_FILES['imagen']['tmp_name'];
+        $ruta ="img/" .  $_FILES['imagen']['name'];
+        $destino = "img/" . $nombrer;
+        $resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
+
+        if (empty($producto) || empty($idMenu) || empty($precio) || empty($resultado)) {
 
             echo "<br>"."<div class='letraerror'>"."Campos vacios"."</div>";
 
         } else {
 
-            $guardar = $this->model->guardar($producto , $precio, $imagen,$idMenu);
+            $guardar = $this->model->guardar($producto , $precio, $destino,$idMenu);
 
 
             if($guardar == true){
-               header("Location: http://localhost/Menu/ListarMenu");
+                header("Location: http://localhost/Menu/ListarMenu");
             }
             else{
-            	header("Location: http://localhost/");
+                header("Location: http://localhost/");
             }
         }
+    }
+
+
     }
 
     function Eliminar(){
@@ -53,21 +61,28 @@ class Controller_menuitems extends Controller{
     function actualizar(){
 
 
-        $Descripcion=$_POST['Producto_nombre'];
-        $Descripcion= strtolower($Descripcion);
-        $Descripcion= ucfirst($Descripcion);
-        $Precio=$_POST['Producto_precio'];
-        $Imagen=$_POST['imagen'];
-        $id=$_POST['idMenu'];
+        $producto=$_POST['Producto_nombre'];
+        $producto= strtolower($producto);
+        $producto= ucfirst($producto);
+        $idMenu=$_POST['idMenu'];
+        $precio=$_POST['Producto_precio'];
 
-        if($Descripcion==null || $Precio==null ) {
+        $nombre = $_FILES['imagen']['name'];
+
+        $nombrer = strtolower($nombre);
+
+        $cd=$_FILES['imagen']['tmp_name'];
+        $ruta ="img/" .  $_FILES['imagen']['name'];
+        $destino = "img/" . $nombrer;
+        $resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
+
+        if($producto==null || $precio==null ) {
             echo "<br>"."<div class='letraerror'>"."No se aceptan campos vacios"."</div>";
         }
         else{
 
-            $data=$this->model->actualizar($Descripcion,$Precio,$Imagen,$id);
+            $data=$this->model->actualizar($producto , $precio, $destino,$idMenu);
             $this->view->generate('listarmenu.php', 'template_view.php', $data);
         }
 
-}
 }

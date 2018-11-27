@@ -114,8 +114,7 @@
                                 </p>
                             </div>
                     <div class="panel-body">
-                        <form role="form" method="POST" action="/menuitems/guardar" name="frmmenuitem" id="frmmenuitem">  
-                    
+                        <form role="form" method="POST" action="/menuitems/guardar" name="frmmenuitem" id="frmmenuitem" enctype="multipart/form-data">
                         <br>
                         <h3 class="letra-blanca">Producto</h3>
                         <br>
@@ -127,7 +126,7 @@
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="Producto_precio" id="Producto_precio" class="form-control input-sm" placeholder="Precio*">
+                                    <input type="number" name="Producto_precio" id="Producto_precio" class="form-control input-sm" placeholder="Precio*">
                                 </div>
                             </div>    
                                                    
@@ -136,14 +135,14 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
                                   <div class="custom-file">
-                                    <input type="file" name="imagen"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Agregar imagen</label>
+                                    <input type="file" name="imagen"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" maxlength="150">
+                                    <label class="custom-file-label" for="inputGroupFile01">Imagen</label>
                                   </div>
                                 </div>                              
                             </div>                        
                         </div>
-                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
-                        <input type="submit" name="guardar" class=" btn btn-info btn-block" onclick="PostForm(); return false">
+                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'><input type="submit" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
+
                     </form>
                 </div>
 
