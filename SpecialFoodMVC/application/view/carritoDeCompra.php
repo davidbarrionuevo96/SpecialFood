@@ -95,6 +95,24 @@
                                             }
                                         }
                                         ?>
+                                         <?php
+                                              $row = 0;
+                                              $cont=0.00;
+                                              if($data != NULL){
+
+                                                foreach ($data as $element) {
+                                                  $row++;
+                                                  $cont += $element['CostoTotal'];
+                                              }
+                                          }
+                                          echo
+                                              "<tr>".
+                                              "<td>Total</td>".
+                                              "<td></td>".
+                                              "<td></td>".
+                                              "<td>"."$".$cont.".00</td>".
+                                              "</tr>";
+                                          ?>
                                         </tbody>
                                       </table>
                                       
