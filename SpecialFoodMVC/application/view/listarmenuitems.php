@@ -38,7 +38,7 @@
         <div class="row">           
             <nav id="nav-menu">
                 <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
+                    <li class="volver"><a href="/menu/listarmenu"> << Volver</a></li>
                 </ul>
             </nav>                            
         </div>
@@ -64,19 +64,29 @@
 
                     </div>
                     <div class="panel-body">
-                        <br><br><br><br><br><br><br><br>
+                        <br>
                         <h3 class="letra-blanca2">Listado de los items</h3>
                         <br><br>
+
 
                         <?php
 
                         foreach ($data as $element){
 
+                            $Oferta="";
+                            if ( $element["Oferta"]!= null){
+                                $Oferta= "OFERTA";
+                            }
+                            else{$Oferta= "";}
+
+
+
                             echo "<div class='letra-blanca9'>".$element["Descripcion"]."<br>".
                                  $element["Precio"]."<br>".
-                                 "<img class='imagenitem' src=".$element["Foto"].">"."<br>"."<br>".
+                                 "<img class='imagenitem' src=../../".$element["Foto"].">"."<br>"."<br>".
+
                                 "<a href='/menuitems/Modificar?id=".$element['id']."'>"."<button class='primary-btn55'>"."Modificar"."</button>"."</a>"."<br>"."<br>".
-                                "<a href='/menuitems/Eliminar?id=".$element['id']."'>"."<button class='primary-btn55'>"."Eliminar"."</button>"."</a>"."</div>";
+                                "<a href='/menuitems/Eliminar?id=".$element['id']."'>"."<button class='primary-btn55'>"."Eliminar"."</button>"."</a>"."<span class='oferta'>".$Oferta."</span>"."</div>";
                         }
                         ?>
 

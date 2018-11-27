@@ -2,18 +2,10 @@
 <?php
 
 class Model_menuitems extends Model{
-    public function guardar($producto,$precio,$destino,$idMenu){
+    public function guardar($producto,$precio,$destino,$idMenu, $oferta, $Desde, $Hasta){
 
         require('core/helpers/conexion.php');
-        $sql = "select mni.Descripcion d
-                from MenuComercioItem mni 
-                where mni.Descripcion='$producto'";
 
-        $result=mysqli_query($conexion,$sql);
-
-        $asd=mysqli_fetch_assoc($result);
-
-        if(!($asd['d'] == $producto)) {
             $sql2 = "";
             $sql2 = "INSERT INTO MenuComercioItem 
                                 ( 
@@ -37,14 +29,35 @@ class Model_menuitems extends Model{
                                 );";
 
 
-            $result2=mysqli_query($conexion,$sql2);
+            mysqli_query($conexion,$sql2);
 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+            if($oferta == true) {
+                $sql3 = "INSERT INTO Oferta 
+                                ( 
+                                   PrecioOferta, 
+                                   FechaDesde, 
+                                   FechaHasta, 
+                                   IdMenuComercioItem, 
+                                   BajaLogica, 
+                                   FechaModificacion, 
+                                   IdUsuarioModificacion 
+                                )  
+                                VALUES 
+                                ( 
+                                   '$precio', 
+                                   '$Desde', 
+                                 '$Hasta',
+                                 (SELECT MAX(IdMenuComercioItem) FROM MenuComercioItem Where BajaLogica = 0), 
+                                  0, 
+                                   NOW(), 
+                                    1 
+                                );";
+
+                mysqli_query($conexion,$sql3);
+                return true;
+            }
+
+                return true;
 
     }
 
@@ -56,7 +69,13 @@ class Model_menuitems extends Model{
         $sql = "update MenuComercioItem
                 SET BajaLogica = 1
                 where IdMenuComercioItem = '$id';";
-        $result = mysqli_query($conexion,$sql);
+        mysqli_query($conexion,$sql);
+
+        $sq2 = "update Oferta
+                SET BajaLogica = 1
+                where IdMenuComercioItem = '$id';";
+        mysqli_query($conexion,$sq2);
+
 
         $idUsuario = $_SESSION['IdUsuario'];
 
@@ -82,9 +101,10 @@ class Model_menuitems extends Model{
 
         $idUsuario = $_SESSION['IdUsuario'];
 
-        $sql = "select mc.Descripcion Descripcion, mc.Precio Precio 
+        $sql = "select o.IdOferta 'Oferta', o.FechaDesde 'Desde', o.FechaHasta 'Hasta' ,mc.Descripcion 'Descripcion', mc.Precio 'Precio', mc.Foto 'Foto'
                 from MenuComercioItem mc
-                WHERE mc.IdMenuComercioItem='$id'";
+                 left join Oferta o on o.IdMenuComercioItem = mc.IdMenuComercioItem and o.BajaLogica = 0
+                WHERE mc.IdMenuComercioItem='$id';";
 
         $result = mysqli_query($conexion,$sql);
 
@@ -97,10 +117,9 @@ class Model_menuitems extends Model{
         return $MenuComercio;
     }
 
-    public function actualizar($producto , $precio, $destino,$idMenu){
+    public function actualizar($producto , $precio, $destino,$idMenu,$Desde,$Hasta,$Oferta){
 
         require('core/helpers/conexion.php');
-
 
         $sql1 = "update MenuComercioItem
                 SET Descripcion = '$producto'
@@ -119,6 +138,23 @@ class Model_menuitems extends Model{
                 where IdMenuComercioItem = $idMenu;";
         $result3 = mysqli_query($conexion,$sql3);
 
+        $sql4 = "update Oferta
+                SET FechaDesde =$Desde
+                where IdMenuComercioItem = $idMenu;";
+        $result4 = mysqli_query($conexion,$sql4);
+
+        $sql5 = "update Oferta
+                SET FechaHasta =$Hasta
+                where IdMenuComercioItem = $idMenu;";
+        $result5 = mysqli_query($conexion,$sql5);
+
+        if($oferta == null) {
+
+            $sql6 = "update Oferta
+                SET IdOferta = null 
+                where IdMenuComercioItem = $idMenu;";
+            $result6 = mysqli_query($conexion, $sql6);
+        }
 
         $idUsuario = $_SESSION['IdUsuario'];
 

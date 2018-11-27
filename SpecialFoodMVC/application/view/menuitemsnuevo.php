@@ -38,7 +38,7 @@
         <div class="row">     
             <nav id="nav-menu">
                 <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
+                    <li class="volver"><a href="/Menu/ListarMenu"> << Volver</a></li>
                 </ul>
             </nav>                    
         </div>
@@ -141,6 +141,19 @@
                                 </div>                              
                             </div>                        
                         </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <label class="letra-blanca"><input type="checkbox" id="Oferta" name="Oferta" > Oferta     </label>
+                                         
+                                    <label for="party" class="letra-blanca">    Desde:    
+                                        <input class="fecha" id="Desde" type="datetime-local" name="Desde" value="2017-06-01T08:30"></label>
+
+                                    <label for="party" class="letra-blanca">    Hasta:    
+                                        <input class="fecha id="Hasta" type="datetime-local" name="Hasta" value="2017-06-01T08:30"></label>
+                                </div>
+                            </div>
+
+                            <br>
                         <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'><input type="submit" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
 
                     </form>

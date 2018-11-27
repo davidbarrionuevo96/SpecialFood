@@ -38,7 +38,7 @@
         <div class="row">           
             <nav id="nav-menu">
                 <ul class="nav-menu ">
-                    <li class="volver"><a href="/"> << Volver</a></li>
+                    <li class="volver"><a href="/Menu/ListarMenu"> << Volver</a></li>
                 </ul>
             </nav>                            
         </div>
@@ -65,7 +65,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="POST" action="/menuitems/actualizar">
+                        <form role="form" method="POST" action="/menuitems/actualizar" enctype="multipart/form-data">
 
                             <br>
                             <h3 class="letra-blanca">Producto</h3>
@@ -100,7 +100,7 @@
                                             <input type="file" name="imagen"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"value='<?php
 
                                             foreach ($data as $element){
-                                                echo $element['Foto'];
+                                                echo "../../".$element['Foto'];
                                             }
                                             ?>'>
                                             <label class="custom-file-label" for="inputGroupFile01">Agregar imagen</label>
@@ -108,6 +108,42 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <label class="letra-blanca"><input type="checkbox" id="Oferta" name="Oferta"
+
+                                            <?php
+
+                                            foreach ($data as $element){
+
+                                                if ($element['Oferta']!=null){
+                                                    echo 'checked';
+                                                } else{echo "";}
+                                            }
+
+                                            ?>
+
+                                        > Oferta     </label>
+                                         
+                                    <label for="party" class="letra-blanca">    Desde:    
+                                        <input class="fecha" id="Desde" type="datetime" name="Desde" value='<?php
+
+                                        foreach ($data as $element){
+                                            echo $element['Desde'];
+                                        }
+                                        ?>'></label>
+
+                                    <label for="party" class="letra-blanca">    Hasta:    
+                                        <input class="fecha id="Hasta" type="datetime" name="Hasta" value='<?php
+
+                                        foreach ($data as $element){
+                                            echo $element['Hasta'];
+                                        }
+                                        ?>'></label>
+                                </div>
+                            </div>
+
                             <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
                             <input type="submit" name="guardar" class=" btn btn-info btn-block">
                         </form>

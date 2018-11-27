@@ -10,10 +10,19 @@ class Controller_menuitems extends Controller{
     }
 
     function guardar(){
+
+        $Desde=$_POST['Desde'];
+
+        $Hasta=$_POST['Hasta'];
+
+        $oferta=$_POST['Oferta'];
+
         $producto=$_POST['Producto_nombre'];
         $producto= strtolower($producto);
         $producto= ucfirst($producto);
+
         $idMenu=$_POST['idMenu'];
+
         $precio=$_POST['Producto_precio'];
 
         $nombre = $_FILES['imagen']['name'];
@@ -21,30 +30,19 @@ class Controller_menuitems extends Controller{
         $nombrer = strtolower($nombre);
 
         $cd=$_FILES['imagen']['tmp_name'];
+
         $ruta ="img/" .  $_FILES['imagen']['name'];
+
         $destino = "img/" . $nombrer;
+
         $resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
 
-        if (empty($producto) || empty($idMenu) || empty($precio) || empty($resultado)) {
 
-            echo "<br>"."<div class='letraerror'>"."Campos vacios"."</div>";
-
-        } else {
-
-            $guardar = $this->model->guardar($producto , $precio, $destino,$idMenu);
+        $this->model->guardar($producto , $precio, $destino,$idMenu, $oferta, $Desde, $Hasta);
+        header("Location: http://localhost/Menu/ListarMenu");
 
 
-            if($guardar == true){
-                header("Location: http://localhost/Menu/ListarMenu");
-            }
-            else{
-                header("Location: http://localhost/");
-            }
         }
-    }
-
-
-    }
 
     function Eliminar(){
         $id = $_GET["id"];
@@ -60,11 +58,18 @@ class Controller_menuitems extends Controller{
 
     function actualizar(){
 
+        $Desde=$_POST['Desde'];
+
+        $Hasta=$_POST['Hasta'];
+
+        $Oferta=$_POST['Oferta'];
 
         $producto=$_POST['Producto_nombre'];
         $producto= strtolower($producto);
         $producto= ucfirst($producto);
+
         $idMenu=$_POST['idMenu'];
+
         $precio=$_POST['Producto_precio'];
 
         $nombre = $_FILES['imagen']['name'];
@@ -72,17 +77,16 @@ class Controller_menuitems extends Controller{
         $nombrer = strtolower($nombre);
 
         $cd=$_FILES['imagen']['tmp_name'];
+
         $ruta ="img/" .  $_FILES['imagen']['name'];
+
         $destino = "img/" . $nombrer;
+
         $resultado = @move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
 
-        if($producto==null || $precio==null ) {
-            echo "<br>"."<div class='letraerror'>"."No se aceptan campos vacios"."</div>";
-        }
-        else{
 
-            $data=$this->model->actualizar($producto , $precio, $destino,$idMenu);
-            $this->view->generate('listarmenu.php', 'template_view.php', $data);
-        }
+        $data=$this->model->actualizar($producto , $precio, $destino,$idMenu,$Oferta,$Desde,$Hasta);
+        $this->view->generate('listarmenu.php', 'template_view.php', $data);
 
-}
+
+}}

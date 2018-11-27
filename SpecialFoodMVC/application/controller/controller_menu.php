@@ -16,17 +16,12 @@ class Controller_menu extends Controller{
             $comercio= strtolower($comercio);
             $comercio= ucfirst($comercio);
 
+            $this->model->guardar($comercio);
 
-            if($comercio==null){
-                echo "<br>"."<div class='letraerror'>"."No se aceptan campos vacios"."</div>";
-            }
-            else{
-                $guardar = $this->model->guardar($comercio);
-
-                $data = $this->model->getListMenu();
+            $data = $this->model->getListMenu();
                 
-                $this->view->generate('listarmenu.php', 'template_view.php', $data);        
-            }
+            $this->view->generate('listarmenu.php', 'template_view.php', $data);
+
 
     }
 
@@ -61,15 +56,9 @@ class Controller_menu extends Controller{
         $comercio= strtolower($comercio);
         $comercio= ucfirst($comercio);
         $id=$_POST['idMenu'];
-
-        if($comercio==null){
-            echo "<br>"."<div class='letraerror'>"."No se aceptan campos vacios"."</div>";
-        }
-        else{
-
         $data=$this->model->actualizar($comercio,$id);
         $this->view->generate('listarmenu.php', 'template_view.php', $data);
-    }
+
     }
 
 

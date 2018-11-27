@@ -52,8 +52,10 @@ class Model_menu extends Model{
 
         require('core/helpers/conexion.php');
 
-        $sql2 = "select mni.Descripcion 'Descripcion', mni.Precio 'Precio', mni.Foto 'Foto', mc.Descripcion Menu, mni.IdMenuComercioItem id
-                from MenuComercio mc join MenuComercioItem mni on mc.IdMenuComercio = mni.IdMenuComercio
+        $sql2 = "select o.BajaLogica 'Oferta', o.FechaDesde 'Desde', o.FechaHasta 'Hasta' ,mni.Descripcion 'Descripcion', mni.Precio 'Precio', mni.Foto 'Foto', mc.Descripcion Menu, mni.IdMenuComercioItem id
+                from MenuComercio mc 
+                join MenuComercioItem mni on mc.IdMenuComercio = mni.IdMenuComercio
+                 left join Oferta o on o.IdMenuComercioItem = mni.IdMenuComercioItem
                 where mni.IdMenuComercio='$id' 
                 and mni.BajaLogica=0
                 ";
@@ -66,7 +68,8 @@ class Model_menu extends Model{
         {
             $MenuComercio2[] = $rows2;
         }
-        return $MenuComercio2;
+
+           return $MenuComercio2;
     }
 
     public function getListParaEliminar($id){
