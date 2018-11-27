@@ -148,7 +148,7 @@ insert into pedido (fechapedido, costoentrega, tiempoestimadoentrega, iddelivery
 values('2018-11-26 20:28:40', 65, 30, null, 2, 1, 4, 0, now(), 1);
 
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(1,8,0,now(),1);
+VALUES(1,3,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(1,9,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
@@ -156,9 +156,9 @@ VALUES(1,10,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES(1,11,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(1,12,0,now(),1);
+VALUES(2,5,0,now(),1);
 INSERT INTO `specialfooddb`.`usuariocomercio`(`IdComercio`,`IdUsuario`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
-VALUES(1,13,0,now(),1);
+VALUES(3,5,0,now(),1);
 
 insert into oferta (preciooferta, fechadesde, fechahasta, idmenucomercioitem, bajalogica, fechamodificacion, idusuariomodificacion)
 values(45,'2018/11/20','2018/11/25',2,0,now(),1);

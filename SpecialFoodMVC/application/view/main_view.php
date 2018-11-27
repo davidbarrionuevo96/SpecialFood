@@ -57,10 +57,10 @@
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/aprobacionUsuario/ListarAprobacionUsuarios'>Aprobar Usuarios</a></li>
-									<li><a href='/usuario/usuariolist'>Imprimir Listados</a></li>
+									<li><a href='/informes/informeslist'>Informes y Estadísticas</a></li>
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
-									<li><a href='/listados/getListado'>Informes</a></li>
+									<li><a href='/cobranza/cobranzascomercio'>Liquidación Comercios</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){ //Comercio
 									?>
@@ -68,14 +68,13 @@
 									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 									<li><a href='/puntodeventa/puntodeventalist'>Puntos de venta</a></li>
+									<li><a href='/cobranza/cobranzasdelivery'>Liquidación Delivery</a></li>
 							<?php
 								}else if($_SESSION['IdPerfil'] == 3){ //Delivery
 									?>
 									<li><a href="/">Inicio</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>			
-									<li><a href='/puntodeventa/puntodeventalist'>Mis repartos</a></li>
-									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
-
+									<li><a href='/cobranza/cobranzasdelivery'>Mis Cobranzas</a></li>
 							<?php
 								}
 								else if($_SESSION['IdPerfil'] == 4){ //Cliente
@@ -104,7 +103,7 @@
 							 }else{								
 								?>
 							 	<li><a href='/main/iniciarsesion'>Iniciar Sesión</a></li>
-						        <li><a href='/registro/cargarPantalla'>Registrarse</a></li>
+						        	<li><a href='/registro/cargarPantalla'>Registrarse</a></li>
 						        <?php
 							 }
 							?>
@@ -132,7 +131,7 @@
 							<p class="text-white">
 								Amamos la comida tanto como vos y por eso queremos llevar a tu mesa, tu comida favorita directamente desde la cocina de los mejores restaurantes. ¿La mejor parte? ¡Te la llevamos donde estés!
 							</p>							
-							<form method="get" action="/" class="form-inline" >
+							<form method="get" action="/" class="form-inline" style="display: none;">
 								<input name="q" class="span5" type="text"  placeholder="Buscar restaurante" >
 								<input name="loc" class="span5" type="text"  placeholder="Ubicación">
 								<a href="#" class="primary-btn">Buscar</a>
@@ -163,101 +162,6 @@
 			</section>
 			<!-- End home-about Area -->			
 
-			<!-- Start menu-area Area -->
-            <section class="menu-area section-gap" id="menu">
-                <div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Todos los negocios cerca de tu hogar</h1>
-							</div>
-						</div>
-					</div>	
-
-                    <ul class="filter-wrap filters col-lg-12 no-padding">
-                        <li class="active" data-filter="*">Todos los restaurantes</li>
-                        <li data-filter=".breakfast">Rápida</li>
-                        <li data-filter=".lunch">China</li>
-                        <li data-filter=".dinner">Mexicana</li>
-                        <li data-filter=".budget-meal">Arabe</li>
-                        <li data-filter=".buffet">Vegetariana</li>
-                    </ul>
-                    
-                    <div class="filters-content">
-                        <div class="row grid">
-                            <div class="col-md-6 all breakfast">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Cappuccion</h4>
-										<h4 class="price">$49</h4>
-									</div>			
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>					                               
-                            </div>                           
-                            <div class="col-md-6 all dinner">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Americano</h4>
-										<h4 class="price">$49</h4>
-									</div>			
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>
-                            </div>
-                            <div class="col-md-6 all budget-meal">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Macchiato</h4>
-										<h4 class="price">$49</h4>
-									</div>			
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>
-                            </div>
-                            <div class="col-md-6 all breakfast">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Mocha</h4>
-										<h4 class="price">$49</h4>
-									</div>
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>
-                            </div>
-                            <div class="col-md-6 all lunch">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Piccolo Latte</h4>
-										<h4 class="price">$49</h4>
-									</div>
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>
-                            </div>
-                            <div class="col-md-6 all buffet">
-								<div class="single-menu">
-									<div class="title-wrap d-flex justify-content-between">
-										<h4>Ristretto</h4>
-										<h4 class="price">$49</h4>
-									</div>
-									<p>
-										Usage of the Internet is becoming more common due to rapid advance.
-									</p>									
-								</div>
-                            </div>                            
-                        </div>
-                    </div>
-                    
-                </div>
-            </section>
-            <!-- End menu-area Area -->			
-			
 			<!-- Start review Area -->
 			<section class="review-area section-gap">
 				<div class="container">

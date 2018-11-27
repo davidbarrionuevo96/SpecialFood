@@ -143,13 +143,13 @@
                         </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <label class="letra-blanca"><input type="checkbox" id="Oferta" name="Oferta" > Oferta     </label>
-                                         
-                                    <label for="party" class="letra-blanca">    Desde:    
-                                        <input class="fecha" id="Desde" type="datetime-local" name="Desde" value="2017-06-01T08:30"></label>
-
-                                    <label for="party" class="letra-blanca">    Hasta:    
-                                        <input class="fecha id="Hasta" type="datetime-local" name="Hasta" value="2017-06-01T08:30"></label>
+                                    <label class="letra-blanca"><input type="checkbox" id="Oferta" name="Oferta" >Oferta</label>
+                                    <label for="party" class="letra-blanca">Desde:
+                                      <input class="fecha" id="Desde" type="datetime-local" name="Desde" value="2017-06-01T08:30">
+                                    </label>
+                                    <label for="party" class="letra-blanca">Hasta:
+                                        <input class="fecha id="Hasta" type="datetime-local" name="Hasta" value="2017-06-01T08:30">
+                                    </label>
                                 </div>
                             </div>
 

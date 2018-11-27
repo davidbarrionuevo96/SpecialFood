@@ -17,11 +17,14 @@ class Controller_pedido extends Controller{
         $this->model->tomar($idpedido,$idUsuario);
         $this->view->generate('pedidolist.php', 'template_view.php');
     }
+
     function entregado(){
         $idpedido=$_GET['id'];
+        
         $data = $this->model->entregado($idpedido);
 
-        if ($data['Penalizar'] == 1)
+        //var_dump($data['Penalizar']);
+        if ((int)$data['Penalizar'] == 1)
             $this->model->crearPenalidad($idpedido);
 
         $this->view->generate('pedidolist.php', 'template_view.php');

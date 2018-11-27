@@ -85,6 +85,13 @@
         .ui-resizable-handle {
             z-index: inherit !important;
         }
+
+          #map {
+            width: 100%;
+            height: 400px;
+            background-color: grey;
+          }
+
     </style>
 
     <script>
@@ -96,19 +103,20 @@
                     //datatype: "json",
                     datatype: "local",
                     //idpedido, fechapedido, costoentrega,tiempoestimadoentrega,idcomercio,idcliente,idpuntodeventa,fechamodificacion,idusuariomodificacion
-                    colNames:['IdDelivery','IdPedido','Estado','Costo','Tiempo Entrega', 'Comercio','Dir. Comercio','Dir. Cliente','',''],
+                    colNames:['IdDelivery','IdPedido','Estado', 'Importe', 'Costo Envío','Mins. p/ Entrega', 'Comercio','Dir. Comercio','Dir. Cliente','',''],
 
                     colModel:[
-                        { name:'IdDelivery', index:'IdDelivery',hidden:true, sortable: false, width: 50 },
-                        { name:'IdPedido', index:'IdPedido', hidden: true, sortable: false, width: 50 },
-                        { name:'Estado', index:'Estado', sortable: false, width: 50 },
-                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, width: 50 },
-                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, width: 90 },
-                        { name:'Comercio', index:'Comercio', sortable: false, width: 70 },
-                        { name:'CalleComercio', index:'CalleComercio', sortable: false, width: 120 },
-                        { name:'CalleCliente', index:'CalleCliente', sortable: false, width: 120 },
-                        { name:'IdEstadoPedido', index:'IdEstadoPedido', hidden:true },
-                        { name: 'action', index: 'action', width: 60, align: 'center', sortable: false, search: false }
+                        { name:'IdDelivery', index:'IdDelivery',hidden:true },
+                        { name:'IdPedido', index:'IdPedido', hidden: true },
+                        { name:'Estado', index:'Estado', sortable: false, align: 'center' },
+                        { name:'CostoTotal', index:'CostoTotal', sortable: false, align: 'center' },
+                        { name:'CostoEntrega', index:'CostoEntrega', sortable: false, align: 'right' },
+                        { name:'TiempoEstimadoEntrega', index:'TiempoEstimadoEntrega', sortable: false, align: 'center' },
+                        { name:'Comercio', index:'Comercio', sortable: false },
+                        { name:'CalleComercio', index:'CalleComercio', sortable: false },
+                        { name:'CalleCliente', index:'CalleCliente', sortable: false }, 
+                        { name:'IdEstadoPedido', index:'IdEstadoPedido', hidden: true },
+                        { name: 'action', index: 'action', width: 90, align: 'center', sortable: false, search: false }
                     ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerPedido', sortname: 'id',
                     viewrecords: true, sortorder: "desc", caption:"Pedidos",
                     rows: []
@@ -122,13 +130,7 @@
                 var idPerfilGrid='<?php echo $session_IdPerfil;?>';
                 var idUsuarioGrid='<?php echo $session_IdUsuario;?>';
 
-
-                //alert("Perfil: " + idPerfiGrid);
-                //alert("Usuario: " + idUsuarioGrid);
-
-
-
-                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=1&sord=asc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
+                $.get("../../application/view/pedidogrid.php?page=1&rows=10000&sidx=9&sord=desc&idPerfil=" + idPerfilGrid + "&idUsuario=" + idUsuarioGrid, function(data){
                     $("#listPedido")[0].addJSONData(JSON.parse(data));
                     <?php $session_IdPerfil=(isset($_SESSION['IdPerfil']))?$_SESSION['IdPerfil']:''; ?>
                     <?php $session_IdUsuario=(isset($_SESSION['IdUsuario']))?$_SESSION['IdUsuario']:''; ?>
@@ -163,19 +165,25 @@
                            var IdPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdPedido;
                            var IdDelivery = jQuery("#listPedido").jqGrid('getRowData')[i].IdDelivery;
                            var idEstadoPedido = jQuery("#listPedido").jqGrid('getRowData')[i].IdEstadoPedido;
+                           var direccionComercio = jQuery("#listPedido").jqGrid('getRowData')[i].CalleComercio;
+                           var direccionCliente = jQuery("#listPedido").jqGrid('getRowData')[i].CalleCliente;
 
                            var checkOut = "<table><tr>";
 
                            //si esta pagado
                            if (idEstadoPedido == 2 && !tienePedidoEnCurso){
-                               checkOut = checkOut + "<td title='Tomar' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
+                               checkOut = checkOut + "<td title='Tomar envío' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
                                checkOut = checkOut + "<span class='ui-icon ui-icon-pin-s' onclick=\"Tomar(" + IdPedido + ");\"></span></td>";
                            }
                            if (idEstadoPedido == 3){
                                checkOut = checkOut +
-                                   "<td title='Entregado' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                                   "<td title='Confirmar Entrega' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
                                    "<span class='ui-icon ui-icon-check' onclick=\"Entregado(" + IdPedido + ");\"></span></td>";
                            }
+
+                            checkOut = checkOut +
+                               "<td title='Ver en mapa' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                               "<span class='ui-icon ui-icon-zoomin' onclick=\"VerEnMapa('" + direccionComercio + "', '" + direccionCliente + "');\"></span></td>";
 
                            checkOut = checkOut + "</tr></table>";
 
@@ -183,6 +191,8 @@
                        }
                    }
                 });
+
+                $("#listPedido").setGridWidth($("#containerGrid").width());
             });
         }
         catch(err){
@@ -199,9 +209,117 @@
         function Entregado(id) {
             window.location.assign("/pedido/entregado?id=" + id);
         };
+
+        $(window).bind('resize', function () {
+              $("#listPedido").setGridWidth($("#containerGrid").width());
+          }).trigger('resize');
+
+        var geocoder;
+        var map;
+        var address;
+        var address2;
+
+        function VerEnMapa(direccionComercio, direccionCliente) {
+            try{
+                address = direccionComercio;
+                address2 = direccionCliente;
+                
+                initMap();
+
+                $("#myModal").modal();
+            }
+            catch(err){
+                alert(err.description);
+            }
+        }
+/*
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          var uluru = {lat: -25.344, lng: 131.036};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 4, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+*/
+
+                  function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 14,
+                      center: {lat: -34.397, lng: 150.644}
+                    });
+                    geocoder = new google.maps.Geocoder();
+                    codeAddress(geocoder, map);
+                  }
+
+                  function codeAddress(geocoder, map) {
+                    var marker1;
+
+                    geocoder.geocode({'address': address}, function(results, status) {
+                      if (status === 'OK') {
+                        var marker1 = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                        });
+                      } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                      }
+                    });
+
+                    var marker2;
+
+                    geocoder.geocode({'address': address2}, function(results, status) {
+                      if (status === 'OK') {
+                        map.setCenter(results[0].geometry.location);
+                        var marker2 = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                        });
+                      } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                      }
+                    });
+                  }
+
+                  /*function codeAddress2(geocoder, map) {
+                    geocoder.geocode({'address': address2}, function(results, status) {
+                      if (status === 'OK') {
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                        });
+                      } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                      }
+                    });
+                  }*/
+
     </script>
 </head>
 <body>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="modal-footer" style="vertical-align: central;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <header id="header" class="absolute">
     <div class="container iniciar_sesion2">
         <div class="row">
@@ -244,7 +362,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -255,8 +372,8 @@
     include 'footer.php';
     ?>
 </footer>
-<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
 <script src="/js/validar-formulario.js"></script>
-
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdVwECobQye4Knvr85XGO2tUMnCexbmEY"></script>
 </body>
 </html>

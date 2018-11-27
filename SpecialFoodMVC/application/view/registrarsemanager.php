@@ -67,21 +67,21 @@
             /*
             field = $("#password").val();
             if (field.length == 0) {
-                $("#lblErrorP").text("Debe ingresar una contraseÃ±a.");
+                $("#lblErrorP").text("Debe ingresar una contraseña.");
                 ShowDivMessageP();
                 return false;
             }
 
             field2 = $("#password_confirmation").val();
             if (field != field2) {
-                $("#lblErrorP").text("Las contraseÃ±as deben ser iguales");
+                $("#lblErrorP").text("Las contraseñas deben ser iguales");
                 ShowDivMessageP();
                 return false;
             }
             
             field = $("#email").val();
             if (!(field.match(regexemail))) {
-                $("#lblErrorP").text("El email no es vÃ¡lido.");
+                $("#lblErrorP").text("El email no es válido.");
                 ShowDivMessageP();
                 return false;
             }
@@ -95,7 +95,7 @@
 
             field = $("#numero").val();
             if (!(field.match(regexnumero))) {
-                $("#lblErrorP").text("Debe ingresar una nÃºmero de calle.");
+                $("#lblErrorP").text("Debe ingresar una número de calle.");
                 ShowDivMessageP();
                 return false;
             }
@@ -194,12 +194,12 @@
                                     <!--<div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="Contraseï¿½a*">
+                                                <input type="password" name="password" id="password"  value="<?php echo $data['Password']; ?>" class="form-control input-sm" placeholder="Contrase?a*">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contraseï¿½a*">
+                                                <input type="password" name="password_confirmation"  value="<?php echo $data['Password']; ?>" id="password_confirmation" class="form-control input-sm" placeholder="Repetir contrase?a*">
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="numero">NÃºmero
+                                                <label for="numero">Número
                                                 <input type="text" name="numero" id="numero" value="<?php echo $data['Numero']; ?>" class="form-control input-sm" placeholder="Numero*">
                                             </div>
                                         </div>

@@ -124,9 +124,8 @@
 
                                             ?>
 
-                                        > Oferta     </label>
-                                         
-                                    <label for="party" class="letra-blanca">    Desde:    
+                                        > Oferta</label>
+                                    <label for="party" class="letra-blanca">Desde:
                                         <input class="fecha" id="Desde" type="datetime" name="Desde" value='<?php
 
                                         foreach ($data as $element){
@@ -134,7 +133,7 @@
                                         }
                                         ?>'></label>
 
-                                    <label for="party" class="letra-blanca">    Hasta:    
+                                    <label for="party" class="letra-blanca">Hasta:
                                         <input class="fecha id="Hasta" type="datetime" name="Hasta" value='<?php
 
                                         foreach ($data as $element){

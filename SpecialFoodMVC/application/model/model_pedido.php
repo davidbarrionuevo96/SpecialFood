@@ -9,15 +9,32 @@ class Model_Pedido extends Model{
 
         $sql="UPDATE pedido SET IdEstadoPedido='3', IdDelivery='$idUsuario', TiempoEstimadoEntrega=$tiempoEntrega, FechaModificacion = now() where IdPedido='$idpedido';";
 
+        $result = mysqli_query($conexion, $sql);        
+    }
+    
+    public function entregado($idpedido){
+        require('core/helpers/conexion.php');
+
+        $sql="UPDATE pedido SET IdEstadoPedido='4', FechaModificacion = now() where IdPedido='$idpedido';";
+
         $result = mysqli_query($conexion, $sql);
 
         $sql = "SELECT 
-                    CASE WHEN TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) > TiempoEstimadoEntrega THEN 1 ELSE 2 END Penalizar
-        		FROM 
-					`Pedido`
-				WHERE 
-					BajaLogica = 0
-					AND IdPedido = $idpedido;";
+                    CASE WHEN
+                        CASE WHEN 
+                            TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) < 1 
+                            THEN TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) * -1 
+                            ELSE TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) 
+                        END
+                        > TiempoEstimadoEntrega 
+                        THEN 1 
+                        ELSE 2 
+                    END Penalizar
+                FROM 
+                    `Pedido`
+                WHERE 
+                    BajaLogica = 0
+                    AND IdPedido = $idpedido;";
 
         $result = mysqli_query($conexion, $sql);
 
@@ -30,34 +47,28 @@ class Model_Pedido extends Model{
             return $data;
         }
     }
-    
-    public function entregado($idpedido){
-        require('core/helpers/conexion.php');
-
-        $sql="UPDATE pedido SET IdEstadoPedido='4', FechaModificacion = now() where IdPedido='$idpedido';";
-
-        $result = mysqli_query($conexion, $sql);
-
-
-    }
 
     public function crearPenalidad($idpedido){
         require('core/helpers/conexion.php');
 
-        $sql="INSERT INTO PenalidadDelivery (IdDelivery, IdPedido, MontoPenalidad, TiempoExcedido, BajaLogica, FechaModificacion, IdUsuarioModificacion) 
-              VALUES((select iddelivery from pedido where idpedido = $idpedido),
-                     $idpedido,
-                     (select ((CostoEntrega * 0.5) / 100) from pedido where idpedido = $idpedido),
-                     (select TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) from pedido where idpedido = $idpedido),
-                     0,
-                     now(),
-                     1
-                     )";
-
+        $sql="INSERT INTO PenalidadDelivery 
+                (IdDelivery,
+                IdPedido,
+                MontoPenalidad,
+                TiempoExcedido, 
+                BajaLogica, 
+                FechaModificacion, 
+                IdUsuarioModificacion) 
+              VALUES(
+                (select iddelivery from pedido where idpedido = $idpedido),
+                $idpedido,
+                (select ((CostoEntrega * 0.5) / 100) from pedido where idpedido = $idpedido),
+                (select TIMESTAMPDIFF(MINUTE, FechaModificacion, FechaPedido) from pedido where idpedido = $idpedido),
+                0,
+                now(),
+                1);";
 
         $result = mysqli_query($conexion, $sql);
-
-
     }
 
     /*

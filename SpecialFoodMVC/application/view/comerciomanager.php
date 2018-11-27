@@ -37,7 +37,7 @@
             <div class="row">			
                 <nav id="nav-menu">
                     <ul class="nav-menu ">
-                        <li class="volver"><a href="/Comercio/ComercioList"> << Volver</a></li>
+                        <li class="volver"><a href="/comercio/comerciolist"> << Volver</a></li>
                     </ul>
                 </nav>				      		  
             </div>
@@ -118,11 +118,13 @@
                           <div class="row">
                               <div class="col-md-6">
                                   <div class="form-group">
+                                  <label class="letra-blanca">Nombre Comercio:</label>
                                   <input type="text" name="Comercio_nombre" id="Comercio_nombre" value="<?php echo $data['Nombre']; ?>" class="form-control input-sm" placeholder="Nombre*">
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
+                                    <label class="letra-blanca">CUIT: </label>
                                       <input type="text" name="Comercio_CUIT" id="Comercio_CUIT" value="<?php echo $data['CUIT']; ?>" class="form-control input-sm" placeholder="CUIT*">
                                   </div>
                               </div>                            
