@@ -53,7 +53,49 @@
          </div>
      </div>     
  </header><!-- #header -->      
+<script>
+            function PostForm() {
+                if (IsValid()) {
+                    $("#lblErrorP").text("");
 
+                    document.forms["frmmenuitem"].submit();
+                }
+            }
+
+            function IsValid() {
+                HideDivMessageP();
+
+                var field;
+                var regexemail = /^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$/;
+                var regexnumero = /^[0-9]+$/;
+                var regexcuilcuit = /^[0-9]{2}-[0-9]{8}-[0-9]$/;
+
+                field = $("#Producto_nombre").val();
+                if (field.length == 0) {
+                    $("#lblErrorP").text("Debe ingresar el nombre.");
+                    ShowDivMessageP();
+                    return false;
+                }
+
+                field = $("#Producto_precio").val();
+                if (field.length == 0) {
+                    $("#lblErrorP").text("Debe ingresar el precio.");
+                    ShowDivMessageP();
+                    return false;
+                }
+
+                return true;
+            }
+
+            function ShowDivMessageP() {
+                scroll(0, 0);
+                $("#divMessagesP").show("slow", function () { });
+            }
+
+            function HideDivMessageP() {
+                $("#divMessagesP").hide();
+            }
+            </script>
  <!-- start banner Area -->
  <section class="banner-area">		
     <div class="container">
@@ -64,8 +106,15 @@
                         <h2 class="panel-title letra-blanca">Ingrese los datos</h2>
                         
                     </div>
+                    <div id="divMessagesP" style="display: none;">
+                                <p align="left">
+                                    <div class="alert alert-danger" style="text-align: left;">
+                                        <label id="lblErrorP" style="font-size: 12px; color: firebrick; font-weight: bold; margin-left: 5px;"></label>
+                                    </div>
+                                </p>
+                            </div>
                     <div class="panel-body">
-                        <form role="form" method="POST" action="/menuitems/guardar">  
+                        <form role="form" method="POST" action="/menuitems/guardar" name="frmmenuitem" id="frmmenuitem">  
                     
                         <br>
                         <h3 class="letra-blanca">Producto</h3>
@@ -73,12 +122,12 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                <input type="text" name="Producto_nombre" id="Comercio_nombre" class="form-control input-sm" placeholder="Nombre*">
+                                <input type="text" name="Producto_nombre" id="Producto_nombre" class="form-control input-sm" placeholder="Nombre*">
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="Producto_precio" id="Comercio_CUIT" class="form-control input-sm" placeholder="Precio*">
+                                    <input type="text" name="Producto_precio" id="Producto_precio" class="form-control input-sm" placeholder="Precio*">
                                 </div>
                             </div>    
                                                    
@@ -94,7 +143,7 @@
                             </div>                        
                         </div>
                         <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
-                        <input type="submit" name="guardar" class=" btn btn-info btn-block">
+                        <input type="submit" name="guardar" class=" btn btn-info btn-block" onclick="PostForm(); return false">
                     </form>
                 </div>
 

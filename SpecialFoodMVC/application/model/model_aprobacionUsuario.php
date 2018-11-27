@@ -27,7 +27,6 @@ class Model_aprobacionUsuario extends Model{
     public function Aceptar($id){
 
         require('core/helpers/conexion.php');
-
         $sql = "update Usuario
                 SET IdEstadoAprobacionUsuario = 2
                 where IdUsuario = '$id';";

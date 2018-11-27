@@ -128,7 +128,7 @@ class Model_Product extends Model{
 	}
 
 
-	public function CrearPedido($producto, $tiempoEstimado, $cliente, $costoEntrega){
+	public function CrearPedido($producto, $cliente, $costoEntrega){
 	    
     	include ('core/helpers/conexion.php');	
     	$idComercio = $producto[0]['IdComercio'];
@@ -149,7 +149,7 @@ class Model_Product extends Model{
                     (
                         now(),
                         $costoEntrega,
-                        $tiempoEstimado,
+                        null,
                         $cliente,
                         $puntoDeVenta,
                         1,

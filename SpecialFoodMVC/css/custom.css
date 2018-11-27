@@ -412,9 +412,17 @@ text-align: center;
 }
 
 .botonrojo{
-    background-color: green;
+    background-color: #f52f2c;
+    border: 1px solid black;
+    color: white;
 }
 
 .botonverde{
-    background-color: red;
+    background-color: #41a000;
+    border: 1px solid black;
+    color: white;
+}
+
+.combocomercio{
+    display: none;
 }

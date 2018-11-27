@@ -18,7 +18,7 @@ class Model_Registro extends Model{
 		}
 	}
 
-    public function guardar_usuario($nombre, $apellido, $password, $email, $cuil, $cuit, $calle, $numero, $perfil){
+    public function guardar_usuario($nombre, $apellido, $password, $email, $cuil, $cuit, $Idcalle, $numero, $perfil, $numcomercio){
 
         include ('core/helpers/conexion.php');
 
@@ -28,11 +28,11 @@ class Model_Registro extends Model{
                     (
                         `Nombre`,
                         `Apellido`,
+                        `IdCalle`,
                         `Password`,
                         `Email`,
                         `Cuil`,
                         `Cuit`,
-                        `IdCalle`,
                         `Numero`,
                         `IdPerfil`,
                         `IdEstadoAprobacionUsuario`,
@@ -43,11 +43,11 @@ class Model_Registro extends Model{
                     (
                         '$nombre',
                         '$apellido',
+                        '$Idcalle',
                         '$encryptedPassword',
                         '$email',
                         '$cuil',
                         '$cuit',
-                        1,
                         '$numero',
                         '$perfil',
                         1,
@@ -56,6 +56,24 @@ class Model_Registro extends Model{
                         1);";
 
         $result=mysqli_query($conexion,$sqlInsert);
+
+        $sqlInsert2 = "INSERT INTO `UsuarioComercio`
+                    (
+                        `IdComercio`,
+                        `IdUsuario`,
+                        `bajalogica`,
+                        `fechamodificacion`,
+                        `idusuariomodificacion`)
+                    VALUES
+                    (
+                        '$numcomercio',
+                        (SELECT MAX(IdUsuario)'IdUsuario' FROM Usuario),
+                        0,
+                        now(),
+                        1);";
+
+        $result2=mysqli_query($conexion,$sqlInsert2);
+        
 
         if(isset($result)){
             

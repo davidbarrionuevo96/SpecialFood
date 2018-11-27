@@ -64,11 +64,11 @@ class Model_menuitems extends Model{
                 where IdMenuComercioItem = '$id';";
         $result = mysqli_query($conexion,$sql);
 
+        $idUsuario = $_SESSION['IdUsuario'];
 
         $sql2 = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0
-                ";
+                WHERE mc.BajaLogica=0 AND mc.idmenucomercio= '$idUsuario';";
 
         $result2 = mysqli_query($conexion,$sql2);
 
@@ -86,6 +86,7 @@ class Model_menuitems extends Model{
 
         require('core/helpers/conexion.php');
 
+        $idUsuario = $_SESSION['IdUsuario'];
 
         $sql = "select mc.Descripcion Descripcion, mc.Precio Precio 
                 from MenuComercioItem mc
@@ -124,10 +125,12 @@ class Model_menuitems extends Model{
                 where IdMenuComercioItem = '$id';";
         $result3 = mysqli_query($conexion,$sql3);
 
+
+        $idUsuario = $_SESSION['IdUsuario'];
+
         $sql4 = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0
-                ";
+                WHERE mc.BajaLogica=0 AND mc.idmenucomercio= '$idUsuario';";
 
         $result4 = mysqli_query($conexion,$sql4);
 

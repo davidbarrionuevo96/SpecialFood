@@ -46,10 +46,9 @@ class Controller_Product extends Controller{
 
                     }else{
 
-                        $tiempoEstimado = 10;
-                        $costoDeEntrega = 10.0;
+                        $costoDeEntrega = (int)rand(10,25);
 
-                        $this->model->CrearPedido($producto, $tiempoEstimado, $cliente, $costoDeEntrega);
+                        $this->model->CrearPedido($producto, $cliente, $costoDeEntrega);
 
                         $this->model->CrearPedidoItem($producto, $cantidad);
 

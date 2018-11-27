@@ -152,6 +152,9 @@
             }
             </script>
 
+        <?PHP 
+        include ('core/helpers/conexion.php');
+        ?>
         <!-- start banner Area -->
         <section class="banner-area">		
             <div class="container">
@@ -178,7 +181,18 @@
                                                 <option value="3">Repartidor</option>                                                
                                                 <option value="2">Comercio</option>
                                             </select>
-                                        </div>       
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <select class="form-control combocomercio" id="comerciolista " name="comerciolista">
+                                                <option value="NULL">Ninguno</option>
+                                                <?php $datoscomercio=$conexion->query("select * from Comercio");
+                                                    while($com = mysqli_fetch_array($datoscomercio)) {?>
+
+                                                    <option value="<?php echo $com['IdComercio']; ?>"><?php echo $com['Nombre']; ?></option>
+
+                                                <?php } ?>
+                                            </select>
+                                        </div>          
                                     </div>
 									<br/>
                                     <div class="row">
@@ -215,17 +229,22 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="cuil" id="cuil" class="form-control input-sm" placeholder="CUIL xx-xxxxxxxx-xx">
-                                                <input type="text" name="cuit" id="cuit" class="form-control input-sm" placeholder="CUIT* xx-xxxxxxxx-xx">
+                                                <input type="text" name="cuil" id="cuil" class="form-control input-sm" placeholder="CUIL xx-xxxxxxxx-x">
+                                                <input type="text" name="cuit" id="cuit" class="form-control input-sm" placeholder="CUIT* xx-xxxxxxxx-x">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="calle" id="calle" class="form-control input-sm" placeholder="Calle*">
-                                            </div>
+                                            <select class="form-control" id="Idcalle" name="Idcalle">
+                                                <?php $datoscalle=$conexion->query("select * from Calle");
+                                                    while($com = mysqli_fetch_array($datoscalle)) {?>
+
+                                                    <option value="<?php echo $com['IdCalle']; ?>"><?php echo $com['Descripcion']; ?></option>
+
+                                                 <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">

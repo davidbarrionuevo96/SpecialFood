@@ -1,20 +1,24 @@
 $( document ).ready(function() {
     $( "#perfil" ).change(function() {
-        if ($( "#perfil option:selected" ).val() == 1){ 
+        if ($( "#perfil option:selected" ).val() == 2){ 
+            $(".combocomercio").show();
             $("#cuil").show(); 
             $("#cuit").hide();
-            $("#cuil").attr("placeholder","CUIL");
-        }
-
-        if ($( "#perfil option:selected" ).val() == 2){
-            $("#cuil").show(); 
-            $("#cuil").attr("placeholder","CUIL*");
-            $("#cuit").hide();            
+            $("#cuil").attr("placeholder","CUIT* xx-xxxxxxxx-x");
         }
 
         if ($( "#perfil option:selected" ).val() == 3){
-            $("#cuit").show();
-            $("#cuil").hide(); 
+            $(".combocomercio").hide();
+            $("#cuil").show(); 
+            $("#cuil").attr("placeholder","CUIL* xx-xxxxxxxx-x");
+            $("#cuit").hide();            
+        }
+
+        if ($( "#perfil option:selected" ).val() == 4){
+            $(".combocomercio").hide();
+            $("#cuit").hide();
+            $("#cuil").show();
+            $("#cuil").attr("placeholder","CUIL xx-xxxxxxxx-x"); 
         }
     });
     

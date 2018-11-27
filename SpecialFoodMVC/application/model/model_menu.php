@@ -16,11 +16,12 @@ class Model_menu extends Model{
 
                 if(!($asd['d']==$comercio)) {
 
-                    $c = 1; //$_SESSION['IdUsuario'];
+                    $c = $_SESSION['IdUsuario'];
                     $sql2 = "Insert Into MenuComercio (Descripcion, IdComercio) values('$comercio','$c')";
                     $result2 = mysqli_query($conexion, $sql2);
                     return true;
                 }
+                
                 else{return false;}
             }
 
@@ -29,10 +30,11 @@ class Model_menu extends Model{
 
         require('core/helpers/conexion.php');
 
+        $idUsuario = $_SESSION['IdUsuario'];
+
         $sql = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0
-                ";
+                WHERE mc.BajaLogica = 0 AND mc.idComercio = '$idUsuario'";
 
         $result = mysqli_query($conexion,$sql);
 
@@ -78,10 +80,11 @@ class Model_menu extends Model{
         $result = mysqli_query($conexion,$sql);
 
 
+        $idUsuario = $_SESSION['IdUsuario'];
+
         $sql2 = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0
-                ";
+                WHERE mc.BajaLogica=0 AND mc.idComercio= '$idUsuario';";
 
         $result2 = mysqli_query($conexion,$sql2);
 
@@ -127,10 +130,11 @@ class Model_menu extends Model{
 
         $result = mysqli_query($conexion,$sql);
 
+        $idUsuario = $_SESSION['IdUsuario'];
+
         $sql2 = "select * 
                 from MenuComercio mc
-                WHERE mc.BajaLogica=0
-                ";
+                WHERE mc.BajaLogica=0 AND mc.idComercio= '$idUsuario';";
 
         $result2 = mysqli_query($conexion,$sql2);
 

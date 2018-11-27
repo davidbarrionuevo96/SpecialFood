@@ -27,13 +27,14 @@ class Controller_registro extends Controller{
         $apellido=$_POST['apellido'];
         $apellido=ucfirst($apellido);
 
-        $calle=$_POST['calle'];
-        $calle=ucfirst($calle);
+        $Idcalle=$_POST['Idcalle'];
 
         $numero=$_POST['numero'];
 
         $email=$_POST['email'];
         $password=$_POST['password'];
+
+        $numcomercio=$_POST['comerciolista'];
 
         /*if(isset($_POST['cuil'])){
             $cuil=$_POST['cuil'];
@@ -53,7 +54,7 @@ class Controller_registro extends Controller{
         if($usuarioCorrecto == true)            
         {
             //echo "aca";
-            $this->model->guardar_usuario($nombre, $apellido, $password, $email, $cuil, $cuit, $calle, $numero, $perfil);
+            $this->model->guardar_usuario($nombre, $apellido, $password, $email, $cuil, $cuit, $Idcalle, $numero, $perfil, $numcomercio);
             $this->view->generate('iniciar_sesion.php', 'template_view.php');
             
         }else{

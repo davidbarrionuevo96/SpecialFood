@@ -30,10 +30,10 @@ class Controller_menuitems extends Controller{
 
 
             if($guardar == true){
-            	echo "<br>"."<div class='letraerror'>"."Guardado Correctamente"."</div>";
+               header("Location: http://localhost/Menu/ListarMenu");
             }
             else{
-            	echo "<br>"."<div class='letraerror'>"."Producto Existente"."</div>";
+            	header("Location: http://localhost/");
             }
         }
     }

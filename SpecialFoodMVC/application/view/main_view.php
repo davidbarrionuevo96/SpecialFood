@@ -60,6 +60,7 @@
 									<li><a href='/usuario/usuariolist'>Imprimir Listados</a></li>
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
+									<li><a href='/listados/getListado'>Informes</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){ //Comercio
 									?>
