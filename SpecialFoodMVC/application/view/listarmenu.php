@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 <head>
@@ -15,7 +14,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>SpecialFood - Registro</title>
+    <title>SpecialFood</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
     <!--
@@ -25,89 +24,209 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/jquery-ui.css">
     <link rel="stylesheet" href="/css/nice-select.css">
     <link rel="stylesheet" href="/css/animate.min.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/custom.css">
+
+    <link href='/css/jquery-ui.css' rel="stylesheet" type="text/css" />
+    <link href='/css/ui.jqgrid.css' rel="stylesheet" type="text/css" />
+
+    <script src='/js/jquery.js' type="text/javascript"></script>
+    <script src='/js/jquery-1.11.1.min.js' type="text/javascript"></script>
+    <script src='/js/jquery-ui.js' type="text/javascript"></script>
+
+    <script src='/js/grid.locale-es.js' type="text/javascript"></script>
+    <script src='/js/jquery.jqGrid.min.js' type="text/javascript"></script>
+
+    <style type="text/css">
+        .myAltRowClass {
+            background-color: #DCFFFF;
+            background-image: none;
+        }
+
+        /* fix the size of the pager */
+        input.ui-pg-input {
+            width: auto;
+        }
+        /* fix the grid width */
+        table {
+            border-style: none;
+            border-collapse: separate;
+        }
+
+        table td {
+            border-style: none;
+        }
+
+        .ui-jqdialog-content table.group th {
+            background-color: inherit;
+        }
+
+        .ui-autocomplete {
+            /* for IE6 which not support max-height it can be width: 350px; */
+            max-height: 300px;
+            overflow-y: auto; /* prevent horizontal scrollbar */
+            overflow-x: hidden; /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        }
+        /*.ui-autocomplete.ui-menu { opacity: 0.9; }*/
+        .ui-autocomplete.ui-menu .ui-menu-item {
+            font-size: 0.75em;
+        }
+
+        .ui-autocomplete.ui-menu a.ui-state-hover {
+            border-color: Tomato;
+        }
+
+        .ui-resizable-handle {
+            z-index: inherit !important;
+        }
+    </style>
+
+    <script>
+        try{
+            $(document).ready(function() {
+                jQuery("#listComercios").jqGrid({
+                    //url:'../../application/view/menugrid.php',
+                    //url: 'application/view/menugrid.php?page=1&rows=20&sidx=1&sord=asc',
+                    //datatype: "json",
+                    datatype: "local",
+                    colNames:['Id MenuComercio','Menúes', 'IdComercio', ''],
+                    colModel:[
+                        { name:'idMenuComercio', index:'v', align:"center", hidden: true, sortable: false },
+                        { name:'Descripcion', index:'Descripcion', sortable: false },
+                        { name:'idComercio', index:'idComercio', hidden: true, sortable: false },
+                        { name: 'action', index: 'action', width: 90, align: 'center', sortable: false, search: false }
+                    ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerComercios', sortname: 'id',
+                    viewrecords: true, sortorder: "desc", caption:"Menúes",
+                    rows: []
+                });
+
+                jQuery("#listComercios").jqGrid('navGrid','#pagerComercios', { edit: false, add: false, del: false });
+
+                $.get("../../application/view/menugrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
+                    $("#listComercios")[0].addJSONData(JSON.parse(data));
+
+                    var ids = jQuery("#listComercios").jqGrid('getDataIDs');
+                    for (var i = 0; i < ids.length; i++) {
+                        var rowId = ids[i];
+
+                        var idMenuComercio = jQuery("#listComercios").jqGrid('getRowData')[i].idMenuComercio;
+
+                        var checkOut = "<table><tr>";
+
+                        checkOut = checkOut + "<td title='Editar Menu' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>";
+                        checkOut = checkOut +"<span class='ui-icon ui-icon-pencil' onclick=\"Edit(" + idMenuComercio + ");\"></span></td>";
+
+                        checkOut = checkOut +
+                            "<td title='Eliminar Menu' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                            "<span class='ui-icon ui-icon-closethick' onclick=\"Delete(" + idMenuComercio + ");\"></span></td>";
+
+                        checkOut = checkOut +
+                            "<td title='Crear Menu Items' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                            "<span class='ui-icon ui-icon-plusthick ' onclick=\"New(" + idMenuComercio + ");\"></span></td>";
+
+                        checkOut = checkOut +
+                            "<td title='Ver Menu Items' class='ui-pg-button ui-corner-all ui-state-hover' style='border: 0px; cursor:pointer;'>" +
+                            "<span class='ui-icon ui-icon-arrowthick-1-e' onclick=\"View(" + idMenuComercio + ");\"></span></td>";
+
+                        checkOut = checkOut + "</tr></table>";
+
+                        jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
+
+                        $("#listComercios").setGridWidth($("#containerGrid").width());
+                    }
+                });
+            });
+
+
+        }
+        catch(err){
+            alert(err);
+        }
+
+        function Edit(id) {
+            window.location.assign("/menu/Modificar?id=" + id);
+        };
+
+        function Delete(id) {
+            var txt;
+            var r = confirm("¿Seguro que desea eliminar?");
+            if (r == true) {
+                window.location.assign("/menu/Eliminar?id=" + id);
+            }
+        };
+
+        function New(id) {
+                window.location.assign("/menuitems/nuevo?id=" + id);
+        };
+
+        function View(id) {
+            window.location.assign("/menu/verDetalle?id=" + id);
+        };
+
+        $(window).bind('resize', function () {
+            $("#listComercios").setGridWidth($("#containerGrid").width());
+        }).trigger('resize');
+    </script>
 </head>
 <body>
 <header id="header" class="absolute">
-     <div class="container iniciar_sesion2">
-        <div class="row">           
+    <div class="container iniciar_sesion2">
+        <div class="row">
             <nav id="nav-menu">
                 <ul class="nav-menu ">
                     <li class="volver"><a href="/"> << Volver</a></li>
                 </ul>
-            </nav>                            
+            </nav>
         </div>
+    </div>
+    <div class="header-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div id="logo">
+                    <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
+                </div>
+            </div>
         </div>
-        <div class="header-top">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div id="logo">
-                     <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
-                 </div>
-             </div>                             
-         </div>
-     </div>     
- </header><!-- #header -->          
+    </div>
+</header><!-- #header -->
 
 <!-- start banner Area -->
 <section class="banner-area">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-
+                        <h2 class="panel-title letra-blanca">Menúes</h2>
                     </div>
                     <div class="panel-body">
-                    <h3 class="letra-blanca2">Listado de todos los menu</h3>
-                        <br><br>
-
-                        <?php
-
-                        foreach ($data as $element){
-                            echo "<b class='letra-blanca11'>".$element['Descripcion']."</b>"."<br>".
-                                "<a href='/menu/verDetalle?id=".$element['IdMenuComercio']."'>"."<button class='primary-btn10'>"."Ver"."</button>"."</a>"."     ".
-                                "<a href='/menuitems/nuevo?id=".$element['IdMenuComercio']."'>"."<button class='primary-btn10'>"."Agregar item"."</button>"."</a>"."     ".
-                                "<a href='/menu/Eliminar?id=".$element['IdMenuComercio']."'>"."<button class='primary-btn10'>"."Eliminar"."</button>"."</a>"."     ".
-                                "<a href='/menu/Modificar?id=".$element['IdMenuComercio']."'>"."<button class='primary-btn10'>"."Modificar"."</button>"."</a>"."<br>"."<br>";
-                        }
-                        ?>
-
-                        <a href="/menu/nuevoMenu"><button class="btn btn-info btn-block" name="idMenu"  class="form-control input-sm" >Agregar Menu</button></a>
-
+                        <form action="/menu/nuevoMenu" method="post">
+                            <div class="row" id="containerGrid">
+                                <div class="col-md-12">
+                                    <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/menu/nuevoMenu')" value="Nuevo" />
+                                    <br/><br/>
+                                    <table id="listComercios"></table>
+                                    <div id="pagerComercios"></div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
-
             </div>
         </div>
     </div>
-
 </section>
 <footer class="footer-area">
     <?php
     include 'footer.php';
     ?>
 </footer>
-<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/vendor/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/easing.min.js"></script>
-<script src="/js/hoverIntent.js"></script>
-<script src="/js/superfish.min.js"></script>
-<script src="/js/jquery.ajaxchimp.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/jquery.nice-select.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/isotope.pkgd.min.js"></script>
-<script src="/js/mail-script.js"></script>
-<script src="/js/main.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
+<script src="/js/validar-formulario.js"></script>
 </body>
 </html>
