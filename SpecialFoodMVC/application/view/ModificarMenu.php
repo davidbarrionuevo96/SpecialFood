@@ -62,7 +62,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <br><br><br><br><br><br><br><br>
+                        <br><br><br>
                         <h2 class="panel-title letra-blanca">Ingrese los datos</h2>
 
                     </div>
@@ -73,7 +73,7 @@
                             <h3 class="letra-blanca">Menu</h3>
                             <br>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="Comercio_nombre" id="Comercio_nombre" class="form-control input-sm" value='<?php
 
@@ -86,7 +86,7 @@
 
                             </div>
                             <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
-                            <input type="submit" name="guardar" class=" btn btn-info btn-block">
+                            <input type="submit" name="guardar" class="newbutton">
                         </form>
                     </div>
 

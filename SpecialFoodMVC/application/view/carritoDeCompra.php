@@ -67,11 +67,11 @@
                                         <thead class="thead-light">
                                           <tr>
 
-                                            <th scope="col" class="cantidadmenu">Cantidad</th>
-                                            <th scope="col">Descripción</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Eliminar</th>
+                                            <th scope="col" class="cantidadmenu fondoverde">Cantidad</th>
+                                            <th scope="col" class="fondoverde ">Descripción</th>
+                                            <th scope="col" class="fondoverde ">Precio</th>
+                                            <th scope="col" class="fondoverde ">Total</th>
+                                            <th scope="col" class="fondoverde ">Eliminar</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -90,7 +90,7 @@
                                                     "<td>".$element['Descripcion']."</td>".
                                                     "<td>".$element['PrecioUnitario']."</td>". 
                                                     "<td>".$element['CostoTotal']."</td>".
-                                                    "<td><a href='/product/eliminarItem?item=".$element['IdPedidoItem']."'><button>Eliminar</button></a></td>".
+                                                    "<td><a href='/product/eliminarItem?item=".$element['IdPedidoItem']."'><button class='newbutton2'>Eliminar</button></a></td>".
                                                   "</tr>";
                                             }
                                         }
@@ -116,9 +116,9 @@
                                         </tbody>
                                       </table>
                                       
-                                      <a href="/product/listarProductos"><button>Agregar más productos</button></a>
-                                      <a href="/product/confirmarPedido" class="botonescarrito"><button class="botonverde">Confirmar(PAGO)</button></a>
-                                      <a href="/product/cancelarPedido"><button class="botonrojo">Cancelar</button></a>
+                                      <a href="/product/listarProductos"><button class="newbutton">Agregar más productos</button></a>
+                                      <a href="/product/confirmarPedido" class="botonescarrito"><button class="newbutton marginL">Confirmar(PAGO)</button></a>
+                                      <a href="/product/cancelarPedido"><button class="newbutton2">Cancelar</button></a>
                                       
                                   </div>
                               </div>

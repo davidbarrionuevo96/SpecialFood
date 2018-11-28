@@ -81,7 +81,7 @@
                                  "<div class='cajaparaboton2'>".$element['Descripcion']."<br>".$element['Precio']."<br>".
                                  "<input type='number' class='cantidadprod' id='cantidad' name='Cantidad' min='1' max='100' value='1'>"."<br>".
                                  "<input type='text' name='IdProducto' visibility: hidden value=".$element['IdMenuComercioItem'].">"."<br>".
-                              "<input type='submit' value='Agregar al carrito' class='btn btn-info btn-block'>".
+                              "<input type='submit' value='Agregar al carrito' class='newbutton'>".
                               "</div>".
                               "</div>".
                               

@@ -131,8 +131,10 @@
 
                           jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
 
-                          $("#listComercios").setGridWidth($("#containerGrid").width());
+                          
                     }
+
+                    $("#listComercios").setGridWidth($("#containerGrid").width());
                 });
               }); 
 
@@ -188,13 +190,13 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title letra-blanca">Comercios</h2>
+                        <h2 class="panel-title letra-blanca">Liquidación a Comercios</h2>
                     </div>
                     <div class="panel-body">
                         <form action="/comercio/guardar" method="post">
                           <div class="row" id="containerGrid">
                              <div class="col-md-12">
-                                <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/Comercio/comerciomanager?id=0')" value="Nuevo" />
+                                <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/cobranza/liquidacioncomercio')" value="Liquidar Pedidos" />
                                 <br/><br/>
                                 <table id="listComercios"></table>
                                 <div id="pagerComercios"></div>

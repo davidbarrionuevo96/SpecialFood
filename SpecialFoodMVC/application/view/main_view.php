@@ -60,7 +60,8 @@
 									<li><a href='/informes/informeslist'>Informes y Estadísticas</a></li>
 									<li><a href='/Comercio/ComercioList'>Administrar Comercios</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
-									<li><a href='/cobranza/cobranzascomercio'>Liquidación Comercios</a></li>
+									<li><a href='/cobranza/cobranzascomercio'>Liquidar Comercios</a></li>
+									<li><a href='/cobranza/liquidacionescomercio'>Ver Liquidaciones</a></li>
 									<?php
 								}else if($_SESSION['IdPerfil'] == 2){ //Comercio
 									?>
@@ -68,7 +69,8 @@
 									<li><a href='/Menu/ListarMenu'>Mis Menúes</a></li>
 									<li><a href='/pedido/pedidolist'>Pedidos</a></li>
 									<li><a href='/puntodeventa/puntodeventalist'>Puntos de venta</a></li>
-									<li><a href='/cobranza/cobranzasdelivery'>Liquidación Delivery</a></li>
+									<li><a href='/cobranza/cobranzasdelivery'>Liquidar Deliverys</a></li>
+									<li><a href='/cobranza/liquidacionesdelivery'>Ver Liquidaciones</a></li>
 							<?php
 								}else if($_SESSION['IdPerfil'] == 3){ //Delivery
 									?>

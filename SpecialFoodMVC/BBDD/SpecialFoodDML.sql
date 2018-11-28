@@ -112,7 +112,7 @@ VALUES
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
-("Milanesas",10.0,"https://images.clarin.com/2017/07/18/S1KW2joSW_1256x620.jpg",1,0,now(),1);
+("Milanesas",10.0,"../../img/2.jpg",1,0,now(),1);
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
@@ -120,7 +120,7 @@ VALUES
 INSERT INTO `specialfooddb`.`menucomercioitem`
 (`Descripcion`,`Precio`,`Foto`,`IdMenuComercio`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)
 VALUES
-("Chisito",10.0,"http://wpc.72c72.betacdn.net/8072C72/lvi-images/sites/default/files/styles/landscape_1020_560/public/archivo/nota_periodistica/MAIZ.jpg",1,0,now(),1);
+("Chisito",10.0,"../../img/1.jpg",1,0,now(),1);
 
 INSERT INTO `specialfooddb`.`puntodeventa`
 (`Numero`,`IdComercio`,`IdCalle`,`BajaLogica`,`FechaModificacion`,`IdUsuarioModificacion`)

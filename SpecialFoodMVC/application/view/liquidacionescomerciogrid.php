@@ -43,6 +43,7 @@ $SQL = $SQL . "	 ,(SELECT SUM(Cantidad * PrecioUnitario) FROM PedidoItem WHERE B
 $SQL = $SQL . "     ,p.CostoEntrega  ";
 $SQL = $SQL . "     ,CONCAT('(', p.IdDelivery, ') ', delivery.Nombre, ' ', delivery.Apellido) Delivery ";
 $SQL = $SQL . "     ,penalidad.MontoPenalidad MontoPenalidad ";
+$SQL = $SQL . "     ,CASE WHEN LiquidadoComercio IS NULL OR LiquidadoComercio = 0 THEN 'Sin Liquidar' ELSE 'Liquidado' END Liquidado ";
 $SQL = $SQL . "FROM  ";
 $SQL = $SQL . "     Pedido p  ";
 $SQL = $SQL . "     LEFT JOIN PuntoDeVenta pv ON pv.IdPuntoDeVenta = p.IdPuntoDeVenta AND pv.BajaLogica = 0  ";
@@ -57,7 +58,7 @@ $SQL = $SQL . "     LEFT JOIN Barrio bu ON bu.IdBarrio = cau.IdBarrio AND bu.Baj
 $SQL = $SQL . "     LEFT JOIN Usuario delivery ON p.IdDelivery = delivery.IdUsuario ";
 $SQL = $SQL . "     LEFT JOIN PenalidadDelivery penalidad ON p.IdPedido = penalidad.IdPedido  ";
 $SQL = $SQL . "WHERE  ";
-$SQL = $SQL . "     p.BajaLogica = 0 AND p.IdEstadoPedido = 4 AND LiquidadoDelivery IS NULL OR LiquidadoDelivery = 0 ";
+$SQL = $SQL . "     p.BajaLogica = 0  AND p.IdEstadoPedido = 4 AND LiquidadoComercio IS NOT NULL OR LiquidadoComercio = 1 ";
 
 //admin 1 , comercio 2, delivery 3, usuario 4
 /*
@@ -101,6 +102,7 @@ while($row=mysqli_fetch_assoc($result))
     $response->rows[$i]['CostoEntrega']=$row['CostoEntrega'];
     $response->rows[$i]['Delivery']=$row['Delivery'];
     $response->rows[$i]['MontoPenalidad']=$row['MontoPenalidad'];
+    $response->rows[$i]['Liquidado']=$row['Liquidado'];
 
     $i++;
 }

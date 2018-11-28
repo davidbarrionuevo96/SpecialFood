@@ -125,14 +125,14 @@ require('core/helpers/conexion.php');
                             <br/>
                             <input type="text" style="display: none;" name="puntodeventa_id" id="puntodeventa_id" value="<?php echo $data['IdPuntoDeVenta']; ?>" />
                             <div class="row container">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="puntodeventa_idcalle" class="letra-blanca">Indique Numero de Calle</label>
                                         <input type="text" name="puntodeventa_numero" id="puntodeventa_numero" value="<?php echo $data['Numero']; ?>" class="form-control input-sm" placeholder="Numero Calle*">
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
 
                                     <div class="form-group">
                                         <label for="puntodeventa_idcalle" class="letra-blanca">Seleccione Nombre Calle</label>
@@ -144,7 +144,7 @@ require('core/helpers/conexion.php');
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="puntodeventa_idcalle" class="letra-blanca">Seleccione Comercio</label>
                                         <select class="form-control" name="puntodeventa_idcomercio" id="puntodeventa_idcomercio">
@@ -158,15 +158,12 @@ require('core/helpers/conexion.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="button" value="Volver" onclick="window.location.assign('/PuntoDeVenta/PuntoDeVentaList');" class="btn btn-info btn-block">
+                            <div class="row container">
+                                <div class="col-md-6 ">
+                                    <input type="button" value="Volver" onclick="window.location.assign('/PuntoDeVenta/PuntoDeVentaList');" class="newbutton acomodar">
                                 </div>
-                            </div>
-                            <br/>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="button" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
+                                <div class="col-md-6">
+                                    <input type="button" onclick="PostForm(); return false;" value="Guardar" class="newbutton acomodar">
                                 </div>
                             </div>
                         </form>

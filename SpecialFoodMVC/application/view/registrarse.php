@@ -257,7 +257,12 @@
                                         <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
                                     </div>
                                     -->                                            
-                                    <input type="submit" value="Registrarse" class="btn btn-info btn-block" onclick="PostForm(); return false">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">
+                                            <input type="submit" value="Guardar" onclick="PostForm(); return false" class="newbutton acomodar">
+                                        </div>
+                                    </div>    
 
                                     <div id="mensaje"></div>
                                 </form>

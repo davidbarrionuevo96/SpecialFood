@@ -67,15 +67,24 @@
                                 </div>
                                 <div class="panel-body">
                                     <form role="form" action="/login/iniciar_sesion" method="post">
-                                        <div class="form-group">
-                                            <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Contraseña">
-                                        </div>
-                                            <input type="submit" value="Iniciar Sesión" class="btn btn-info btn-block">
-                                            <br>
-                                            <a href="/registro/cargarPantalla"><input value="Registrarse" class="btn btn-info btn-block"></a>
+
+									<div class="row">
+											<div class="col-md-6">
+												 <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
+											</div>
+											<div class="col-md-6">
+											<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Contraseña">
+											</div>
+                              			</div>
+										<br><br>
+										<div class="row">
+											<div class="col-md-6">
+												<input type="submit" value="Iniciar Sesión" class="newbutton acomodar">
+											</div>
+											<div class="col-md-6">
+												<input type="button" onclick="window.location.assign('/registro/cargarPantalla')" value="Registrarse" class="newbutton acomodar">
+											</div>
+                              			</div> 
                                     </form>
 
 									<?php

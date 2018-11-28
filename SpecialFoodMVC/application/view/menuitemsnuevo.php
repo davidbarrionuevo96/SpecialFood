@@ -154,7 +154,8 @@
                             </div>
 
                             <br>
-                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'><input type="submit" onclick="PostForm(); return false;" value="Guardar" class=" btn btn-info btn-block">
+                        <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
+                        <input type="submit" onclick="PostForm(); return false;" value="Guardar" class="newbutton">
 
                     </form>
                 </div>

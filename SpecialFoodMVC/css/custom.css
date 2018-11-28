@@ -163,9 +163,9 @@ text-align: center;
 }
 
 .letra-blanca9{
-    background: #f42f2c;
+    
     width: 200px;
-    height: 300px;
+    height: auto;
     color: white;
     font-size: 25px;
     text-align: center;
@@ -198,29 +198,23 @@ text-align: center;
 }
 .cajag{
     width: 100%;
-     height: 42em;
-     background: white;
+     height: auto;
      margin-top: 15em;
-
 }
 
 .caja10{
     width: 100%;
-    height: 42em;
-    background: white;
+    height: auto;
     margin: 0 auto; 
     float: right;
     margin-top: 3em;
-
 }
 
 .cajaimagen{
 
     width: 12em;
-    height: 12em;
-    background: white;
+    height: auto;
      float:left;
-     border: solid 1px #BEBEBE;
 
 }
 
@@ -247,11 +241,10 @@ text-align: center;
 
 }
 .cajaparaboton2{
-
-   margin-top: 12em;
-   width: 12em;
-   height: 6em;
-   border: solid 1px #BEBEBE;
+    margin-top: 12em;
+    width: 12em;
+    height: 6em;
+    color: white;
 }
 
 .newbutton
@@ -277,6 +270,31 @@ text-align: center;
   padding-right: 10px;
   color: white;
 }
+
+.newbutton2
+{
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  background: #f52f2c;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
 .newbutton:hover
 {
   background: #12832C !important;
@@ -366,6 +384,8 @@ text-align: center;
 .cantidadprod{
   width: 50%;
   height: auto;
+  color: black;
+  text-align: center;
 }
 
 
@@ -436,4 +456,55 @@ text-align: center;
     width: 50%;
     height: auto;
     color: red;
+}
+
+.marginL{
+    margin-left: -2%;
+}
+
+.fondoverde{
+    background-color: #0D6020 !important;
+    color: white !important;
+    border-left: 1px solid black !important;
+    border-right: 1px solid black !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.acomodar{
+    width: 40%;
+    height: auto;
+    float: left;
+    margin: 0% 60% 0% 0%;
+    cursor: pointer;
+}
+
+
+.acomodar2{
+    width: 40%;
+    height: auto;
+    float: left;
+    margin: 0% 60% 0% 0%;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.labelraro{
+    width: 65%;
+}
+
+.acomodarinput{
+    width: 40%;
+    height: auto;
+    float: left;
+    margin: 0% 10% 0% 0%;
+}
+
+.fecha{
+    font-family: none !important;
+}
+
+.oferta{
+color: #0D6020;
+    font: bold 20px Verdana;
 }

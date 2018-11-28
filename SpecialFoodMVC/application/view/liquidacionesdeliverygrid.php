@@ -57,7 +57,7 @@ $SQL = $SQL . "     LEFT JOIN Barrio bu ON bu.IdBarrio = cau.IdBarrio AND bu.Baj
 $SQL = $SQL . "     LEFT JOIN Usuario delivery ON p.IdDelivery = delivery.IdUsuario ";
 $SQL = $SQL . "     LEFT JOIN PenalidadDelivery penalidad ON p.IdPedido = penalidad.IdPedido  ";
 $SQL = $SQL . "WHERE  ";
-$SQL = $SQL . "     p.BajaLogica = 0 AND p.IdEstadoPedido = 4 AND LiquidadoDelivery IS NULL OR LiquidadoDelivery = 0 ";
+$SQL = $SQL . "     p.BajaLogica = 0 AND p.IdEstadoPedido = 4 AND LiquidadoDelivery IS NOT NULL OR LiquidadoDelivery = 1 ";
 
 //admin 1 , comercio 2, delivery 3, usuario 4
 /*

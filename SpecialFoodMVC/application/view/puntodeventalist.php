@@ -129,7 +129,9 @@
                         checkOut = checkOut + "</tr></table>";
 
                         jQuery("#listPuntoDeVenta").jqGrid('setRowData', rowId, { action: checkOut });
+                        
                     }
+                    $("#listPuntoDeVenta").setGridWidth($("#containerGrid").width());
                 });
             });
         }
@@ -148,6 +150,10 @@
                 window.location.assign("/puntodeventa/eliminar?id=" + id);
             }
         };
+
+        $(window).bind('resize', function () {
+              $("#listPuntoDeVenta").setGridWidth($("#containerGrid").width());
+        }).trigger('resize');
     </script>
 </head>
 <body>
@@ -187,7 +193,7 @@
                             <input class="newbutton" type="button" style="float: right" onclick="window.location.assign('/PuntoDeVenta/puntodeventamanager?id=0')" value="Nuevo" />
                             <br /><br />
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="containerGrid">
                                     <table id="listPuntoDeVenta"></table>
                                     <div id="pagerPuntoDeVenta"></div>
                                 </div>

@@ -85,11 +85,11 @@
                                  $element["Precio"]."<br>".
                                  "<img class='imagenitem' src=../../".$element["Foto"].">"."<br>"."<br>".
 
-                                "<a href='/menuitems/Modificar?id=".$element['id']."'>"."<button class='primary-btn55'>"."Modificar"."</button>"."</a>"."<br>"."<br>".
-                                "<a href='/menuitems/Eliminar?id=".$element['id']."'>"."<button class='primary-btn55'>"."Eliminar"."</button>"."</a>"."<span class='oferta'>".$Oferta."</span>"."</div>";
+                                "<a href='/menuitems/Modificar?id=".$element['id']."'>"."<button class='newbutton'>"."Modificar"."</button>"."</a>"."<br>"."<br>".
+                                "<a href='/menuitems/Eliminar?id=".$element['id']."'>"."<button class='newbutton'>"."Eliminar"."</button>"."</a>"."<span class='oferta'>".$Oferta."</span>"."</div>";
                         }
                         ?>
-
+                        <br>
                     </div>
 
                 </div>

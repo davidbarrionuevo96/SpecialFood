@@ -144,7 +144,7 @@
                             </div>
 
                             <input type="text" name="idMenu" style="visibility: hidden" class="form-control input-sm"  value = '<?php echo $_GET['id']; ?>'>
-                            <input type="submit" name="guardar" class=" btn btn-info btn-block">
+                            <input type="submit" name="guardar" class="newbutton">
                         </form>
                     </div>
 

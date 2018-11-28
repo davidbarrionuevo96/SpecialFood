@@ -89,9 +89,6 @@
           try{
             $(document).ready(function() {
               jQuery("#listComercios").jqGrid({ 
-                  //url:'../../application/view/comerciogrid.php', 
-                  //url: 'application/view/comerciogrid.php?page=1&rows=20&sidx=1&sord=asc',
-                  //datatype: "json", 
                   datatype: "local", 
                   colNames:['Nro. Pedido', 'Fecha', 'Comercio', 'Punto Vta.', 'Cliente', 'Direccion', 'Importe', 'Costo Entrega', 'Delivery', 'MontoPenalidad'], 
                   colModel:[ 
@@ -106,13 +103,13 @@
                     { name:'Delivery', index:'Delivery', sortable: false }, 
                     { name:'MontoPenalidad', index:'MontoPenalidad', sortable: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerComercios', sortname: 'id', 
-                  viewrecords: true, sortorder: "desc", caption:"Liquidación Deliverys",
-                  rows: []
+                  viewrecords: true, sortorder: "desc", caption:"Liquidación Comercios",
+                  rows: [], footerrow: true
                 }); 
 
                 jQuery("#listComercios").jqGrid('navGrid','#pagerComercios', { edit: false, add: false, del: false });  
 
-                $.get("../../application/view/cobranzasdeliverygrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
+                $.get("../../application/view/liquidacionescomerciogrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
                     $("#listComercios")[0].addJSONData(JSON.parse(data));
 
                     var ids = jQuery("#listComercios").jqGrid('getDataIDs');
@@ -133,10 +130,19 @@
                           checkOut = checkOut + "</tr></table>";
 
                           jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
+
+                          
                     }
 
-                    $("#listComercios").setGridWidth($("#containerGrid").width());
+                      var $grid = $('#listComercios');
+                      var totPenalidad = $grid.jqGrid('getCol', 'MontoPenalidad', false, 'sum');
+                      var totImporte = $grid.jqGrid('getCol', 'CostoTotal', false, 'sum');
+                      var totCostoEntrega = $grid.jqGrid('getCol', 'CostoEntrega', false, 'sum');
+                      
+                      $grid.jqGrid('footerData', 'set', { 'FechaPedido': 'TOTALES', 'MontoPenalidad': totPenalidad,
+                        'CostoTotal': totImporte, 'CostoEntrega': totCostoEntrega });
 
+                    $("#listComercios").setGridWidth($("#containerGrid").width());
                 });
               }); 
 
@@ -192,18 +198,20 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4 espacio">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title letra-blanca">Liquidación deliverys</h2>
+                        <h2 class="panel-title letra-blanca">Liquidación a Comercios</h2>
                     </div>
                     <div class="panel-body">
+                        <form action="/comercio/guardar" method="post">
                           <div class="row" id="containerGrid">
                              <div class="col-md-12">
-                                <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/cobranza/liquidaciondelivery')" value="Liquidar Pedidos" />
                                 <br/><br/>
                                 <table id="listComercios"></table>
                                 <div id="pagerComercios"></div>
                             </div>             
                           </div>
+                        </form>
                       </div>
+
                     </div>
                   </div>
                 </div>

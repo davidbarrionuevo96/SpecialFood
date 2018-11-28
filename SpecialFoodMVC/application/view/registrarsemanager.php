@@ -220,7 +220,7 @@
 
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <label for="Idcalle">Calle
+                                            <label for="Idcalle" class="labelraro">Calle
                                             <select class="form-control" id="Idcalle" name="Idcalle">
                                                 <?php $datoscalle=$conexion->query("select * from Calle");
                                                     while($com = mysqli_fetch_array($datoscalle)) {?>
@@ -232,7 +232,7 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="numero">Número
+                                                <label for="numero">Numero
                                                 <input type="text" name="numero" id="numero" value="<?php echo $data['Numero']; ?>" class="form-control input-sm" placeholder="Numero*">
                                             </div>
                                         </div>
@@ -242,18 +242,14 @@
                                         <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email">
                                     </div>
                                     -->                                            
-                                    <div class="row">
-                            <div class="col-md-12">
-                              <input type="button" value="Volver" onclick="window.location.assign('/');" class="btn btn-info btn-block">
-                            </div>
-                          </div>
-                          <br/>
-                          <div class="row">
-                            <div class="col-md-12">
-                            <input type="submit" value="Guardar" onclick="PostForm(); return false" class="btn btn-info btn-block">
-                            </div>
-                          </div>
-
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="button" value="Volver" onclick="window.location.assign('/');" class="newbutton acomodar">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="submit" value="Guardar" onclick="PostForm(); return false" class="newbutton acomodar">
+                                    </div>
+                               </div>                                
                                     <div id="mensaje"></div>
                                 </form>
                             </div>

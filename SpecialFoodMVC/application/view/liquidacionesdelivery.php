@@ -107,12 +107,12 @@
                     { name:'MontoPenalidad', index:'MontoPenalidad', sortable: false }
                   ], rowNum:10000, /*rowList:[10,20,30],*/ pager: '#pagerComercios', sortname: 'id', 
                   viewrecords: true, sortorder: "desc", caption:"Liquidación Deliverys",
-                  rows: []
+                  rows: [], footerrow: true
                 }); 
 
                 jQuery("#listComercios").jqGrid('navGrid','#pagerComercios', { edit: false, add: false, del: false });  
 
-                $.get("../../application/view/cobranzasdeliverygrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
+                $.get("../../application/view/liquidacionesdeliverygrid.php?page=1&rows=10000&sidx=1&sord=asc", function(data){
                     $("#listComercios")[0].addJSONData(JSON.parse(data));
 
                     var ids = jQuery("#listComercios").jqGrid('getDataIDs');
@@ -134,6 +134,14 @@
 
                           jQuery("#listComercios").jqGrid('setRowData', rowId, { action: checkOut });
                     }
+
+                    var $grid = $('#listComercios');
+                      var totPenalidad = $grid.jqGrid('getCol', 'MontoPenalidad', false, 'sum');
+                      var totImporte = $grid.jqGrid('getCol', 'CostoTotal', false, 'sum');
+                      var totCostoEntrega = $grid.jqGrid('getCol', 'CostoEntrega', false, 'sum');
+                      
+                      $grid.jqGrid('footerData', 'set', { 'FechaPedido': 'TOTALES', 'MontoPenalidad': totPenalidad,
+                        'CostoTotal': totImporte, 'CostoEntrega': totCostoEntrega });
 
                     $("#listComercios").setGridWidth($("#containerGrid").width());
 
@@ -197,7 +205,6 @@
                     <div class="panel-body">
                           <div class="row" id="containerGrid">
                              <div class="col-md-12">
-                                <input class="newbutton" type="button" style="float: right;" onclick="window.location.assign('/cobranza/liquidaciondelivery')" value="Liquidar Pedidos" />
                                 <br/><br/>
                                 <table id="listComercios"></table>
                                 <div id="pagerComercios"></div>
